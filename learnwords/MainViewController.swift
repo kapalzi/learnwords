@@ -19,7 +19,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     var wordsTable: Array<Word>!
     var currentWordIndex: Int!
     var panTestCunter: Int!
-    
+    @IBOutlet weak var imageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
         WordsForLanguage(language: "japan")
@@ -32,13 +32,24 @@ class MainViewController: UIViewController, UITextFieldDelegate {
             optionalWordLabel.text = ""
         }
         originalViewFrame = self.view.frame;
-        self.textField.borderStyle = UITextBorderStyle.line
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
-
+        
+        wordLabel.textColor=UIColor.purple
+        wordLabel.font = UIFont.boldSystemFont(ofSize: 40)
+        optionalWordLabel.textColor=UIColor.purple
+        optionalWordLabel.font = UIFont.boldSystemFont(ofSize: 40)
+        
+        self.textField.borderStyle = UITextBorderStyle.roundedRect
+        textField.backgroundColor = UIColor.init(white: 1, alpha: 0.8)
+        checkButton.backgroundColor = UIColor.init(white: 1, alpha: 0.8)
+        checkButton.setTitleColor(UIColor.purple, for: UIControlState.normal)
+        let img = UIImage.init(named: "solojazz")!
+        view.backgroundColor = UIColor.init(patternImage:img)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -117,7 +128,9 @@ class MainViewController: UIViewController, UITextFieldDelegate {
                 self.view.backgroundColor = UIColor.red
 
             }, completion: { (true) in
-                self.view.backgroundColor = UIColor.white
+                let img = UIImage.init(named: "solojazz")!
+                self.view.backgroundColor = UIColor.init(patternImage:img)
+//                self.view.backgroundColor = UIColor.white
             })
         }
     }
@@ -166,7 +179,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         word2.original = "anata"
         word2.english = "You"
         word2.polish = "ty"
-        word2.alternativeAlphabet = ""
+        word2.alternativeAlphabet = "あなた"
         word2.counter = 0
 
         let word3 = Word.init(entity: Word.entity(), insertInto: context)
@@ -176,7 +189,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         word3.original = "neko"
         word3.english = "Cat"
         word3.polish = "kot"
-        word3.alternativeAlphabet = ""
+        word3.alternativeAlphabet = "ネコ"
         word3.counter = 0
 
         let words = [word1,word2,word3]
