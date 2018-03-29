@@ -18,11 +18,12 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     var word: Word!
     var wordsTable: Array<Word>!
     var currentWordIndex: Int!
+    var panTestCunter: Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         WordsForLanguage(language: "japan")
-        
+        panTestCunter = 0
         if wordsTable != nil  {
             loadWord(index: firstWordIndex(numberOfWords: wordsTable.count))
         }
@@ -75,8 +76,6 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     }
     
     func loadNextWord() {
-        word.counter = word.counter+1
-        
         let nextIndex = loopIndex(index: currentWordIndex+1)
         loadWord(index: nextIndex)
     }
@@ -87,10 +86,12 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     }
     
     func loopIndex(index: Int) -> Int {
-        if index==wordsTable.count {
+        if index == wordsTable.count {
             return 0
         }
-        
+        else if index == -1 {
+            return wordsTable.count-1
+        }
         else {
             return index
         }
@@ -108,6 +109,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     
     func isWordCorrect(typedWord: String?) {
         if(typedWord == word.original) {
+            word.counter = word.counter+1
             self.loadNextWord()
         }
         else {
@@ -138,7 +140,9 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         isWordCorrect(typedWord: textField.text)
     }
     @IBAction func didSwipeLeft(_ sender: UIScreenEdgePanGestureRecognizer) {
-        
+        loadPrevWord()
+        panTestCunter=panTestCunter+1
+        print(panTestCunter)
     }
 
     func mockupObjects() -> Array<Word> {
