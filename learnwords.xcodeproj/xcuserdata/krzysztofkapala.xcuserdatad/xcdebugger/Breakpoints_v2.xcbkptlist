@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "learnwords/MainViewController.swift"
-            timestampString = "544030092.307826"
+            timestampString = "544099084.397182"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
-            landmarkName = "didClickCheckButton(_:)"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
+            landmarkName = "isWordCorrect(typedWord:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

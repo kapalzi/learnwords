@@ -19,7 +19,9 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     var wordsTable: Array<Word>!
     var currentWordIndex: Int!
     var panTestCunter: Int!
+    var appDelegate: AppDelegate!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet var settingsButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         WordsForLanguage(language: "japan")
@@ -42,6 +44,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         wordLabel.font = UIFont.boldSystemFont(ofSize: 40)
         optionalWordLabel.textColor=UIColor.purple
         optionalWordLabel.font = UIFont.boldSystemFont(ofSize: 40)
+        settingsButton.setTitleColor(UIColor.purple, for: UIControlState.normal)
         
         self.textField.borderStyle = UITextBorderStyle.roundedRect
         textField.backgroundColor = UIColor.init(white: 1, alpha: 0.8)
@@ -157,7 +160,11 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         panTestCunter=panTestCunter+1
         print(panTestCunter)
     }
-
+    @IBAction func settingsButtonPressed(_ sender: UIButton) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "settings") as! SettingsViewController
+        self.present(vc, animated: true, completion: nil)
+    }
+    
     func mockupObjects() -> Array<Word> {
         
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
