@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingsViewController: BaseViewController  {
+class SettingsViewController: BaseNavBarViewController  {
     
     override func viewDidLoad() {
         super.navTitle = "Settings"

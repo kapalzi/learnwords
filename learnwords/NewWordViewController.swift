@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewWordViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
+class NewWordViewController: BaseNavBarViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet var tableView: UITableView!
     override func viewDidLoad() {
         super.navTitle = "Add New Word"
@@ -16,13 +16,18 @@ class NewWordViewController: BaseViewController, UITableViewDelegate, UITableVie
         tableView.reloadData()
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = NewWordCell.init(style: UITableViewCellStyle.default, reuseIdentifier: nil)
-
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NewWordCell", for: indexPath) as! NewWordCell
+        
         initCell(cell: cell, indexPath: indexPath)
         
         return cell
@@ -46,9 +51,7 @@ class NewWordViewController: BaseViewController, UITableViewDelegate, UITableVie
         case 1:
             do {
             cell.titleLabel?.text = "Original"
-//            cell.titleLabel.textColor = UIColor.black
-//            cell.titleLabel.isHidden = false
-//            cell.valueField.placeholder = "enter value"
+            cell.valueField.isEnabled = true
             }
             break
         case 2:

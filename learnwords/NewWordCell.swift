@@ -15,7 +15,9 @@ class NewWordCell: UITableViewCell {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var valueField: UITextField!
     
-
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
     
     
 }

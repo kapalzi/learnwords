@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		324C841B206E289C00C19329 /* NewWordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324C841A206E289C00C19329 /* NewWordViewController.swift */; };
-		324C841D206E28F000C19329 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324C841C206E28F000C19329 /* BaseViewController.swift */; };
+		324C841D206E28F000C19329 /* BaseNavBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324C841C206E28F000C19329 /* BaseNavBarViewController.swift */; };
 		324C841F206E395900C19329 /* NewWordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324C841E206E395900C19329 /* NewWordCell.swift */; };
 		32A0735F205BBFA500415A97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A0735E205BBFA500415A97 /* AppDelegate.swift */; };
 		32A07361205BBFA500415A97 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A07360205BBFA500415A97 /* MainViewController.swift */; };
@@ -17,11 +17,12 @@
 		32A07369205BBFA500415A97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32A07368205BBFA500415A97 /* Assets.xcassets */; };
 		32A0736C205BBFA500415A97 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32A0736A205BBFA500415A97 /* LaunchScreen.storyboard */; };
 		E291CCA1206D701E001AD3B1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E291CCA0206D701E001AD3B1 /* SettingsViewController.swift */; };
+		E2EC61F8206FCD2600317AA2 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EC61F7206FCD2600317AA2 /* BaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		324C841A206E289C00C19329 /* NewWordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWordViewController.swift; sourceTree = "<group>"; };
-		324C841C206E28F000C19329 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		324C841C206E28F000C19329 /* BaseNavBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavBarViewController.swift; sourceTree = "<group>"; };
 		324C841E206E395900C19329 /* NewWordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWordCell.swift; sourceTree = "<group>"; };
 		32A0735B205BBFA500415A97 /* learnwords.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = learnwords.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32A0735E205BBFA500415A97 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -32,6 +33,7 @@
 		32A0736B205BBFA500415A97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		32A0736D205BBFA500415A97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E291CCA0206D701E001AD3B1 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		E2EC61F7206FCD2600317AA2 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,8 +67,9 @@
 			isa = PBXGroup;
 			children = (
 				32A0735E205BBFA500415A97 /* AppDelegate.swift */,
+				E2EC61F7206FCD2600317AA2 /* BaseViewController.swift */,
 				32A07360205BBFA500415A97 /* MainViewController.swift */,
-				324C841C206E28F000C19329 /* BaseViewController.swift */,
+				324C841C206E28F000C19329 /* BaseNavBarViewController.swift */,
 				E291CCA0206D701E001AD3B1 /* SettingsViewController.swift */,
 				324C841A206E289C00C19329 /* NewWordViewController.swift */,
 				324C841E206E395900C19329 /* NewWordCell.swift */,
@@ -156,8 +159,9 @@
 				324C841B206E289C00C19329 /* NewWordViewController.swift in Sources */,
 				32A0735F205BBFA500415A97 /* AppDelegate.swift in Sources */,
 				324C841F206E395900C19329 /* NewWordCell.swift in Sources */,
+				E2EC61F8206FCD2600317AA2 /* BaseViewController.swift in Sources */,
 				E291CCA1206D701E001AD3B1 /* SettingsViewController.swift in Sources */,
-				324C841D206E28F000C19329 /* BaseViewController.swift in Sources */,
+				324C841D206E28F000C19329 /* BaseNavBarViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

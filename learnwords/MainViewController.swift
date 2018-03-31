@@ -8,13 +8,12 @@
 
 import UIKit
 
-class MainViewController: UIViewController, UITextFieldDelegate {
+class MainViewController: BaseViewController, UITextFieldDelegate {
 
     @IBOutlet var wordLabel: UILabel!
     @IBOutlet var optionalWordLabel: UILabel!
     @IBOutlet var textField: UITextField!
     @IBOutlet var checkButton: UIButton!
-    var originalViewFrame: CGRect!
     var word: Word!
     var wordsTable: Array<Word>!
     var currentWordIndex: Int!
@@ -33,12 +32,6 @@ class MainViewController: UIViewController, UITextFieldDelegate {
             wordLabel.text = "No words"
             optionalWordLabel.text = ""
         }
-        originalViewFrame = self.view.frame;
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        view.addGestureRecognizer(tap)
         
         wordLabel.textColor=UIColor.purple
         wordLabel.font = UIFont.boldSystemFont(ofSize: 40)
@@ -57,22 +50,6 @@ class MainViewController: UIViewController, UITextFieldDelegate {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-    
-    @objc func keyboardShow(notification: NSNotification) {
-        let info = notification.userInfo!
-        let keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-        self.view.frame.size.height = keyboardFrame.origin.y;
-        print("keyboardFrame: \(keyboardFrame)")
-    }
-    
-    @objc func keyboardHide(notification: NSNotification) {
-        
-        self.view.frame = originalViewFrame
-    }
-    
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
     }
 
     func WordsForLanguage(language: String) {
