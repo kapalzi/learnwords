@@ -21,6 +21,7 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
     var appDelegate: AppDelegate!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet var settingsButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         WordsForLanguage(language: "japan")
@@ -43,9 +44,7 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
         textField.backgroundColor = UIColor.init(white: 1, alpha: 0.8)
         checkButton.backgroundColor = UIColor.init(white: 1, alpha: 0.8)
         checkButton.setTitleColor(UIColor.purple, for: UIControlState.normal)
-        let img = UIImage.init(named: "solojazz")!
-        view.backgroundColor = UIColor.init(patternImage:img)
-        
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -180,6 +179,5 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
 
         return words
     }
-
 }
 
