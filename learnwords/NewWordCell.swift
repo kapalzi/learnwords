@@ -17,6 +17,11 @@ class NewWordCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        valueField.borderStyle = UITextBorderStyle.none
+        valueField.textAlignment = NSTextAlignment.right
+        
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 20)
+        valueField.font = titleLabel.font
     }
     
     

@@ -40,8 +40,10 @@ class BaseViewController: UIViewController {
     }
     
     func addBlurBackground() {
-
-        let imgView = UIImageView.init(frame: originalViewFrame)
+        
+        var modifiedFrame = originalViewFrame
+        modifiedFrame?.size.height+=90
+        let imgView = UIImageView.init(frame: modifiedFrame!)
         let img = UIImage.init(named: "solojazz")
         imgView.image = img
         imgView.addBlurEffect()

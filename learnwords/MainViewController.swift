@@ -17,7 +17,6 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
     var word: Word!
     var wordsTable: Array<Word>!
     var currentWordIndex: Int!
-    var panTestCunter: Int!
     var appDelegate: AppDelegate!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet var settingsButton: UIButton!
@@ -25,7 +24,6 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         WordsForLanguage(language: "japan")
-        panTestCunter = 0
         if wordsTable != nil  {
             loadWord(index: firstWordIndex(numberOfWords: wordsTable.count))
         }
@@ -44,13 +42,32 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
         textField.backgroundColor = UIColor.init(white: 1, alpha: 0.8)
         checkButton.backgroundColor = UIColor.init(white: 1, alpha: 0.8)
         checkButton.setTitleColor(UIColor.purple, for: UIControlState.normal)
-
+        
+        initSwipe()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 
+    func initSwipe() {
+        let swipeRight = UISwipeGestureRecognizer.init(target: self, action: #selector(swipeR))
+        swipeRight.direction = UISwipeGestureRecognizerDirection.right
+        view.addGestureRecognizer(swipeRight)
+        
+        let swipeLeft = UISwipeGestureRecognizer.init(target: self, action: #selector(swipeL))
+        swipeRight.direction = UISwipeGestureRecognizerDirection.left
+        view.addGestureRecognizer(swipeLeft)
+    }
+    
+    @objc func swipeR(){
+        loadPrevWord()
+    }
+    
+    @objc func swipeL(){
+        loadNextWord()
+    }
+    
     func WordsForLanguage(language: String) {
         wordsTable = mockupObjects()
         
@@ -131,11 +148,7 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
         
         isWordCorrect(typedWord: textField.text)
     }
-    @IBAction func didSwipeLeft(_ sender: UIScreenEdgePanGestureRecognizer) {
-        loadPrevWord()
-        panTestCunter=panTestCunter+1
-        print(panTestCunter)
-    }
+    
     @IBAction func settingsButtonPressed(_ sender: UIButton) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "settings") as! SettingsViewController
         self.present(vc, animated: true, completion: nil)
@@ -148,7 +161,7 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
         let word1 = Word.init(entity: Word.entity(), insertInto: context)
 
         word1.id = 1
-        word1.language = "japan"
+        word1.language = "Japan"
         word1.original = "tenjou"
         word1.english = "Ceiling"
         word1.polish = "sufit"
@@ -158,7 +171,7 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
         let word2 = Word.init(entity: Word.entity(), insertInto: context)
 
         word2.id = 2
-        word2.language = "japan"
+        word2.language = "Japan"
         word2.original = "anata"
         word2.english = "You"
         word2.polish = "ty"
@@ -168,7 +181,7 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
         let word3 = Word.init(entity: Word.entity(), insertInto: context)
 
         word3.id = 1
-        word3.language = "japan"
+        word3.language = "Japan"
         word3.original = "neko"
         word3.english = "Cat"
         word3.polish = "kot"

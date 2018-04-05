@@ -93,9 +93,6 @@
                             <constraint firstItem="cUG-WI-TIj" firstAttribute="trailing" secondItem="DtC-kp-pi0" secondAttribute="trailing" id="zM6-eV-eDX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cUG-WI-TIj"/>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="Nyy-Mr-dyP" appends="YES" id="1IW-4c-jL2"/>
-                        </connections>
                     </view>
                     <connections>
                         <outlet property="checkButton" destination="Ewl-e9-mj8" id="GY6-IA-McW"/>
@@ -106,12 +103,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <screenEdgePanGestureRecognizer minimumNumberOfTouches="1" id="Nyy-Mr-dyP">
-                    <rectEdge key="edges" left="YES"/>
-                    <connections>
-                        <action selector="didSwipeLeft:" destination="BYZ-38-t0r" id="Zg3-fn-ht4"/>
-                    </connections>
-                </screenEdgePanGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="24.800000000000001" y="30.134932533733135"/>
         </scene>

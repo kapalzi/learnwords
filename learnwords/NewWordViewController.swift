@@ -9,7 +9,14 @@
 import UIKit
 
 class NewWordViewController: BaseNavBarViewController, UITableViewDelegate, UITableViewDataSource {
+    
     @IBOutlet var tableView: UITableView!
+    var language: String!
+    var original: String!
+    var english: String!
+    var polish: String!
+    var alternative: String!
+    
     override func viewDidLoad() {
         super.navTitle = "Add New Word"
         super.viewDidLoad()
@@ -43,44 +50,43 @@ class NewWordViewController: BaseNavBarViewController, UITableViewDelegate, UITa
         case 0:
             do {
                 cell.titleLabel?.text = "Language"
-                cell.titleLabel?.textColor = UIColor.black
-                cell.titleLabel?.isHidden = false
+                cell.valueField?.isEnabled = false
                 
             }
             break
         case 1:
             do {
-            cell.titleLabel?.text = "Original"
-            cell.valueField.isEnabled = true
+                cell.titleLabel?.text = "Original"
             }
             break
         case 2:
             do {
-            cell.titleLabel?.text = "English"
-//            cell.titleLabel.textColor = UIColor.black
-//            cell.titleLabel.isHidden = false
-//            cell.valueField.placeholder = "enter value"
+                cell.titleLabel?.text = "English"
             }
             break
         case 3:
             do {
-            cell.titleLabel?.text = "Polish"
-//            cell.titleLabel.textColor = UIColor.black
-//            cell.titleLabel.isHidden = false
-//            cell.valueField.placeholder = "enter value"
+                cell.titleLabel?.text = "Polish"
             }
             break
         case 4:
             do {
-            cell.titleLabel?.text = "Alternative Alphabet"
-//            cell.titleLabel.textColor = UIColor.black
-//            cell.titleLabel.isHidden = false
-//            cell.valueField.placeholder = "enter value"
+                cell.titleLabel?.text = "Alternative Alphabet"
             }
             break
         default:
             break
         }
     }
-    
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row==0 {
+            let ac = UIAlertController.init(title: "Select Language", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+            ac.addAction(UIAlertAction.init(title: "Japan", style: UIAlertActionStyle.default, handler: { (UIAlertAction) in
+                self.language = "Japan"
+            }))
+            ac.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+            self.present(ac, animated: true, completion: nil)
+        }
+    }
 }
