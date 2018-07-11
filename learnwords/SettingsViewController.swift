@@ -18,6 +18,10 @@ class SettingsViewController: BaseNavBarViewController  {
     }
     
     func initControls() {
+        initNewWordButton()
+    }
+    
+    func initNewWordButton() {
         let newWordButton = UIButton.init(type: UIButtonType.roundedRect)
         newWordButton.frame = CGRect.init(x:0, y: view.frame.height/2, width: view.frame.width, height: 45)
         newWordButton.setTitle("Add New Word", for: UIControlState.normal)
@@ -25,7 +29,6 @@ class SettingsViewController: BaseNavBarViewController  {
         newWordButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 40)
         newWordButton.addTarget(self, action: #selector(newWordButtonPressed), for: UIControlEvents.touchUpInside)
         self.view.addSubview(newWordButton)
-        
     }
     
     @objc func newWordButtonPressed() {
