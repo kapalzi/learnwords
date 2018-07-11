@@ -69,7 +69,8 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
     }
     
     func WordsForLanguage(language: String) {
-        wordsTable = mockupObjects()
+//        wordsTable = mockupObjects()
+        wordsTable = loadWordsFromLanguage(language: "German")
         
     }
     
@@ -135,7 +136,7 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
         var enteredText = textField.text
         
         enteredText = enteredText?.lowercased()
-        if false {
+        if true {
             var ac = UIAlertController()
             
             ac = UIAlertController.init(title: nil, message: "Correct", preferredStyle: UIAlertControllerStyle.alert)
@@ -192,5 +193,41 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
 
         return words
     }
+
+    func loadWordsFromLanguage(language: String) -> Array<Word>? {
+        if let path = Bundle.main.path(forResource: language, ofType: "txt") {
+            do {
+                let info = ProcessInfo.processInfo
+                let begin = info.systemUptime
+
+                let data = try String(contentsOfFile: path, encoding: .utf8)
+                let myStrings = data.components(separatedBy: .newlines)
+                var words = [Word]()
+                let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+                var wordId = Int16(1)
+                for myString in myStrings
+                {
+                    let myStringArray = myString.components(separatedBy: " ")
+                    let word1 = Word.init(entity: Word.entity(), insertInto: context)
+                    word1.id = wordId
+                    word1.language = language
+                    word1.original = myStringArray.first
+                    word1.english = myStringArray.last
+                    word1.counter = 0
+                    
+                    wordId = wordId + 1
+                    
+                    words.append(word1)
+                }
+                let diff = (info.systemUptime - begin)
+                print("\(language) added in time: \(diff)")
+                return words
+            } catch {
+                print(error)
+            }
+        }
+        return nil
+    }
+    
 }
 
