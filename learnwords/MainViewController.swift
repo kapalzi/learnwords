@@ -165,7 +165,7 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
         word1.language = "Japan"
         word1.original = "tenjou"
         word1.english = "Ceiling"
-        word1.polish = "sufit"
+        word1.usersLanguage = "sufit"
         word1.alternativeAlphabet = "天井"
         word1.counter = 0
 
@@ -175,7 +175,7 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
         word2.language = "Japan"
         word2.original = "anata"
         word2.english = "You"
-        word2.polish = "ty"
+        word2.usersLanguage = "ty"
         word2.alternativeAlphabet = "あなた"
         word2.counter = 0
 
@@ -185,7 +185,7 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
         word3.language = "Japan"
         word3.original = "neko"
         word3.english = "Cat"
-        word3.polish = "kot"
+        word3.usersLanguage = "kot"
         word3.alternativeAlphabet = "ネコ"
         word3.counter = 0
 
