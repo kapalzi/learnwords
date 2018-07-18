@@ -18,6 +18,7 @@
 		32A0736C205BBFA500415A97 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32A0736A205BBFA500415A97 /* LaunchScreen.storyboard */; };
 		E2505A5B20F6B6D700F70E49 /* German.txt in Resources */ = {isa = PBXBuildFile; fileRef = E2505A5A20F6B6D700F70E49 /* German.txt */; };
 		E291CCA1206D701E001AD3B1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E291CCA0206D701E001AD3B1 /* SettingsViewController.swift */; };
+		E2BF681F20FFD1E300B14865 /* HelpPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BF681E20FFD1E300B14865 /* HelpPopoverViewController.swift */; };
 		E2EC61F8206FCD2600317AA2 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EC61F7206FCD2600317AA2 /* BaseViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +36,7 @@
 		32A0736D205BBFA500415A97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E2505A5A20F6B6D700F70E49 /* German.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = German.txt; sourceTree = "<group>"; };
 		E291CCA0206D701E001AD3B1 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		E2BF681E20FFD1E300B14865 /* HelpPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpPopoverViewController.swift; sourceTree = "<group>"; };
 		E2EC61F7206FCD2600317AA2 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -76,6 +78,7 @@
 				324C841A206E289C00C19329 /* NewWordViewController.swift */,
 				324C841E206E395900C19329 /* NewWordCell.swift */,
 				32A07362205BBFA500415A97 /* Main.storyboard */,
+				E2BF681E20FFD1E300B14865 /* HelpPopoverViewController.swift */,
 				32A0736A205BBFA500415A97 /* LaunchScreen.storyboard */,
 				32A07368205BBFA500415A97 /* Assets.xcassets */,
 				32A0736D205BBFA500415A97 /* Info.plist */,
@@ -171,6 +174,7 @@
 				324C841B206E289C00C19329 /* NewWordViewController.swift in Sources */,
 				32A0735F205BBFA500415A97 /* AppDelegate.swift in Sources */,
 				324C841F206E395900C19329 /* NewWordCell.swift in Sources */,
+				E2BF681F20FFD1E300B14865 /* HelpPopoverViewController.swift in Sources */,
 				E2EC61F8206FCD2600317AA2 /* BaseViewController.swift in Sources */,
 				E291CCA1206D701E001AD3B1 /* SettingsViewController.swift in Sources */,
 				324C841D206E28F000C19329 /* BaseNavBarViewController.swift in Sources */,

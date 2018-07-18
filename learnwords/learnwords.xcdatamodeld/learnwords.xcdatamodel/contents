@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13533" systemVersion="16G1408" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14133" systemVersion="17D47" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="LanguageSet" representedClassName="LanguageSet" syncable="YES" codeGenerationType="class">
         <attribute name="isUnlocked" attributeType="String" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="languageSet" inverseEntity="User" syncable="YES"/>
@@ -12,8 +12,9 @@
     </entity>
     <entity name="Word" representedClassName="Word" parentEntity="LanguageSet" syncable="YES" codeGenerationType="class">
         <attribute name="alternativeAlphabet" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="counter" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="badCounter" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="english" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="goodCounter" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="language" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="original" optional="YES" attributeType="String" syncable="YES"/>
@@ -21,8 +22,8 @@
         <relationship name="languageSet" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LanguageSet" inverseName="word" inverseEntity="LanguageSet" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Word" positionX="-254" positionY="6" width="128" height="163"/>
-        <element name="User" positionX="54" positionY="-216" width="128" height="88"/>
         <element name="LanguageSet" positionX="-531" positionY="-189" width="128" height="90"/>
+        <element name="User" positionX="54" positionY="-216" width="128" height="88"/>
+        <element name="Word" positionX="-254" positionY="6" width="128" height="30"/>
     </elements>
 </model>

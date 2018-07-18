@@ -14,6 +14,9 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
     @IBOutlet var optionalWordLabel: UILabel!
     @IBOutlet var textField: UITextField!
     @IBOutlet var checkButton: UIButton!
+    @IBOutlet weak var badCounterLbl: UILabel!
+    @IBOutlet weak var helpBtn: UIButton!
+    @IBOutlet weak var goodCounterLbl: UILabel!
     var word: Word!
     var wordsTable: Array<Word>!
     var currentWordIndex: Int!
@@ -42,6 +45,9 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
         textField.backgroundColor = UIColor.init(white: 1, alpha: 0.8)
         checkButton.backgroundColor = UIColor.init(white: 1, alpha: 0.8)
         checkButton.setTitleColor(UIColor.purple, for: UIControlState.normal)
+        badCounterLbl.backgroundColor = UIColor.init(white: 1, alpha: 0.8)
+        goodCounterLbl.backgroundColor = UIColor.init(white: 1, alpha: 0.8)
+        helpBtn.backgroundColor = UIColor.init(white: 1, alpha: 0.8)
         
         initSwipe()
     }
@@ -81,6 +87,8 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
         textField.text=""
         wordLabel.text = word.english
         optionalWordLabel.text = word.alternativeAlphabet
+        self.goodCounterLbl.text = String(format: "%i", word.goodCounter)
+        self.badCounterLbl.text = String.init(format: "%i", word.badCounter)
     }
     
     func loadNextWord() {
@@ -116,11 +124,16 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
     }
     
     func isWordCorrect(typedWord: String?) {
-        if(typedWord == word.original) {
-            word.counter = word.counter+1
+        print(word.original)
+        if(typedWord == word.original?.lowercased()) {
+            word.goodCounter = word.goodCounter+1
+            helpBtn.setTitle("", for: .normal)
             self.loadNextWord()
         }
         else {
+            helpBtn.setTitle("Help", for: .normal)
+            word.badCounter = word.badCounter+1
+            self.badCounterLbl.text = String.init(format: "%i", word.badCounter)
             UIView.animate(withDuration: 0.2, animations: {
                 self.view.backgroundColor = UIColor.red
 
@@ -136,7 +149,9 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
         var enteredText = textField.text
         
         enteredText = enteredText?.lowercased()
-        if true {
+        isWordCorrect(typedWord: enteredText)
+        
+        if false {
             var ac = UIAlertController()
             
             ac = UIAlertController.init(title: nil, message: "Correct", preferredStyle: UIAlertControllerStyle.alert)
@@ -146,13 +161,38 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
             }))
             self.present(ac, animated: true, completion: nil)
         }
-        
-        isWordCorrect(typedWord: textField.text)
+       
     }
     
     @IBAction func settingsButtonPressed(_ sender: UIButton) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "settings") as! SettingsViewController
         self.present(vc, animated: true, completion: nil)
+    }
+    
+    @IBAction func showHelp(_ sender: UIButton) {
+        
+        
+//        let controller = self.storyboard?.instantiateViewController(withIdentifier: "helpVC") as! HelpPopoverViewController
+//
+//        controller.modalPresentationStyle = .popover
+//        controller.popoverPresentationController?.sourceView = self.helpBtn
+//        controller.popoverPresentationController?.sourceRect = self.helpBtn.frame
+//        self.present(controller, animated: false, completion: nil)
+        
+//            controller.preferredContentSize = CGSize(width: 300, height: 200)
+        
+        
+        guard let popVC = storyboard?.instantiateViewController(withIdentifier: "popVC") else { return }
+        
+        popVC.modalPresentationStyle = .popover
+        
+        let popOverVC = popVC.popoverPresentationController
+        popOverVC?.delegate = self
+        popOverVC?.sourceView = self.helpBtn
+        popOverVC?.sourceRect = CGRect(x: self.helpBtn.bounds.midX, y: self.helpBtn.bounds.minY, width: 0, height: 0)
+        popVC.preferredContentSize = CGSize(width: 250, height: 50)
+        self.present(popVC, animated: true)
+        
     }
     
     func mockupObjects() -> Array<Word> {
@@ -167,7 +207,7 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
         word1.english = "Ceiling"
         word1.usersLanguage = "sufit"
         word1.alternativeAlphabet = "天井"
-        word1.counter = 0
+        
 
         let word2 = Word.init(entity: Word.entity(), insertInto: context)
 
@@ -177,7 +217,7 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
         word2.english = "You"
         word2.usersLanguage = "ty"
         word2.alternativeAlphabet = "あなた"
-        word2.counter = 0
+        
 
         let word3 = Word.init(entity: Word.entity(), insertInto: context)
 
@@ -187,7 +227,7 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
         word3.english = "Cat"
         word3.usersLanguage = "kot"
         word3.alternativeAlphabet = "ネコ"
-        word3.counter = 0
+        
 
         let words = [word1,word2,word3]
 
@@ -213,7 +253,8 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
                     word1.language = language
                     word1.original = myStringArray.first
                     word1.english = myStringArray.last
-                    word1.counter = 0
+                    word1.badCounter = 0
+                    word1.badCounter = 0
                     
                     wordId = wordId + 1
                     
@@ -231,3 +272,9 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
     
 }
 
+extension UIViewController: UIPopoverPresentationControllerDelegate {
+    
+    public func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
+}
+}
