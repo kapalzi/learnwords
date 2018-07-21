@@ -52,15 +52,3 @@ class BaseViewController: UIViewController {
     }
     
 }
-
-extension UIImageView
-{
-    func addBlurEffect()
-    {
-        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.frame = self.bounds
-        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        self.addSubview(blurEffectView)
-    }
-}

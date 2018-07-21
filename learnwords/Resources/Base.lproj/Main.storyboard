@@ -150,20 +150,10 @@
         <!--Help Popover View Controller-->
         <scene sceneID="KN3-0b-H9B">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nKk-k0-aja" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController storyboardIdentifier="popVC" modalPresentationStyle="currentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="TQu-f0-agc" customClass="HelpPopoverViewController" customModule="learnwords" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="popVC" modalPresentationStyle="currentContext" id="TQu-f0-agc" customClass="HelpPopoverViewController" customModule="learnwords" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="P92-1g-ieK">
-                        <rect key="frame" x="0.0" y="0.0" width="300" height="75"/>
+                        <rect key="frame" x="0.0" y="0.0" width="250" height="50"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="adada" textAlignment="center" lineBreakMode="wordWrap" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D1C-Tp-fgV">
-                                <rect key="frame" x="25" y="12" width="250" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Uhl-yD-z7t"/>
                     </view>
@@ -171,8 +161,9 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="300" height="75"/>
+                    <size key="freeformSize" width="250" height="50"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nKk-k0-aja" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-865.60000000000002" y="574.36281859070471"/>
         </scene>
@@ -203,7 +194,7 @@
                                 <rect key="frame" x="0.0" y="50" width="375" height="617"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewWordCell" rowHeight="60" id="w2V-gr-rdj" customClass="NewWordCell" customModule="learnwords" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewWordCell" rowHeight="60" id="w2V-gr-rdj" customClass="NewWordCell" customModule="learnwords" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="w2V-gr-rdj" id="EL8-Gc-7In">

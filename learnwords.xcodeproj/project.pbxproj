@@ -16,6 +16,7 @@
 		32A07367205BBFA500415A97 /* learnwords.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 32A07365205BBFA500415A97 /* learnwords.xcdatamodeld */; };
 		32A07369205BBFA500415A97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32A07368205BBFA500415A97 /* Assets.xcassets */; };
 		32A0736C205BBFA500415A97 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32A0736A205BBFA500415A97 /* LaunchScreen.storyboard */; };
+		E24391F52103673E00EDE25F /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24391F42103673E00EDE25F /* UIImageView+Extension.swift */; };
 		E2505A5B20F6B6D700F70E49 /* German.txt in Resources */ = {isa = PBXBuildFile; fileRef = E2505A5A20F6B6D700F70E49 /* German.txt */; };
 		E291CCA1206D701E001AD3B1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E291CCA0206D701E001AD3B1 /* SettingsViewController.swift */; };
 		E2BF681F20FFD1E300B14865 /* HelpPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BF681E20FFD1E300B14865 /* HelpPopoverViewController.swift */; };
@@ -34,6 +35,7 @@
 		32A07368205BBFA500415A97 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32A0736B205BBFA500415A97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		32A0736D205BBFA500415A97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E24391F42103673E00EDE25F /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		E2505A5A20F6B6D700F70E49 /* German.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = German.txt; sourceTree = "<group>"; };
 		E291CCA0206D701E001AD3B1 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E2BF681E20FFD1E300B14865 /* HelpPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpPopoverViewController.swift; sourceTree = "<group>"; };
@@ -70,22 +72,79 @@
 		32A0735D205BBFA500415A97 /* learnwords */ = {
 			isa = PBXGroup;
 			children = (
+				E24391F9210367D600EDE25F /* Modules */,
+				E24391F8210367CD00EDE25F /* Resources */,
+				E24391F7210367C500EDE25F /* Model */,
+				E24391F6210367B500EDE25F /* Core */,
+				E24391F32103672C00EDE25F /* Extensions */,
 				32A0735E205BBFA500415A97 /* AppDelegate.swift */,
-				E2EC61F7206FCD2600317AA2 /* BaseViewController.swift */,
-				32A07360205BBFA500415A97 /* MainViewController.swift */,
-				324C841C206E28F000C19329 /* BaseNavBarViewController.swift */,
-				E291CCA0206D701E001AD3B1 /* SettingsViewController.swift */,
-				324C841A206E289C00C19329 /* NewWordViewController.swift */,
-				324C841E206E395900C19329 /* NewWordCell.swift */,
-				32A07362205BBFA500415A97 /* Main.storyboard */,
-				E2BF681E20FFD1E300B14865 /* HelpPopoverViewController.swift */,
-				32A0736A205BBFA500415A97 /* LaunchScreen.storyboard */,
-				32A07368205BBFA500415A97 /* Assets.xcassets */,
 				32A0736D205BBFA500415A97 /* Info.plist */,
-				32A07365205BBFA500415A97 /* learnwords.xcdatamodeld */,
 				E2505A5C20F6BD1000F70E49 /* languages */,
 			);
 			path = learnwords;
+			sourceTree = "<group>";
+		};
+		E24391F32103672C00EDE25F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E24391F42103673E00EDE25F /* UIImageView+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E24391F6210367B500EDE25F /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				E2EC61F7206FCD2600317AA2 /* BaseViewController.swift */,
+				324C841C206E28F000C19329 /* BaseNavBarViewController.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		E24391F7210367C500EDE25F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				32A07365205BBFA500415A97 /* learnwords.xcdatamodeld */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E24391F8210367CD00EDE25F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				32A07362205BBFA500415A97 /* Main.storyboard */,
+				32A0736A205BBFA500415A97 /* LaunchScreen.storyboard */,
+				32A07368205BBFA500415A97 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		E24391F9210367D600EDE25F /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				E24391FA210367F500EDE25F /* Main */,
+				E24391FB2103680200EDE25F /* Settings */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		E24391FA210367F500EDE25F /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				32A07360205BBFA500415A97 /* MainViewController.swift */,
+				E2BF681E20FFD1E300B14865 /* HelpPopoverViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		E24391FB2103680200EDE25F /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				E291CCA0206D701E001AD3B1 /* SettingsViewController.swift */,
+				324C841A206E289C00C19329 /* NewWordViewController.swift */,
+				324C841E206E395900C19329 /* NewWordCell.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		E2505A5C20F6BD1000F70E49 /* languages */ = {
@@ -169,6 +228,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E24391F52103673E00EDE25F /* UIImageView+Extension.swift in Sources */,
 				32A07367205BBFA500415A97 /* learnwords.xcdatamodeld in Sources */,
 				32A07361205BBFA500415A97 /* MainViewController.swift in Sources */,
 				324C841B206E289C00C19329 /* NewWordViewController.swift in Sources */,

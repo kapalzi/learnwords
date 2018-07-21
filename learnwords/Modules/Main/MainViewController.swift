@@ -26,7 +26,7 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        WordsForLanguage(language: "japan")
+        WordsForLanguage(language: "German")
         if wordsTable != nil  {
             loadWord(index: firstWordIndex(numberOfWords: wordsTable.count))
         }
@@ -67,11 +67,11 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
     }
     
     @objc func swipeR(){
-        loadPrevWord()
+        loadNextWord()
     }
     
     @objc func swipeL(){
-        loadNextWord()
+        loadPrevWord()
     }
     
     func WordsForLanguage(language: String) {
@@ -125,7 +125,7 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
     
     func isWordCorrect(typedWord: String?) {
         print(word.original)
-        if(typedWord == word.original?.lowercased()) {
+        if(typedWord?.lowercased() == word.original?.lowercased()) {
             word.goodCounter = word.goodCounter+1
             helpBtn.setTitle("", for: .normal)
             self.loadNextWord()
@@ -146,21 +146,18 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
     }
     
     @IBAction func didClickCheckButton(_ sender: UIButton) {
-        var enteredText = textField.text
+        isWordCorrect(typedWord: textField.text)
         
-        enteredText = enteredText?.lowercased()
-        isWordCorrect(typedWord: enteredText)
-        
-        if false {
-            var ac = UIAlertController()
-            
-            ac = UIAlertController.init(title: nil, message: "Correct", preferredStyle: UIAlertControllerStyle.alert)
-            ac.addAction(UIAlertAction.init(title: "Ok", style: UIAlertActionStyle.cancel, handler: { (UIAlertAction) in
-                self.textField.text=""
-                self.loadNextWord()
-            }))
-            self.present(ac, animated: true, completion: nil)
-        }
+//        if isWordCorrect {
+//            var ac = UIAlertController()
+//
+//            ac = UIAlertController.init(title: nil, message: "Correct", preferredStyle: UIAlertControllerStyle.alert)
+//            ac.addAction(UIAlertAction.init(title: "Ok", style: UIAlertActionStyle.cancel, handler: { (UIAlertAction) in
+//                self.textField.text=""
+//                self.loadNextWord()
+//            }))
+//            self.present(ac, animated: true, completion: nil)
+//        }
        
     }
     
@@ -171,18 +168,7 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
     
     @IBAction func showHelp(_ sender: UIButton) {
         
-        
-//        let controller = self.storyboard?.instantiateViewController(withIdentifier: "helpVC") as! HelpPopoverViewController
-//
-//        controller.modalPresentationStyle = .popover
-//        controller.popoverPresentationController?.sourceView = self.helpBtn
-//        controller.popoverPresentationController?.sourceRect = self.helpBtn.frame
-//        self.present(controller, animated: false, completion: nil)
-        
-//            controller.preferredContentSize = CGSize(width: 300, height: 200)
-        
-        
-        guard let popVC = storyboard?.instantiateViewController(withIdentifier: "popVC") else { return }
+        let popVC = storyboard?.instantiateViewController(withIdentifier: "popVC") as! HelpPopoverViewController
         
         popVC.modalPresentationStyle = .popover
         
@@ -191,8 +177,15 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
         popOverVC?.sourceView = self.helpBtn
         popOverVC?.sourceRect = CGRect(x: self.helpBtn.bounds.midX, y: self.helpBtn.bounds.minY, width: 0, height: 0)
         popVC.preferredContentSize = CGSize(width: 250, height: 50)
-        self.present(popVC, animated: true)
         
+        let helpLbl = UILabel(frame: CGRect(x: 0, y: 0, width: 250, height: 50))
+        helpLbl.text = word.original
+        helpLbl.font = UIFont.systemFont(ofSize: 30)
+        helpLbl.textAlignment = .center
+        helpLbl.textColor = UIColor.purple
+        popVC.view.addSubview(helpLbl)
+
+        self.present(popVC, animated: true)
     }
     
     func mockupObjects() -> Array<Word> {
