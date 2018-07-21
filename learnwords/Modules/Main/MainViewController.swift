@@ -67,13 +67,37 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
     }
     
     @objc func swipeR(){
-        loadNextWord()
+//        loadNextWord()
     }
     
     @objc func swipeL(){
-        loadPrevWord()
+//        loadPrevWord()
     }
     
+    @IBAction func panCard(_ sender: UIPanGestureRecognizer) {
+        let card = sender.view!
+        let point = sender.translation(in: view)
+        card.center = CGPoint(x: self.view.center.x + point.x, y: view.center.y + point.y)
+        
+        let xFromCenter = card.center.x - self.view.center.x
+        
+//        https://www.youtube.com/watch?v=sBnqFLJqn9M
+        
+        if sender.state == UIGestureRecognizerState.ended {
+            print(xFromCenter)
+            if card.center.x < 75 {
+                self.loadNextWord()
+                return
+            } else if card.center.x > (self.view.frame.width - 75) {
+                self.loadPrevWord()
+                return
+            }
+            
+            UIView.animate(withDuration: 0.2) {
+                card.center = self.view.center
+            }
+        }
+    }
     func WordsForLanguage(language: String) {
 //        wordsTable = mockupObjects()
         wordsTable = loadWordsFromLanguage(language: "German")
