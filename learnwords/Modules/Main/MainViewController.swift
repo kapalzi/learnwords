@@ -22,10 +22,12 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
     var currentWordIndex: Int!
     var appDelegate: AppDelegate!
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet var settingsButton: UIButton!
-    
+    @IBOutlet var settingsButton: UIButton!    
+    @IBOutlet weak var card: UIView!
+    var cardCenter: CGPoint?
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.cardCenter = self.card.center
         WordsForLanguage(language: "German")
         if wordsTable != nil  {
             loadWord(index: firstWordIndex(numberOfWords: wordsTable.count))
@@ -78,7 +80,6 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
         let card = sender.view!
         let point = sender.translation(in: view)
         card.center = CGPoint(x: self.view.center.x + point.x, y: view.center.y + point.y)
-        
         let xFromCenter = card.center.x - self.view.center.x
         
 //        https://www.youtube.com/watch?v=sBnqFLJqn9M
@@ -86,15 +87,26 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
         if sender.state == UIGestureRecognizerState.ended {
             print(xFromCenter)
             if card.center.x < 75 {
+                UIView.animate(withDuration: 0.3) {
+                    card.center = CGPoint(x:card.center.x-200, y: card.center.y+75)
+                    card.alpha = 0
+                }
                 self.loadNextWord()
                 return
             } else if card.center.x > (self.view.frame.width - 75) {
+                UIView.animate(withDuration: 0.3) {
+                    card.center = CGPoint(x:card.center.x+200, y: card.center.y+75)
+                    card.alpha = 0
+                }
                 self.loadPrevWord()
                 return
             }
             
             UIView.animate(withDuration: 0.2) {
-                card.center = self.view.center
+//                print(self.wordLabel.frame.origin.y)
+//                let center = CGPoint(x: self.view.center.x, y:self.wordLabel.frame.origin.y + (self.card.frame.size.height/2))
+                card.center = self.cardCenter!
+                
             }
         }
     }
@@ -116,11 +128,19 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
     }
     
     func loadNextWord() {
+        UIView.animate(withDuration: 0.3) {
+            self.card.center = CGPoint(x:self.card.center.x-800, y: self.card.center.y)
+            self.card.alpha = 1
+        }
         let nextIndex = loopIndex(index: currentWordIndex+1)
         loadWord(index: nextIndex)
     }
     
     func loadPrevWord() {
+        UIView.animate(withDuration: 0.3) {
+            self.card.center = CGPoint(x:self.card.center.x+800, y: self.card.center.y)
+            self.card.alpha = 1
+        }
         let prevIndex = loopIndex(index: currentWordIndex-1)
         loadWord(index: prevIndex)
     }

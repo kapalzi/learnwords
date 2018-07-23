@@ -85,8 +85,13 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g5P-AN-71M" userLabel="card">
-                                <rect key="frame" x="16" y="83" width="343" height="446"/>
+                                <rect key="frame" x="16" y="83" width="343" height="343"/>
                                 <subviews>
+                                    <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FCD-oH-kaY" userLabel="cardBackground">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="343"/>
+                                        <color key="backgroundColor" red="0.57919406890000003" green="0.1280144453" blue="0.57268613580000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <gestureRecognizers/>
+                                    </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="wordLbl" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zhu-1p-TuY">
                                         <rect key="frame" x="21" y="0.0" width="301" height="45"/>
                                         <constraints>
@@ -106,15 +111,18 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="zhu-1p-TuY" firstAttribute="leading" secondItem="g5P-AN-71M" secondAttribute="leading" constant="21" id="7y8-L9-cWx"/>
                                     <constraint firstItem="SOW-Rq-Swv" firstAttribute="top" secondItem="zhu-1p-TuY" secondAttribute="bottom" constant="8" symbolic="YES" id="EFp-6E-5RO"/>
+                                    <constraint firstItem="FCD-oH-kaY" firstAttribute="centerX" secondItem="zhu-1p-TuY" secondAttribute="centerX" id="J8T-BD-L7N"/>
                                     <constraint firstItem="zhu-1p-TuY" firstAttribute="top" secondItem="g5P-AN-71M" secondAttribute="top" id="R5b-qT-Vx9"/>
                                     <constraint firstItem="zhu-1p-TuY" firstAttribute="leading" secondItem="SOW-Rq-Swv" secondAttribute="leading" id="RH6-jg-D5G"/>
                                     <constraint firstItem="zhu-1p-TuY" firstAttribute="centerX" secondItem="g5P-AN-71M" secondAttribute="centerX" id="Sfa-oY-nKd"/>
+                                    <constraint firstAttribute="bottom" secondItem="FCD-oH-kaY" secondAttribute="bottom" id="nze-KQ-4VY"/>
                                     <constraint firstItem="zhu-1p-TuY" firstAttribute="trailing" secondItem="SOW-Rq-Swv" secondAttribute="trailing" id="oom-AS-Hrf"/>
+                                    <constraint firstItem="FCD-oH-kaY" firstAttribute="top" secondItem="zhu-1p-TuY" secondAttribute="top" id="tra-uM-AER"/>
+                                    <constraint firstItem="FCD-oH-kaY" firstAttribute="leading" secondItem="g5P-AN-71M" secondAttribute="leading" id="zDb-QZ-0fH"/>
                                 </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="xuA-OV-Rzf" appends="YES" id="iOY-es-wD6"/>
@@ -130,7 +138,7 @@
                             <constraint firstItem="g5P-AN-71M" firstAttribute="leading" secondItem="gYc-Rx-Ofx" secondAttribute="leadingMargin" id="6Br-4a-gzH"/>
                             <constraint firstItem="nxp-Fj-zhb" firstAttribute="centerX" secondItem="DtC-kp-pi0" secondAttribute="centerX" id="7RJ-M1-Exh"/>
                             <constraint firstItem="A1a-5O-A1J" firstAttribute="trailing" secondItem="DtC-kp-pi0" secondAttribute="trailing" id="8Cu-Wn-Rmg"/>
-                            <constraint firstItem="lqz-Ni-zRL" firstAttribute="top" secondItem="g5P-AN-71M" secondAttribute="bottom" constant="8" symbolic="YES" id="CNJ-eK-2jV"/>
+                            <constraint firstItem="lqz-Ni-zRL" firstAttribute="top" secondItem="g5P-AN-71M" secondAttribute="bottom" constant="111" id="CNJ-eK-2jV"/>
                             <constraint firstItem="lqz-Ni-zRL" firstAttribute="firstBaseline" secondItem="A1a-5O-A1J" secondAttribute="firstBaseline" id="IeY-UQ-b1x"/>
                             <constraint firstItem="lqz-Ni-zRL" firstAttribute="bottom" secondItem="nxp-Fj-zhb" secondAttribute="bottom" id="LzQ-xN-lba"/>
                             <constraint firstItem="DtC-kp-pi0" firstAttribute="trailing" secondItem="Ewl-e9-mj8" secondAttribute="trailing" id="aO7-om-KjU"/>
@@ -151,6 +159,7 @@
                     </view>
                     <connections>
                         <outlet property="badCounterLbl" destination="lqz-Ni-zRL" id="Rn1-up-Nh0"/>
+                        <outlet property="card" destination="g5P-AN-71M" id="pVx-nJ-wqf"/>
                         <outlet property="checkButton" destination="Ewl-e9-mj8" id="GY6-IA-McW"/>
                         <outlet property="goodCounterLbl" destination="A1a-5O-A1J" id="A1O-jw-9NB"/>
                         <outlet property="helpBtn" destination="nxp-Fj-zhb" id="5vb-GO-WVB"/>
