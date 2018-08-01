@@ -11,6 +11,7 @@ import UIKit
 class BaseViewController: UIViewController {
     
     var originalViewFrame: CGRect!
+    var isKeyboardVisible: Bool! = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,14 +29,15 @@ class BaseViewController: UIViewController {
         let info = notification.userInfo!
         let keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         self.view.frame.size.height = keyboardFrame.origin.y;
+        self.isKeyboardVisible = true
     }
     
     @objc func keyboardHide(notification: NSNotification) {
-        
         self.view.frame = originalViewFrame
     }
     
     @objc func dismissKeyboard() {
+        self.isKeyboardVisible = false
         view.endEditing(true)
     }
     

@@ -25,9 +25,18 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
     @IBOutlet var settingsButton: UIButton!    
     @IBOutlet weak var card: UIView!
     var cardCenter: CGPoint?
+    var cardY: CGFloat?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.cardCenter = self.card.center
+        print("word label Y: \(self.wordLabel.frame.origin.y)")
+        print("self.card.y: \(self.card.frame.origin.y)" )
+        print("self.card.frame: \(self.card.frame)")
+//        self.cardY = 255
+        self.cardY = self.card.frame.size.height/2 - self.card.frame.origin.y
+        self.cardY = self.card.center.y
+        self.cardCenter = CGPoint(x: self.view.center.x, y: self.cardY!)
+
         WordsForLanguage(language: "German")
         if wordsTable != nil  {
             loadWord(index: firstWordIndex(numberOfWords: wordsTable.count))
@@ -68,6 +77,24 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
         view.addGestureRecognizer(swipeLeft)
     }
     
+    override func keyboardShow(notification: NSNotification) {
+        super.keyboardShow(notification: notification)
+//        self.cardY = 150
+        self.cardY = self.card.frame.size.height/2 - self.card.frame.origin.y/2 + self.card.frame.origin.x
+        print("cardY with keybpard: \(self.cardY)")
+        self.cardY = self.card.center.y
+        self.cardY = self.card.frame.size.height/2 + self.card.frame.origin.y
+        self.cardCenter = CGPoint(x: self.view.center.x, y: self.cardY!)
+         print("self.card.frame: \(self.card.frame)")
+    }
+    
+    override func keyboardHide(notification: NSNotification) {
+        super.keyboardHide(notification: notification)
+        self.cardY = 255
+        self.cardY = self.card.frame.size.height/2 + self.card.frame.origin.y
+        self.cardCenter = CGPoint(x: self.view.center.x, y: self.cardY!)
+    }
+    
     @objc func swipeR(){
 //        loadNextWord()
     }
@@ -79,7 +106,7 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
     @IBAction func panCard(_ sender: UIPanGestureRecognizer) {
         let card = sender.view!
         let point = sender.translation(in: view)
-        card.center = CGPoint(x: self.view.center.x + point.x, y: view.center.y + point.y)
+        card.center = CGPoint(x: self.view.center.x + point.x, y: self.cardY!)
         let xFromCenter = card.center.x - self.view.center.x
         
 //        https://www.youtube.com/watch?v=sBnqFLJqn9M
@@ -88,14 +115,14 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
             print(xFromCenter)
             if card.center.x < 75 {
                 UIView.animate(withDuration: 0.3) {
-                    card.center = CGPoint(x:card.center.x-200, y: card.center.y+75)
+                    card.center = CGPoint(x:card.center.x-200, y: card.center.y)
                     card.alpha = 0
                 }
                 self.loadNextWord()
                 return
             } else if card.center.x > (self.view.frame.width - 75) {
                 UIView.animate(withDuration: 0.3) {
-                    card.center = CGPoint(x:card.center.x+200, y: card.center.y+75)
+                    card.center = CGPoint(x:card.center.x+200, y: card.center.y)
                     card.alpha = 0
                 }
                 self.loadPrevWord()
