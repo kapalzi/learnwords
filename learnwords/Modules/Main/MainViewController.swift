@@ -35,7 +35,7 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
 //        self.cardY = 255
         self.cardY = self.card.frame.size.height/2 - self.card.frame.origin.y
         self.cardY = self.card.center.y
-        self.cardCenter = CGPoint(x: self.view.center.x, y: self.cardY!)
+        self.cardCenter = self.card.center
 
         WordsForLanguage(language: "German")
         if wordsTable != nil  {
@@ -84,7 +84,7 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
         print("cardY with keybpard: \(self.cardY)")
         self.cardY = self.card.center.y
         self.cardY = self.card.frame.size.height/2 + self.card.frame.origin.y
-        self.cardCenter = CGPoint(x: self.view.center.x, y: self.cardY!)
+        self.cardCenter = CGPoint(x: self.card.center.x, y: self.card.center.y)
          print("self.card.frame: \(self.card.frame)")
     }
     
@@ -92,7 +92,7 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
         super.keyboardHide(notification: notification)
         self.cardY = 255
         self.cardY = self.card.frame.size.height/2 + self.card.frame.origin.y
-        self.cardCenter = CGPoint(x: self.view.center.x, y: self.cardY!)
+        self.cardCenter = CGPoint(x: self.card.center.x, y: self.card.center.y)
     }
     
     @objc func swipeR(){
@@ -105,10 +105,11 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
     
     @IBAction func panCard(_ sender: UIPanGestureRecognizer) {
         let card = sender.view!
-        let point = sender.translation(in: view)
-        card.center = CGPoint(x: self.view.center.x + point.x, y: self.cardY!)
+        let point = sender.translation(in: card)
+//        card.center = CGPoint(x: self.view.center.x + point.x, y: self.cardY!)
+        card.center = CGPoint(x: self.card.center.x + point.x, y: self.card.center.y)
         let xFromCenter = card.center.x - self.view.center.x
-        
+        sender.setTranslation(CGPoint.zero, in: self.card)
 //        https://www.youtube.com/watch?v=sBnqFLJqn9M
         
         if sender.state == UIGestureRecognizerState.ended {
@@ -132,7 +133,8 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
             UIView.animate(withDuration: 0.2) {
 //                print(self.wordLabel.frame.origin.y)
 //                let center = CGPoint(x: self.view.center.x, y:self.wordLabel.frame.origin.y + (self.card.frame.size.height/2))
-                card.center = self.cardCenter!
+                
+//                card.center = self.cardCenter!
                 
             }
         }
