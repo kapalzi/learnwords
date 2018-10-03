@@ -8,13 +8,13 @@
 
 import UIKit
 
-class SettingsViewController: BaseNavBarViewController  {
+class SettingsViewController: UITableViewController  {
     
     override func viewDidLoad() {
-        super.navTitle = "Settings"
+//        super.navTitle = "Settings"
         super.viewDidLoad()
-        
-        initControls()
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+//        initControls()
     }
     
     func initControls() {

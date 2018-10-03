@@ -29,13 +29,13 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("word label Y: \(self.wordLabel.frame.origin.y)")
-        print("self.card.y: \(self.card.frame.origin.y)" )
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        print("self.card.center.x: \(self.card.center.x)" )
         print("self.card.frame: \(self.card.frame)")
-//        self.cardY = 255
         self.cardY = self.card.frame.size.height/2 - self.card.frame.origin.y
         self.cardY = self.card.center.y
         self.cardCenter = self.card.center
+        self.cardCenter!.x = self.view.center.x
 
         WordsForLanguage(language: "German")
         if wordsTable != nil  {
@@ -52,8 +52,7 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
         optionalWordLabel.font = UIFont.boldSystemFont(ofSize: 40)
         settingsButton.setTitleColor(UIColor.purple, for: UIControlState.normal)
         
-        self.textField.borderStyle = UITextBorderStyle.roundedRect
-        textField.backgroundColor = UIColor.init(white: 1, alpha: 0.8)
+        textField.backgroundColor = UIColor.init(white: 1, alpha: 0.9)
         checkButton.backgroundColor = UIColor.init(white: 1, alpha: 0.8)
         checkButton.setTitleColor(UIColor.purple, for: UIControlState.normal)
         badCounterLbl.backgroundColor = UIColor.init(white: 1, alpha: 0.8)
@@ -79,20 +78,17 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
     
     override func keyboardShow(notification: NSNotification) {
         super.keyboardShow(notification: notification)
-//        self.cardY = 150
         self.cardY = self.card.frame.size.height/2 - self.card.frame.origin.y/2 + self.card.frame.origin.x
-        print("cardY with keybpard: \(self.cardY)")
         self.cardY = self.card.center.y
         self.cardY = self.card.frame.size.height/2 + self.card.frame.origin.y
-        self.cardCenter = CGPoint(x: self.card.center.x, y: self.card.center.y)
-         print("self.card.frame: \(self.card.frame)")
+        self.cardCenter = CGPoint(x: self.cardCenter!.x, y: self.card.center.y)
     }
     
     override func keyboardHide(notification: NSNotification) {
         super.keyboardHide(notification: notification)
         self.cardY = 255
         self.cardY = self.card.frame.size.height/2 + self.card.frame.origin.y
-        self.cardCenter = CGPoint(x: self.card.center.x, y: self.card.center.y)
+        self.cardCenter = CGPoint(x: self.cardCenter!.x, y: self.card.center.y)
     }
     
     @objc func swipeR(){
@@ -104,13 +100,11 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
     }
     
     @IBAction func panCard(_ sender: UIPanGestureRecognizer) {
+        print("self.cardcenter.x: \(self.cardCenter!.x)" )
         let card = sender.view!
-        let point = sender.translation(in: card)
-//        card.center = CGPoint(x: self.view.center.x + point.x, y: self.cardY!)
-        card.center = CGPoint(x: self.card.center.x + point.x, y: self.card.center.y)
+        let point = sender.translation(in: view)
+        card.center = CGPoint(x: self.view.center.x + point.x, y: card.center.y)
         let xFromCenter = card.center.x - self.view.center.x
-        sender.setTranslation(CGPoint.zero, in: self.card)
-//        https://www.youtube.com/watch?v=sBnqFLJqn9M
         
         if sender.state == UIGestureRecognizerState.ended {
             print(xFromCenter)
@@ -131,11 +125,7 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
             }
             
             UIView.animate(withDuration: 0.2) {
-//                print(self.wordLabel.frame.origin.y)
-//                let center = CGPoint(x: self.view.center.x, y:self.wordLabel.frame.origin.y + (self.card.frame.size.height/2))
-                
-//                card.center = self.cardCenter!
-                
+                card.center.x = self.cardCenter!.x
             }
         }
     }

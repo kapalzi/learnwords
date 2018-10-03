@@ -1,6 +1,6 @@
 from string import digits
 
-with open("german.txt") as f:
+with open("french.txt") as f:
     content = f.readlines()
 
 thefile = open('test.txt', 'w')
