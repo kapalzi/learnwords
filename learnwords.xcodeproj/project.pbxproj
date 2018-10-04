@@ -20,6 +20,9 @@
 		E2505A5B20F6B6D700F70E49 /* German.txt in Resources */ = {isa = PBXBuildFile; fileRef = E2505A5A20F6B6D700F70E49 /* German.txt */; };
 		E291CCA1206D701E001AD3B1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E291CCA0206D701E001AD3B1 /* SettingsViewController.swift */; };
 		E2BF681F20FFD1E300B14865 /* HelpPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BF681E20FFD1E300B14865 /* HelpPopoverViewController.swift */; };
+		E2CFB8552165129600B19BF9 /* LanguageSet+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CFB84F2165129600B19BF9 /* LanguageSet+CoreDataClass.swift */; };
+		E2CFB8572165129600B19BF9 /* Word+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CFB8512165129600B19BF9 /* Word+CoreDataClass.swift */; };
+		E2CFB8592165129600B19BF9 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CFB8532165129600B19BF9 /* User+CoreDataClass.swift */; };
 		E2EC61F8206FCD2600317AA2 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EC61F7206FCD2600317AA2 /* BaseViewController.swift */; };
 		E2ED1C242164E5A900415ADE /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ED1C232164E5A900415ADE /* MenuViewController.swift */; };
 /* End PBXBuildFile section */
@@ -40,6 +43,9 @@
 		E2505A5A20F6B6D700F70E49 /* German.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = German.txt; sourceTree = "<group>"; };
 		E291CCA0206D701E001AD3B1 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E2BF681E20FFD1E300B14865 /* HelpPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpPopoverViewController.swift; sourceTree = "<group>"; };
+		E2CFB84F2165129600B19BF9 /* LanguageSet+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LanguageSet+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E2CFB8512165129600B19BF9 /* Word+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Word+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E2CFB8532165129600B19BF9 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E2EC61F7206FCD2600317AA2 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		E2ED1C232164E5A900415ADE /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -106,6 +112,9 @@
 		E24391F7210367C500EDE25F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E2CFB84F2165129600B19BF9 /* LanguageSet+CoreDataClass.swift */,
+				E2CFB8512165129600B19BF9 /* Word+CoreDataClass.swift */,
+				E2CFB8532165129600B19BF9 /* User+CoreDataClass.swift */,
 				32A07365205BBFA500415A97 /* learnwords.xcdatamodeld */,
 			);
 			path = Model;
@@ -233,14 +242,17 @@
 			files = (
 				E24391F52103673E00EDE25F /* UIImageView+Extension.swift in Sources */,
 				32A07367205BBFA500415A97 /* learnwords.xcdatamodeld in Sources */,
+				E2CFB8572165129600B19BF9 /* Word+CoreDataClass.swift in Sources */,
 				32A07361205BBFA500415A97 /* MainViewController.swift in Sources */,
 				324C841B206E289C00C19329 /* NewWordViewController.swift in Sources */,
+				E2CFB8592165129600B19BF9 /* User+CoreDataClass.swift in Sources */,
 				E2ED1C242164E5A900415ADE /* MenuViewController.swift in Sources */,
 				32A0735F205BBFA500415A97 /* AppDelegate.swift in Sources */,
 				324C841F206E395900C19329 /* NewWordCell.swift in Sources */,
 				E2BF681F20FFD1E300B14865 /* HelpPopoverViewController.swift in Sources */,
 				E2EC61F8206FCD2600317AA2 /* BaseViewController.swift in Sources */,
 				E291CCA1206D701E001AD3B1 /* SettingsViewController.swift in Sources */,
+				E2CFB8552165129600B19BF9 /* LanguageSet+CoreDataClass.swift in Sources */,
 				324C841D206E28F000C19329 /* BaseNavBarViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
