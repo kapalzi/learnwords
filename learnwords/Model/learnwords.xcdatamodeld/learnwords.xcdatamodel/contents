@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14133" systemVersion="17D47" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14315.18" systemVersion="17G65" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="LanguageSet" representedClassName="LanguageSet" syncable="YES" codeGenerationType="class">
         <attribute name="isUnlocked" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="languageSet" inverseEntity="User" syncable="YES"/>
         <relationship name="word" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Word" inverseName="languageSet" inverseEntity="Word" syncable="YES"/>
     </entity>
@@ -22,7 +23,7 @@
         <relationship name="languageSet" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LanguageSet" inverseName="word" inverseEntity="LanguageSet" syncable="YES"/>
     </entity>
     <elements>
-        <element name="LanguageSet" positionX="-531" positionY="-189" width="128" height="90"/>
+        <element name="LanguageSet" positionX="-531" positionY="-189" width="128" height="105"/>
         <element name="User" positionX="54" positionY="-216" width="128" height="88"/>
         <element name="Word" positionX="-254" positionY="6" width="128" height="30"/>
     </elements>

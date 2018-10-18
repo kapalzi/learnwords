@@ -21,6 +21,7 @@
 		E291CCA1206D701E001AD3B1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E291CCA0206D701E001AD3B1 /* SettingsViewController.swift */; };
 		E2BF681F20FFD1E300B14865 /* HelpPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BF681E20FFD1E300B14865 /* HelpPopoverViewController.swift */; };
 		E2EC61F8206FCD2600317AA2 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EC61F7206FCD2600317AA2 /* BaseViewController.swift */; };
+		E2ED1C242164E5A900415ADE /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ED1C232164E5A900415ADE /* MenuViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		E291CCA0206D701E001AD3B1 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E2BF681E20FFD1E300B14865 /* HelpPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpPopoverViewController.swift; sourceTree = "<group>"; };
 		E2EC61F7206FCD2600317AA2 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		E2ED1C232164E5A900415ADE /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 			children = (
 				E24391FA210367F500EDE25F /* Main */,
 				E24391FB2103680200EDE25F /* Settings */,
+				E2ED1C232164E5A900415ADE /* MenuViewController.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 				32A07367205BBFA500415A97 /* learnwords.xcdatamodeld in Sources */,
 				32A07361205BBFA500415A97 /* MainViewController.swift in Sources */,
 				324C841B206E289C00C19329 /* NewWordViewController.swift in Sources */,
+				E2ED1C242164E5A900415ADE /* MenuViewController.swift in Sources */,
 				32A0735F205BBFA500415A97 /* AppDelegate.swift in Sources */,
 				324C841F206E395900C19329 /* NewWordCell.swift in Sources */,
 				E2BF681F20FFD1E300B14865 /* HelpPopoverViewController.swift in Sources */,

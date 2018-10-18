@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewWordViewController: BaseNavBarViewController, UITableViewDelegate, UITableViewDataSource {
+class NewWordViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet var tableView: UITableView!
     var language: String!
@@ -18,7 +18,8 @@ class NewWordViewController: BaseNavBarViewController, UITableViewDelegate, UITa
     var alternative: String!
     
     override func viewDidLoad() {
-        super.navTitle = "Add New Word"
+        self.title = "Add New Word"
+//        super.navTitle = "Add New Word"
         super.viewDidLoad()
         tableView.reloadData()
     }

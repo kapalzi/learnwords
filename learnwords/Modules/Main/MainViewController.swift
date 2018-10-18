@@ -29,6 +29,7 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
         print("word label Y: \(self.wordLabel.frame.origin.y)")
         print("self.card.y: \(self.card.frame.origin.y)" )
         print("self.card.frame: \(self.card.frame)")
@@ -52,8 +53,8 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
         optionalWordLabel.font = UIFont.boldSystemFont(ofSize: 40)
         settingsButton.setTitleColor(UIColor.purple, for: UIControlState.normal)
         
-        self.textField.borderStyle = UITextBorderStyle.roundedRect
-        textField.backgroundColor = UIColor.init(white: 1, alpha: 0.8)
+//        self.textField.borderStyle = UITextBorderStyle.roundedRect
+        textField.backgroundColor = UIColor.init(white: 1, alpha: 0.9)
         checkButton.backgroundColor = UIColor.init(white: 1, alpha: 0.8)
         checkButton.setTitleColor(UIColor.purple, for: UIControlState.normal)
         badCounterLbl.backgroundColor = UIColor.init(white: 1, alpha: 0.8)
@@ -106,7 +107,7 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
     @IBAction func panCard(_ sender: UIPanGestureRecognizer) {
         let card = sender.view!
         let point = sender.translation(in: view)
-        card.center = CGPoint(x: self.view.center.x + point.x, y: self.cardY!)
+        card.center = CGPoint(x: self.view.center.x + point.x, y: card.center.y)
         let xFromCenter = card.center.x - self.view.center.x
         
 //        https://www.youtube.com/watch?v=sBnqFLJqn9M
@@ -132,7 +133,7 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
             UIView.animate(withDuration: 0.2) {
 //                print(self.wordLabel.frame.origin.y)
 //                let center = CGPoint(x: self.view.center.x, y:self.wordLabel.frame.origin.y + (self.card.frame.size.height/2))
-                card.center = self.cardCenter!
+                card.center.x = self.cardCenter!.x
                 
             }
         }
