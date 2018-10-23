@@ -13,7 +13,7 @@ class MenuViewController: UITableViewController {
     override func viewDidLoad() {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         let bgView = UIImageView(frame: tableView.bounds)
-        bgView.image = UIImage.init(named: "solojazz")
+        bgView.image = UIImage.init(named: "mainBg")
         self.tableView.backgroundView = bgView
     }
     

@@ -16,7 +16,7 @@ class BaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         originalViewFrame = self.view.frame;
-//        addBlurBackground()
+        addBlurBackground()
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
@@ -46,8 +46,8 @@ class BaseViewController: UIViewController {
         var modifiedFrame = originalViewFrame
         modifiedFrame?.size.height+=90
         let imgView = UIImageView.init(frame: modifiedFrame!)
-//        let img = UIImage.init(named: "solojazz")
-//        imgView.image = img
+        let img = UIImage.init(named: "mainBg")
+        imgView.image = img
         imgView.backgroundColor = UIColor.blue
         imgView.addBlurEffect()
         
