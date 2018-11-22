@@ -16,10 +16,19 @@
 		32A07367205BBFA500415A97 /* learnwords.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 32A07365205BBFA500415A97 /* learnwords.xcdatamodeld */; };
 		32A07369205BBFA500415A97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32A07368205BBFA500415A97 /* Assets.xcassets */; };
 		32A0736C205BBFA500415A97 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32A0736A205BBFA500415A97 /* LaunchScreen.storyboard */; };
+		E23B6DDD21A55224000FAAEE /* LanguageSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23B6DDC21A55224000FAAEE /* LanguageSetViewController.swift */; };
+		E23B6DDF21A58881000FAAEE /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23B6DDE21A58881000FAAEE /* StatisticsViewController.swift */; };
+		E23B6DE121A58C3A000FAAEE /* StatisticsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23B6DE021A58C3A000FAAEE /* StatisticsCell.swift */; };
+		E23B6DE421A5A2FE000FAAEE /* polishgermantop1000.txt in Resources */ = {isa = PBXBuildFile; fileRef = E23B6DE221A5A2FD000FAAEE /* polishgermantop1000.txt */; };
+		E23B6DE521A5A2FE000FAAEE /* germanpolishtop1000.txt in Resources */ = {isa = PBXBuildFile; fileRef = E23B6DE321A5A2FE000FAAEE /* germanpolishtop1000.txt */; };
 		E24391F52103673E00EDE25F /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24391F42103673E00EDE25F /* UIImageView+Extension.swift */; };
-		E2505A5B20F6B6D700F70E49 /* German.txt in Resources */ = {isa = PBXBuildFile; fileRef = E2505A5A20F6B6D700F70E49 /* German.txt */; };
+		E2505A5B20F6B6D700F70E49 /* germanenglishtop1000.txt in Resources */ = {isa = PBXBuildFile; fileRef = E2505A5A20F6B6D700F70E49 /* germanenglishtop1000.txt */; };
 		E291CCA1206D701E001AD3B1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E291CCA0206D701E001AD3B1 /* SettingsViewController.swift */; };
 		E2BF681F20FFD1E300B14865 /* HelpPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BF681E20FFD1E300B14865 /* HelpPopoverViewController.swift */; };
+		E2E181A321A42DB5001359F8 /* frenchenglishtop1000.txt in Resources */ = {isa = PBXBuildFile; fileRef = E2E181A221A42DB5001359F8 /* frenchenglishtop1000.txt */; };
+		E2E181AA21A42E43001359F8 /* LanguageSet+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E181A421A42E43001359F8 /* LanguageSet+CoreDataClass.swift */; };
+		E2E181AC21A42E43001359F8 /* Word+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E181A621A42E43001359F8 /* Word+CoreDataClass.swift */; };
+		E2E181AE21A42E43001359F8 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E181A821A42E43001359F8 /* User+CoreDataClass.swift */; };
 		E2EC61F8206FCD2600317AA2 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EC61F7206FCD2600317AA2 /* BaseViewController.swift */; };
 		E2ED1C242164E5A900415ADE /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ED1C232164E5A900415ADE /* MenuViewController.swift */; };
 /* End PBXBuildFile section */
@@ -36,10 +45,19 @@
 		32A07368205BBFA500415A97 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32A0736B205BBFA500415A97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		32A0736D205BBFA500415A97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E23B6DDC21A55224000FAAEE /* LanguageSetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSetViewController.swift; sourceTree = "<group>"; };
+		E23B6DDE21A58881000FAAEE /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
+		E23B6DE021A58C3A000FAAEE /* StatisticsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsCell.swift; sourceTree = "<group>"; };
+		E23B6DE221A5A2FD000FAAEE /* polishgermantop1000.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = polishgermantop1000.txt; sourceTree = "<group>"; };
+		E23B6DE321A5A2FE000FAAEE /* germanpolishtop1000.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = germanpolishtop1000.txt; sourceTree = "<group>"; };
 		E24391F42103673E00EDE25F /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
-		E2505A5A20F6B6D700F70E49 /* German.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = German.txt; sourceTree = "<group>"; };
+		E2505A5A20F6B6D700F70E49 /* germanenglishtop1000.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = germanenglishtop1000.txt; sourceTree = "<group>"; };
 		E291CCA0206D701E001AD3B1 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E2BF681E20FFD1E300B14865 /* HelpPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpPopoverViewController.swift; sourceTree = "<group>"; };
+		E2E181A221A42DB5001359F8 /* frenchenglishtop1000.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = frenchenglishtop1000.txt; sourceTree = "<group>"; };
+		E2E181A421A42E43001359F8 /* LanguageSet+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LanguageSet+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E2E181A621A42E43001359F8 /* Word+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Word+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E2E181A821A42E43001359F8 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E2EC61F7206FCD2600317AA2 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		E2ED1C232164E5A900415ADE /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,6 +125,9 @@
 			isa = PBXGroup;
 			children = (
 				32A07365205BBFA500415A97 /* learnwords.xcdatamodeld */,
+				E2E181A421A42E43001359F8 /* LanguageSet+CoreDataClass.swift */,
+				E2E181A621A42E43001359F8 /* Word+CoreDataClass.swift */,
+				E2E181A821A42E43001359F8 /* User+CoreDataClass.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -124,9 +145,9 @@
 		E24391F9210367D600EDE25F /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				E2ED1C232164E5A900415ADE /* MenuViewController.swift */,
 				E24391FA210367F500EDE25F /* Main */,
 				E24391FB2103680200EDE25F /* Settings */,
-				E2ED1C232164E5A900415ADE /* MenuViewController.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -144,6 +165,9 @@
 			isa = PBXGroup;
 			children = (
 				E291CCA0206D701E001AD3B1 /* SettingsViewController.swift */,
+				E23B6DDC21A55224000FAAEE /* LanguageSetViewController.swift */,
+				E23B6DDE21A58881000FAAEE /* StatisticsViewController.swift */,
+				E23B6DE021A58C3A000FAAEE /* StatisticsCell.swift */,
 				324C841A206E289C00C19329 /* NewWordViewController.swift */,
 				324C841E206E395900C19329 /* NewWordCell.swift */,
 			);
@@ -153,7 +177,10 @@
 		E2505A5C20F6BD1000F70E49 /* languages */ = {
 			isa = PBXGroup;
 			children = (
-				E2505A5A20F6B6D700F70E49 /* German.txt */,
+				E2E181A221A42DB5001359F8 /* frenchenglishtop1000.txt */,
+				E2505A5A20F6B6D700F70E49 /* germanenglishtop1000.txt */,
+				E23B6DE321A5A2FE000FAAEE /* germanpolishtop1000.txt */,
+				E23B6DE221A5A2FD000FAAEE /* polishgermantop1000.txt */,
 			);
 			path = languages;
 			sourceTree = "<group>";
@@ -219,8 +246,11 @@
 			files = (
 				32A0736C205BBFA500415A97 /* LaunchScreen.storyboard in Resources */,
 				32A07369205BBFA500415A97 /* Assets.xcassets in Resources */,
-				E2505A5B20F6B6D700F70E49 /* German.txt in Resources */,
+				E2505A5B20F6B6D700F70E49 /* germanenglishtop1000.txt in Resources */,
 				32A07364205BBFA500415A97 /* Main.storyboard in Resources */,
+				E23B6DE421A5A2FE000FAAEE /* polishgermantop1000.txt in Resources */,
+				E2E181A321A42DB5001359F8 /* frenchenglishtop1000.txt in Resources */,
+				E23B6DE521A5A2FE000FAAEE /* germanpolishtop1000.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,14 +263,20 @@
 			files = (
 				E24391F52103673E00EDE25F /* UIImageView+Extension.swift in Sources */,
 				32A07367205BBFA500415A97 /* learnwords.xcdatamodeld in Sources */,
+				E2E181AC21A42E43001359F8 /* Word+CoreDataClass.swift in Sources */,
+				E23B6DDF21A58881000FAAEE /* StatisticsViewController.swift in Sources */,
 				32A07361205BBFA500415A97 /* MainViewController.swift in Sources */,
 				324C841B206E289C00C19329 /* NewWordViewController.swift in Sources */,
+				E23B6DDD21A55224000FAAEE /* LanguageSetViewController.swift in Sources */,
+				E2E181AE21A42E43001359F8 /* User+CoreDataClass.swift in Sources */,
 				E2ED1C242164E5A900415ADE /* MenuViewController.swift in Sources */,
 				32A0735F205BBFA500415A97 /* AppDelegate.swift in Sources */,
 				324C841F206E395900C19329 /* NewWordCell.swift in Sources */,
 				E2BF681F20FFD1E300B14865 /* HelpPopoverViewController.swift in Sources */,
 				E2EC61F8206FCD2600317AA2 /* BaseViewController.swift in Sources */,
 				E291CCA1206D701E001AD3B1 /* SettingsViewController.swift in Sources */,
+				E23B6DE121A58C3A000FAAEE /* StatisticsCell.swift in Sources */,
+				E2E181AA21A42E43001359F8 /* LanguageSet+CoreDataClass.swift in Sources */,
 				324C841D206E28F000C19329 /* BaseNavBarViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

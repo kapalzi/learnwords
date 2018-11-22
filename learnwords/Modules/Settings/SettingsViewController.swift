@@ -13,8 +13,11 @@ class SettingsViewController: UITableViewController  {
     override func viewDidLoad() {
 //        super.navTitle = "Settings"
         super.viewDidLoad()
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
 //        initControls()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     func initControls() {
@@ -29,6 +32,23 @@ class SettingsViewController: UITableViewController  {
         newWordButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 40)
         newWordButton.addTarget(self, action: #selector(newWordButtonPressed), for: UIControlEvents.touchUpInside)
         self.view.addSubview(newWordButton)
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 1 {
+            var ac = UIAlertController()
+
+            ac = UIAlertController.init(title: nil, message: "Select number", preferredStyle: UIAlertControllerStyle.actionSheet)
+            ac.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+            
+            for i in 1 ... 10 {
+                ac.addAction(UIAlertAction(title: String(i), style: .default, handler: { (UIAlertAction) in
+                    UserDefaults.standard.set(i, forKey: "answersToMaster")
+                }))
+            }
+            
+            self.present(ac, animated: true, completion: nil)
+        }
     }
     
     @objc func newWordButtonPressed() {

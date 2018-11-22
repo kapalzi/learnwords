@@ -11,7 +11,6 @@ import UIKit
 class MainViewController: BaseViewController, UITextFieldDelegate {
 
     @IBOutlet var wordLabel: UILabel!
-    @IBOutlet var optionalWordLabel: UILabel!
     @IBOutlet var textField: UITextField!
     @IBOutlet var checkButton: UIButton!
     @IBOutlet weak var badCounterLbl: UILabel!
@@ -26,42 +25,45 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
     @IBOutlet weak var card: UIView!
     var cardCenter: CGPoint?
     var cardY: CGFloat?
+    var checkButtonBg: UIColor?
+    var isReadingMode: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
-        print("word label Y: \(self.wordLabel.frame.origin.y)")
-        print("self.card.y: \(self.card.frame.origin.y)" )
-        print("self.card.frame: \(self.card.frame)")
-//        self.cardY = 255
+        
         self.cardY = self.card.frame.size.height/2 - self.card.frame.origin.y
         self.cardY = self.card.center.y
         self.cardCenter = CGPoint(x: self.view.center.x, y: self.cardY!)
+        
+        
 
-        WordsForLanguage(language: "German")
+        loadWords()
         if wordsTable != nil  {
             loadWord(index: firstWordIndex(numberOfWords: wordsTable.count))
         }
         else {
             wordLabel.text = "No words"
-            optionalWordLabel.text = ""
         }
         
-        wordLabel.textColor=UIColor.purple
-        wordLabel.font = UIFont.boldSystemFont(ofSize: 40)
-        optionalWordLabel.textColor=UIColor.purple
-        optionalWordLabel.font = UIFont.boldSystemFont(ofSize: 40)
-        settingsButton.setTitleColor(UIColor.purple, for: UIControlState.normal)
+        self.textField.borderStyle = UITextBorderStyle.roundedRect
+        self.textField.backgroundColor = UIColor.init(white: 1, alpha: 0.9)
         
-//        self.textField.borderStyle = UITextBorderStyle.roundedRect
-        textField.backgroundColor = UIColor.init(white: 1, alpha: 0.9)
-        checkButton.backgroundColor = UIColor.init(white: 1, alpha: 0.8)
-        checkButton.setTitleColor(UIColor.purple, for: UIControlState.normal)
         badCounterLbl.backgroundColor = UIColor.init(white: 1, alpha: 0.8)
         goodCounterLbl.backgroundColor = UIColor.init(white: 1, alpha: 0.8)
-        helpBtn.backgroundColor = UIColor.init(white: 1, alpha: 0.8)
+        self.badCounterLbl.isHidden = true
+        self.goodCounterLbl.isHidden = true
         
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.action, target: self, action: #selector(rightBarButtonClicked))
+        let origImage = UIImage(named: "helpIcon")
+        let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
+        self.helpBtn.setImage(tintedImage, for: .normal)
+        self.helpBtn.tintColor = UIColor.init(red: 36/255, green: 185/255, blue: 255/255, alpha: 1.0)
+        self.checkButtonBg = self.checkButton.backgroundColor
         initSwipe()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -80,13 +82,10 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
     
     override func keyboardShow(notification: NSNotification) {
         super.keyboardShow(notification: notification)
-//        self.cardY = 150
         self.cardY = self.card.frame.size.height/2 - self.card.frame.origin.y/2 + self.card.frame.origin.x
-        print("cardY with keybpard: \(self.cardY)")
         self.cardY = self.card.center.y
         self.cardY = self.card.frame.size.height/2 + self.card.frame.origin.y
         self.cardCenter = CGPoint(x: self.view.center.x, y: self.cardY!)
-         print("self.card.frame: \(self.card.frame)")
     }
     
     override func keyboardHide(notification: NSNotification) {
@@ -108,12 +107,9 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
         let card = sender.view!
         let point = sender.translation(in: view)
         card.center = CGPoint(x: self.view.center.x + point.x, y: card.center.y)
-        let xFromCenter = card.center.x - self.view.center.x
-        
 //        https://www.youtube.com/watch?v=sBnqFLJqn9M
         
         if sender.state == UIGestureRecognizerState.ended {
-            print(xFromCenter)
             if card.center.x < 75 {
                 UIView.animate(withDuration: 0.3) {
                     card.center = CGPoint(x:card.center.x-200, y: card.center.y)
@@ -138,21 +134,23 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
             }
         }
     }
-    func WordsForLanguage(language: String) {
-//        wordsTable = mockupObjects()
-        wordsTable = loadWordsFromLanguage(language: "German")
-        
+    func loadWords() {
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        self.wordsTable = Word.getWordsForSelectedSet(inContext: context)
     }
     
     func loadWord(index: Int) {
-        word = wordsTable[index]
         
+        word = wordsTable[index]
         currentWordIndex = index
         textField.text=""
-        wordLabel.text = word.english
-        optionalWordLabel.text = word.alternativeAlphabet
+        wordLabel.text = word.knownLanguage
+        if isReadingMode {
+            self.textField.text = word.learningLanguage
+        }
         self.goodCounterLbl.text = String(format: "%i", word.goodCounter)
         self.badCounterLbl.text = String.init(format: "%i", word.badCounter)
+        UserDefaults.standard.set(index, forKey: "lastWordId")
     }
     
     func loadNextWord() {
@@ -186,7 +184,12 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
     }
     
     func firstWordIndex(numberOfWords: Int) -> Int {
-        return Int(arc4random_uniform(UInt32(numberOfWords)))
+//        return Int(arc4random_uniform(UInt32(numberOfWords)))
+        let index = UserDefaults.standard.integer(forKey: "lastWordId")
+        if index == -1 {
+            return wordsTable.count-1
+        }
+        return index
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -196,40 +199,43 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
     }
     
     func isWordCorrect(typedWord: String?) {
-        print(word.original)
-        if(typedWord?.lowercased() == word.original?.lowercased()) {
-            word.goodCounter = word.goodCounter+1
-            helpBtn.setTitle("", for: .normal)
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        if(typedWord?.lowercased() == word.learningLanguage?.lowercased()) {
+            if !self.isReadingMode {
+                Word.addGoodAnwer(wordId: word.id, context: context)
+                
+                if word.goodCounter >= UserDefaults.standard.integer(forKey: "answersToMaster") {
+                    wordsTable.remove(at: Int(word!.id-1))
+                }
+                
+                (UIApplication.shared.delegate as! AppDelegate).saveContext()
+                
+            }
+            UIView.animate(withDuration: 0.2, animations: {
+                self.checkButton.backgroundColor = UIColor.green
+                
+            }, completion: { (true) in
+                self.checkButton.backgroundColor = self.checkButtonBg
+            })
             self.loadNextWord()
         }
         else {
-            helpBtn.setTitle("Help", for: .normal)
-            word.badCounter = word.badCounter+1
+            if !isReadingMode {
+                Word.addBadAnwer(wordId: word.id, context: context)
+                (UIApplication.shared.delegate as! AppDelegate).saveContext()
+            }
             self.badCounterLbl.text = String.init(format: "%i", word.badCounter)
             UIView.animate(withDuration: 0.2, animations: {
-                self.view.backgroundColor = UIColor.red
+                self.checkButton.backgroundColor = UIColor.red
 
             }, completion: { (true) in
-                let img = UIImage.init(named: "solojazz")!
-                self.view.backgroundColor = UIColor.init(patternImage:img)
-//                self.view.backgroundColor = UIColor.white
+                self.checkButton.backgroundColor = self.checkButtonBg
             })
         }
     }
     
     @IBAction func didClickCheckButton(_ sender: UIButton) {
         isWordCorrect(typedWord: textField.text)
-        
-//        if isWordCorrect {
-//            var ac = UIAlertController()
-//
-//            ac = UIAlertController.init(title: nil, message: "Correct", preferredStyle: UIAlertControllerStyle.alert)
-//            ac.addAction(UIAlertAction.init(title: "Ok", style: UIAlertActionStyle.cancel, handler: { (UIAlertAction) in
-//                self.textField.text=""
-//                self.loadNextWord()
-//            }))
-//            self.present(ac, animated: true, completion: nil)
-//        }
        
     }
     
@@ -251,7 +257,7 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
         popVC.preferredContentSize = CGSize(width: 250, height: 50)
         
         let helpLbl = UILabel(frame: CGRect(x: 0, y: 0, width: 250, height: 50))
-        helpLbl.text = word.original
+        helpLbl.text = word.learningLanguage
         helpLbl.font = UIFont.systemFont(ofSize: 30)
         helpLbl.textAlignment = .center
         helpLbl.textColor = UIColor.purple
@@ -259,83 +265,31 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
 
         self.present(popVC, animated: true)
     }
+
+   @objc func rightBarButtonClicked() {
+        var ac = UIAlertController()
     
-    func mockupObjects() -> Array<Word> {
-        
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-
-        let word1 = Word.init(entity: Word.entity(), insertInto: context)
-
-        word1.id = 1
-        word1.language = "Japan"
-        word1.original = "tenjou"
-        word1.english = "Ceiling"
-        word1.usersLanguage = "sufit"
-        word1.alternativeAlphabet = "天井"
-        
-
-        let word2 = Word.init(entity: Word.entity(), insertInto: context)
-
-        word2.id = 2
-        word2.language = "Japan"
-        word2.original = "anata"
-        word2.english = "You"
-        word2.usersLanguage = "ty"
-        word2.alternativeAlphabet = "あなた"
-        
-
-        let word3 = Word.init(entity: Word.entity(), insertInto: context)
-
-        word3.id = 1
-        word3.language = "Japan"
-        word3.original = "neko"
-        word3.english = "Cat"
-        word3.usersLanguage = "kot"
-        word3.alternativeAlphabet = "ネコ"
-        
-
-        let words = [word1,word2,word3]
-
-        return words
-    }
-
-    func loadWordsFromLanguage(language: String) -> Array<Word>? {
-        if let path = Bundle.main.path(forResource: language, ofType: "txt") {
-            do {
-                let info = ProcessInfo.processInfo
-                let begin = info.systemUptime
-
-                let data = try String(contentsOfFile: path, encoding: .utf8)
-                let myStrings = data.components(separatedBy: .newlines)
-                var words = [Word]()
-                let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-                var wordId = Int16(1)
-                for myString in myStrings
-                {
-                    let myStringArray = myString.components(separatedBy: " ")
-                    let word1 = Word.init(entity: Word.entity(), insertInto: context)
-                    word1.id = wordId
-                    word1.language = language
-                    word1.original = myStringArray.first
-                    word1.english = myStringArray.last
-                    word1.badCounter = 0
-                    word1.badCounter = 0
-                    
-                    wordId = wordId + 1
-                    
-                    words.append(word1)
-                }
-                let diff = (info.systemUptime - begin)
-                print("\(language) added in time: \(diff)")
-                return words
-            } catch {
-                print(error)
-            }
-        }
-        return nil
-    }
+        ac = UIAlertController.init(title: "Mode", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        ac.addAction(UIAlertAction.init(title: "Reading", style: UIAlertActionStyle.default, handler: { (UIAlertAction) in
+            self.isReadingMode = true
+            self.loadPrevWord()
+            self.loadNextWord()
+        }))
+        ac.addAction(UIAlertAction.init(title: "Writing", style: UIAlertActionStyle.default, handler: { (UIAlertAction) in
+            self.isReadingMode = false
+            self.loadPrevWord()
+            self.loadNextWord()
+        }))
     
+    ac.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertActionStyle.cancel, handler: { (UIAlertAction) in
+        
+    }))
+    
+        self.present(ac, animated: true, completion: nil)
+    }
 }
+
+
 
 extension UIViewController: UIPopoverPresentationControllerDelegate {
     

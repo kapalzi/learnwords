@@ -23,6 +23,4 @@ class NewWordCell: UITableViewCell {
         titleLabel.font = UIFont.boldSystemFont(ofSize: 20)
         valueField.font = titleLabel.font
     }
-    
-    
 }
