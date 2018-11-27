@@ -13,6 +13,7 @@ class SettingsViewController: UITableViewController  {
     override func viewDidLoad() {
 //        super.navTitle = "Settings"
         super.viewDidLoad()
+        
 //        initControls()
     }
     
@@ -35,6 +36,7 @@ class SettingsViewController: UITableViewController  {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)?.contentView.backgroundColor = self.navigationController?.navigationBar.backgroundColor
         if indexPath.row == 1 {
             var ac = UIAlertController()
 

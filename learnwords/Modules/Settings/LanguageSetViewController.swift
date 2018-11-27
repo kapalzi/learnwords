@@ -58,7 +58,6 @@ class LanguageSetViewController: UITableViewController  {
     
     private func configureCell(cell: UITableViewCell, indexPath: IndexPath) {
         
-//        let document = self.viewModel.tableData![indexPath.row]
         let set = self.tableData![indexPath.row] as LanguageSet
         
         cell.textLabel?.text = set.name
