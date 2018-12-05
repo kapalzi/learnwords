@@ -57,7 +57,7 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
         let origImage = UIImage(named: "helpIcon")
         let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
         self.helpBtn.setImage(tintedImage, for: .normal)
-        self.helpBtn.tintColor = UIColor.init(red: 36/255, green: 185/255, blue: 255/255, alpha: 1.0)
+        self.helpBtn.tintColor = UIColor.white //UIColor.init(red: 36/255, green: 185/255, blue: 255/255, alpha: 1.0)
         self.checkButtonBg = self.checkButton.backgroundColor
         initSwipe()
     }
@@ -287,9 +287,24 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
     
         self.present(ac, animated: true, completion: nil)
     }
+    @IBAction func rightSideBtnClicked(_ sender: UIButton) {
+        
+        UIView.animate(withDuration: 0.3) {
+            self.card.center = CGPoint(x:self.card.center.x+200, y: self.card.center.y)
+            self.card.alpha = 0
+        }
+        
+       
+        self.loadNextWord()
+    }
+    @IBAction func leftSideBtnClicked(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.3) {
+            self.card.center = CGPoint(x:self.card.center.x-200, y: self.card.center.y)
+            self.card.alpha = 0
+        }
+        self.loadPrevWord()
+    }
 }
-
-
 
 extension UIViewController: UIPopoverPresentationControllerDelegate {
     
