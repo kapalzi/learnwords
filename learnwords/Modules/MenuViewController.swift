@@ -9,12 +9,26 @@
 import UIKit
 
 class MenuViewController: UITableViewController {
-
+    @IBOutlet weak var firstCellBg: UIImageView!
+    @IBOutlet weak var secondCellBg: UIImageView!
+    @IBOutlet weak var thirdCellBg: UIImageView!
+    
     override func viewDidLoad() {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         let bgView = UIImageView(frame: tableView.bounds)
         bgView.image = UIImage.init(named: "mainBg")
+        bgView.addBlurEffect()
         self.tableView.backgroundView = bgView
+        
+        
+//        let imgView = UIImageView.init(frame: tableView.bounds)
+//        let img = UIImage.init(named: "mainBg")
+//        imgView.image = img
+//        imgView.backgroundColor = UIColor.blue
+//        imgView.addBlurEffect()
+//
+//        self.view.insertSubview(imgView, at: 0)
+        
         let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
         if launchedBefore  {
             print("Not first launch.")
@@ -24,10 +38,20 @@ class MenuViewController: UITableViewController {
             UserDefaults.standard.set(true, forKey: "launchedBefore")
         }
         
+        self.firstCellBg.dropShadow(shadowColor: UIColor.white, fillColor: UIColor.clear ,imgName: "startLearningBg")
+        self.secondCellBg.dropShadow(shadowColor: UIColor.white, fillColor: UIColor.clear ,imgName: "statsBg")
+        self.thirdCellBg.dropShadow(shadowColor: UIColor.white, fillColor: UIColor.clear ,imgName: "settingsBg")
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+        
+        let viewHeight: CGFloat = view.frame.size.height
+        let tableViewContentHeight: CGFloat = tableView.contentSize.height
+        let marginHeight: CGFloat = (viewHeight - tableViewContentHeight) / 7.0
+        
+        self.tableView.contentInset = UIEdgeInsets(top: marginHeight, left: 0, bottom:  -marginHeight, right: 0)
     }
     
     func loadWordsFromFiles() {

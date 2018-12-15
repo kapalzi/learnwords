@@ -29,22 +29,22 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
     var isReadingMode: Bool = false
     
     override func viewDidLoad() {
-        super.viewDidLoad()
         
+        super.viewDidLoad()
         self.cardY = self.card.frame.size.height/2 - self.card.frame.origin.y
         self.cardY = self.card.center.y
         self.cardCenter = CGPoint(x: self.view.center.x, y: self.cardY!)
         
         
 
-        loadWords()
+        self.loadWords()
         if wordsTable != nil  {
             loadWord(index: firstWordIndex(numberOfWords: wordsTable.count))
         }
         else {
             wordLabel.text = "No words"
         }
-        
+
         self.textField.borderStyle = UITextBorderStyle.roundedRect
         self.textField.backgroundColor = UIColor.init(white: 1, alpha: 0.9)
         
@@ -71,6 +71,11 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
     }
 
     func initSwipe() {
+        
+        let swipeUp = UISwipeGestureRecognizer.init(target: self, action: #selector(swipeU))
+        swipeUp.direction = UISwipeGestureRecognizerDirection.up
+        self.textField.addGestureRecognizer(swipeUp)
+        
         let swipeRight = UISwipeGestureRecognizer.init(target: self, action: #selector(swipeR))
         swipeRight.direction = UISwipeGestureRecognizerDirection.right
         view.addGestureRecognizer(swipeRight)
@@ -78,6 +83,7 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
         let swipeLeft = UISwipeGestureRecognizer.init(target: self, action: #selector(swipeL))
         swipeRight.direction = UISwipeGestureRecognizerDirection.left
         view.addGestureRecognizer(swipeLeft)
+        
     }
     
     override func keyboardShow(notification: NSNotification) {
@@ -86,6 +92,7 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
         self.cardY = self.card.center.y
         self.cardY = self.card.frame.size.height/2 + self.card.frame.origin.y
         self.cardCenter = CGPoint(x: self.view.center.x, y: self.cardY!)
+        self.card.layoutIfNeeded()
     }
     
     override func keyboardHide(notification: NSNotification) {
@@ -93,6 +100,11 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
         self.cardY = 255
         self.cardY = self.card.frame.size.height/2 + self.card.frame.origin.y
         self.cardCenter = CGPoint(x: self.view.center.x, y: self.cardY!)
+        self.card.layoutIfNeeded()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        self.card.dropShadow(imgName: "mainBg")
     }
     
     @objc func swipeR(){
@@ -101,6 +113,11 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
     
     @objc func swipeL(){
 //        loadPrevWord()
+    }
+    
+    @objc func swipeU(){
+        
+        self.textField.text = self.word.learningLanguage
     }
     
     @IBAction func panCard(_ sender: UIPanGestureRecognizer) {
@@ -245,25 +262,26 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
     }
     
     @IBAction func showHelp(_ sender: UIButton) {
-        
-        let popVC = storyboard?.instantiateViewController(withIdentifier: "popVC") as! HelpPopoverViewController
-        
-        popVC.modalPresentationStyle = .popover
-        
-        let popOverVC = popVC.popoverPresentationController
-        popOverVC?.delegate = self
-        popOverVC?.sourceView = self.helpBtn
-        popOverVC?.sourceRect = CGRect(x: self.helpBtn.bounds.midX, y: self.helpBtn.bounds.minY, width: 0, height: 0)
-        popVC.preferredContentSize = CGSize(width: 250, height: 50)
-        
-        let helpLbl = UILabel(frame: CGRect(x: 0, y: 0, width: 250, height: 50))
-        helpLbl.text = word.learningLanguage
-        helpLbl.font = UIFont.systemFont(ofSize: 30)
-        helpLbl.textAlignment = .center
-        helpLbl.textColor = UIColor.purple
-        popVC.view.addSubview(helpLbl)
+        //        let popVC = storyboard?.instantiateViewController(withIdentifier: "popVC") as! HelpPopoverViewController
+        //
+        //        popVC.modalPresentationStyle = .popover
+        //
+        //        let popOverVC = popVC.popoverPresentationController
+        //        popOverVC?.delegate = self
+        //        popOverVC?.sourceView = self.textField
+        ////        popOverVC?.sourceRect = CGRect(x: self.helpBtn.bounds.midX, y: self.helpBtn.bounds.minY, width: 0, height: 0)
+        //        popOverVC?.sourceRect = CGRect(x: self.textField.center.x, y: self.textField.frame.origin.y, width: 0, height: 0)
+        //        popVC.preferredContentSize = CGSize(width: 250, height: 50)
+        //
+        //        let helpLbl = UILabel(frame: CGRect(x: 0, y: 0, width: 250, height: 50))
+        //        helpLbl.text = word.learningLanguage
+        //        helpLbl.font = UIFont.systemFont(ofSize: 30)
+        //        helpLbl.textAlignment = .center
+        //        helpLbl.textColor = UIColor.purple
+        //        popVC.view.addSubview(helpLbl)
+        //
+        //        self.present(popVC, animated: true)
 
-        self.present(popVC, animated: true)
     }
 
    @objc func rightBarButtonClicked() {

@@ -23,6 +23,7 @@
 		E23B6DE521A5A2FE000FAAEE /* germanpolishtop1000.txt in Resources */ = {isa = PBXBuildFile; fileRef = E23B6DE321A5A2FE000FAAEE /* germanpolishtop1000.txt */; };
 		E24391F52103673E00EDE25F /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24391F42103673E00EDE25F /* UIImageView+Extension.swift */; };
 		E2505A5B20F6B6D700F70E49 /* germanenglishtop1000.txt in Resources */ = {isa = PBXBuildFile; fileRef = E2505A5A20F6B6D700F70E49 /* germanenglishtop1000.txt */; };
+		E25853B521B9D28E007DE2BB /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25853B421B9D28E007DE2BB /* UIView+Extension.swift */; };
 		E291CCA1206D701E001AD3B1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E291CCA0206D701E001AD3B1 /* SettingsViewController.swift */; };
 		E2BF681F20FFD1E300B14865 /* HelpPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BF681E20FFD1E300B14865 /* HelpPopoverViewController.swift */; };
 		E2E181A321A42DB5001359F8 /* frenchenglishtop1000.txt in Resources */ = {isa = PBXBuildFile; fileRef = E2E181A221A42DB5001359F8 /* frenchenglishtop1000.txt */; };
@@ -52,6 +53,7 @@
 		E23B6DE321A5A2FE000FAAEE /* germanpolishtop1000.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = germanpolishtop1000.txt; sourceTree = "<group>"; };
 		E24391F42103673E00EDE25F /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		E2505A5A20F6B6D700F70E49 /* germanenglishtop1000.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = germanenglishtop1000.txt; sourceTree = "<group>"; };
+		E25853B421B9D28E007DE2BB /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		E291CCA0206D701E001AD3B1 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E2BF681E20FFD1E300B14865 /* HelpPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpPopoverViewController.swift; sourceTree = "<group>"; };
 		E2E181A221A42DB5001359F8 /* frenchenglishtop1000.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = frenchenglishtop1000.txt; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				E24391F42103673E00EDE25F /* UIImageView+Extension.swift */,
+				E25853B421B9D28E007DE2BB /* UIView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				32A0735F205BBFA500415A97 /* AppDelegate.swift in Sources */,
 				324C841F206E395900C19329 /* NewWordCell.swift in Sources */,
 				E2BF681F20FFD1E300B14865 /* HelpPopoverViewController.swift in Sources */,
+				E25853B521B9D28E007DE2BB /* UIView+Extension.swift in Sources */,
 				E2EC61F8206FCD2600317AA2 /* BaseViewController.swift in Sources */,
 				E291CCA1206D701E001AD3B1 /* SettingsViewController.swift in Sources */,
 				E23B6DE121A58C3A000FAAEE /* StatisticsCell.swift in Sources */,
