@@ -142,7 +142,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter word" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DtC-kp-pi0">
-                                <rect key="frame" x="8" y="634" width="398" height="45"/>
+                                <rect key="frame" x="21" y="634" width="372" height="45"/>
                                 <color key="backgroundColor" white="0.90421660958904104" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="IO9-Aj-KiU"/>
@@ -243,9 +243,9 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="DtC-kp-pi0" firstAttribute="bottom" secondItem="cUG-WI-TIj" secondAttribute="bottom" constant="-8" id="5aF-yK-JTm"/>
-                            <constraint firstItem="DtC-kp-pi0" firstAttribute="leading" secondItem="cUG-WI-TIj" secondAttribute="leading" constant="8" id="81E-vQ-9ZG"/>
+                            <constraint firstItem="DtC-kp-pi0" firstAttribute="leading" secondItem="cUG-WI-TIj" secondAttribute="leading" constant="21" id="81E-vQ-9ZG"/>
                             <constraint firstItem="g5P-AN-71M" firstAttribute="leading" secondItem="cUG-WI-TIj" secondAttribute="leading" constant="24" id="JNV-1a-E7B"/>
-                            <constraint firstItem="cUG-WI-TIj" firstAttribute="trailing" secondItem="DtC-kp-pi0" secondAttribute="trailing" constant="8" id="WDb-aY-laB"/>
+                            <constraint firstItem="cUG-WI-TIj" firstAttribute="trailing" secondItem="DtC-kp-pi0" secondAttribute="trailing" constant="21" id="WDb-aY-laB"/>
                             <constraint firstItem="DtC-kp-pi0" firstAttribute="top" secondItem="g5P-AN-71M" secondAttribute="bottom" constant="8" id="ZPi-hQ-087"/>
                             <constraint firstItem="DtC-kp-pi0" firstAttribute="top" secondItem="g5P-AN-71M" secondAttribute="bottom" constant="8" symbolic="YES" id="dJs-BE-Xka"/>
                             <constraint firstItem="g5P-AN-71M" firstAttribute="trailing" secondItem="gYc-Rx-Ofx" secondAttribute="trailingMargin" id="mff-Et-VQJ"/>
@@ -681,6 +681,6 @@
         <image name="settings" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="sCn-KG-v7r"/>
+        <segue reference="EGY-ta-eJm"/>
     </inferredMetricsTieBreakers>
 </document>
