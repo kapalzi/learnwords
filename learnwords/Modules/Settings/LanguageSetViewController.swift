@@ -23,8 +23,7 @@ class LanguageSetViewController: UITableViewController  {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         tableData = LanguageSet.getAllLanguageSets(inContext: context)
-
-        if self.navigationController?.viewControllers.count == 2 {
+        if self.navigationController?.viewControllers.count == 1 {
             self.isMainMode = true
         }
     }

@@ -7,33 +7,44 @@
 //
 
 import UIKit
+import Speech
 
 class MainViewController: BaseViewController, UITextFieldDelegate {
 
     @IBOutlet var wordLabel: UILabel!
     @IBOutlet var textField: UITextField!
     @IBOutlet var checkButton: UIButton!
-    @IBOutlet weak var badCounterLbl: UILabel!
-    @IBOutlet weak var helpBtn: UIButton!
-    @IBOutlet weak var goodCounterLbl: UILabel!
     var word: Word!
     var wordsTable: Array<Word>!
     var currentWordIndex: Int!
     var appDelegate: AppDelegate!
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet var settingsButton: UIButton!    
     @IBOutlet weak var card: UIView!
     var cardCenter: CGPoint?
-    var cardY: CGFloat?
+//    var cardY: CGFloat?
     var checkButtonBg: UIColor?
     var isReadingMode: Bool = false
     
+    let audioEngine = AVAudioEngine()
+    let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "de"))
+    let request = SFSpeechAudioBufferRecognitionRequest()
+    var recognitionTask: SFSpeechRecognitionTask?
+    
     override func viewDidLoad() {
         
+        let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
+        if launchedBefore  {
+            print("Not first launch.")
+        } else {
+            print("First launch, setting UserDefault.")
+            self.loadWordsFromFiles()
+            UserDefaults.standard.set(true, forKey: "launchedBefore")
+        }
+        
         super.viewDidLoad()
-        self.cardY = self.card.frame.size.height/2 - self.card.frame.origin.y
-        self.cardY = self.card.center.y
-        self.cardCenter = CGPoint(x: self.view.center.x, y: self.cardY!)
+//        self.cardY = self.card.frame.size.height/2 - self.card.frame.origin.y
+//        self.cardY = self.card.center.y
+        self.cardCenter = CGPoint(x: self.view.center.x, y: self.card.center.y)
         
         
 
@@ -48,17 +59,8 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
         self.textField.borderStyle = UITextBorderStyle.roundedRect
         self.textField.backgroundColor = UIColor.init(white: 1, alpha: 0.9)
         
-        badCounterLbl.backgroundColor = UIColor.init(white: 1, alpha: 0.8)
-        goodCounterLbl.backgroundColor = UIColor.init(white: 1, alpha: 0.8)
-        self.badCounterLbl.isHidden = true
-        self.goodCounterLbl.isHidden = true
-        
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.action, target: self, action: #selector(rightBarButtonClicked))
-        let origImage = UIImage(named: "helpIcon")
-        let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
-        self.helpBtn.setImage(tintedImage, for: .normal)
-        self.helpBtn.tintColor = UIColor.white //UIColor.init(red: 36/255, green: 185/255, blue: 255/255, alpha: 1.0)
-        self.checkButtonBg = self.checkButton.backgroundColor
+//        self.checkButtonBg = self.checkButton.backgroundColor
         initSwipe()
     }
     
@@ -88,23 +90,25 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
     
     override func keyboardShow(notification: NSNotification) {
         super.keyboardShow(notification: notification)
-        self.cardY = self.card.frame.size.height/2 - self.card.frame.origin.y/2 + self.card.frame.origin.x
-        self.cardY = self.card.center.y
-        self.cardY = self.card.frame.size.height/2 + self.card.frame.origin.y
-        self.cardCenter = CGPoint(x: self.view.center.x, y: self.cardY!)
+//        self.cardY = self.card.frame.size.height/2 - self.card.frame.origin.y/2 + self.card.frame.origin.x
+//        self.cardY = self.card.center.y
+//        self.cardY = self.card.frame.size.height/2 + self.card.frame.origin.y
+//        self.cardCenter = CGPoint(x: self.view.center.x, y: self.cardY!)
         self.card.layoutIfNeeded()
     }
     
     override func keyboardHide(notification: NSNotification) {
         super.keyboardHide(notification: notification)
-        self.cardY = 255
-        self.cardY = self.card.frame.size.height/2 + self.card.frame.origin.y
-        self.cardCenter = CGPoint(x: self.view.center.x, y: self.cardY!)
+//        self.cardY = 255
+//        self.cardY = self.card.frame.size.height/2 + self.card.frame.origin.y
+//        self.cardCenter = CGPoint(x: self.view.center.x, y: self.cardY!)
         self.card.layoutIfNeeded()
     }
     
     override func viewWillLayoutSubviews() {
-        self.card.dropShadow(imgName: "mainBg")
+        self.card.dropShadow()
+//        self.textField.dropShadow()
+//        self.checkButton.dropShadow()
     }
     
     @objc func swipeR(){
@@ -165,8 +169,6 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
         if isReadingMode {
             self.textField.text = word.learningLanguage
         }
-        self.goodCounterLbl.text = String(format: "%i", word.goodCounter)
-        self.badCounterLbl.text = String.init(format: "%i", word.badCounter)
         UserDefaults.standard.set(index, forKey: "lastWordId")
     }
     
@@ -229,10 +231,10 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
                 
             }
             UIView.animate(withDuration: 0.2, animations: {
-                self.checkButton.backgroundColor = UIColor.green
+//                self.checkButton.backgroundColor = UIColor.green
                 
             }, completion: { (true) in
-                self.checkButton.backgroundColor = self.checkButtonBg
+//                self.checkButton.backgroundColor = self.checkButtonBg
             })
             self.loadNextWord()
         }
@@ -241,12 +243,19 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
                 Word.addBadAnwer(wordId: word.id, context: context)
                 (UIApplication.shared.delegate as! AppDelegate).saveContext()
             }
-            self.badCounterLbl.text = String.init(format: "%i", word.badCounter)
-            UIView.animate(withDuration: 0.2, animations: {
-                self.checkButton.backgroundColor = UIColor.red
+            self.card.shake()
+            let lightImpactFeedbackGenerator = UIImpactFeedbackGenerator(style: .light)
+            
+            // Prepare shortly before playing
+            lightImpactFeedbackGenerator.prepare()
+            
+            // Play the haptic signal
+            lightImpactFeedbackGenerator.impactOccurred()
+            UIView.animate(withDuration: 0.3, animations: {
+//                self.checkButton.backgroundColor = UIColor.red
 
             }, completion: { (true) in
-                self.checkButton.backgroundColor = self.checkButtonBg
+//                self.checkButton.backgroundColor = self.checkButtonBg
             })
         }
     }
@@ -254,11 +263,6 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
     @IBAction func didClickCheckButton(_ sender: UIButton) {
         isWordCorrect(typedWord: textField.text)
        
-    }
-    
-    @IBAction func settingsButtonPressed(_ sender: UIButton) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "settings") as! SettingsViewController
-        self.present(vc, animated: true, completion: nil)
     }
     
     @IBAction func showHelp(_ sender: UIButton) {
@@ -321,6 +325,114 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
             self.card.alpha = 0
         }
         self.loadPrevWord()
+    }
+    @IBAction func microphoneBtnClicked(_ sender: UIButton) {
+        
+        sender.isSelected = !sender.isSelected
+        if sender.isSelected {
+            let tintedImage = sender.backgroundImage(for: .normal)?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+            sender.setBackgroundImage(tintedImage, for: .normal)
+            sender.tintColor = #colorLiteral(red: 0.2980392157, green: 0.8196078431, blue: 0.2156862745, alpha: 1)
+            self.authorizeSpeechRecognition()
+            
+        } else {
+            let tintedImage = sender.backgroundImage(for: .normal)?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+            sender.setBackgroundImage(tintedImage, for: .normal)
+            sender.tintColor = .black
+            self.stopRecording()
+        }
+    }
+    
+    func authorizeSpeechRecognition() {
+        SFSpeechRecognizer.requestAuthorization {
+            [unowned self] (authStatus) in
+            switch authStatus {
+            case .authorized:
+                do {
+                    try self.startRecording()
+                } catch let error {
+                    print("There was a problem starting recording: \(error.localizedDescription)")
+                }
+            case .denied:
+                print("Speech recognition authorization denied")
+            case .restricted:
+                print("Not available on this device")
+            case .notDetermined:
+                print("Not determined")
+            }
+        }
+    }
+    
+    fileprivate func startRecording() throws {
+        // 1
+        let node = audioEngine.inputNode
+        let recordingFormat = node.outputFormat(forBus: 0)
+        
+        // 2
+        node.installTap(onBus: 0, bufferSize: 1024,
+                        format: recordingFormat) { [unowned self]
+                            (buffer, _) in
+                            self.request.append(buffer)
+        }
+        
+        // 3
+        audioEngine.prepare()
+        try audioEngine.start()
+        
+        recognitionTask = speechRecognizer?.recognitionTask(with: request) {
+            [unowned self]
+            (result, _) in
+            if let transcription = result?.bestTranscription {
+                self.textField.text = transcription.formattedString
+                self.isWordCorrect(typedWord: self.textField.text)
+                
+            }
+            self.stopRecording()
+        }
+    }
+    
+    fileprivate func stopRecording() {
+        audioEngine.stop()
+        request.endAudio()
+        recognitionTask?.cancel()
+    }
+    
+    func loadWordsFromFiles() {
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        LanguageSet.addNewLanguageSet(name: "German from English Top 1000", code: "germanenglishtop1000", isUnlocked: true, context: context)
+        LanguageSet.addNewLanguageSet(name: "French from English Top 1000", code: "frenchenglishtop1000", isUnlocked: true, context: context)
+        LanguageSet.addNewLanguageSet(name: "German from Polish Top 1000", code: "germanpolishtop1000", isUnlocked: true, context: context)
+        LanguageSet.addNewLanguageSet(name: "Polish from German Top 1000", code: "polishgermantop1000", isUnlocked: true, context: context)
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        var wordId = Int16(1)
+        for language in ["germanenglishtop1000","frenchenglishtop1000","germanpolishtop1000","polishgermantop1000"] {
+            if let path = Bundle.main.path(forResource: language, ofType: "txt") {
+                do {
+                    let info = ProcessInfo.processInfo
+                    let begin = info.systemUptime
+                    
+                    let data = try String(contentsOfFile: path, encoding: .utf8)
+                    let myStrings = data.components(separatedBy: .newlines)
+                    
+                    for myString in myStrings
+                    {
+                        let myStringArray = myString.components(separatedBy: " ")
+                        
+                        
+                        Word.addNewWord(id: wordId, knownLanguage: myStringArray.last, learningLanguage: myStringArray.first, languageSetCode: language, context: context)
+                        
+                        wordId = wordId + 1
+                        
+                    }
+                    let diff = (info.systemUptime - begin)
+                    (UIApplication.shared.delegate as! AppDelegate).saveContext()
+                    print("\(language) added in time: \(diff)")
+                } catch {
+                    print(error)
+                }
+            }
+        }
+        UserDefaults.standard.set(5, forKey: "answersToMaster")
     }
 }
 

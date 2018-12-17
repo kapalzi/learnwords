@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //https://www.raywenderlich.com/155752/speech-recognition-tutorial-ios
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        (self.window?.rootViewController?.childViewControllers.first as? UITabBarController)?.selectedIndex = 1
         // Override point for customization after application launch.
         return true
     }
@@ -70,7 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
-        print(container.persistentStoreCoordinator.persistentStores.first!.url!)
+        print(container.persistentStoreCoordinator.persistentStores.first!.url!.absoluteString)
         return container
     }()
 

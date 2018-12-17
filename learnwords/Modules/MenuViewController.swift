@@ -34,7 +34,7 @@ class MenuViewController: UITableViewController {
             print("Not first launch.")
         } else {
             print("First launch, setting UserDefault.")
-            loadWordsFromFiles()
+            self.loadWordsFromFiles()
             UserDefaults.standard.set(true, forKey: "launchedBefore")
         }
         
