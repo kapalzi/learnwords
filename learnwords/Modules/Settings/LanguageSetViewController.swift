@@ -25,6 +25,7 @@ class LanguageSetViewController: UITableViewController  {
         tableData = LanguageSet.getAllLanguageSets(inContext: context)
         if self.navigationController?.viewControllers.count == 1 {
             self.isMainMode = true
+            self.navigationController?.navigationBar.topItem?.title = "Statistics"
         }
     }
     

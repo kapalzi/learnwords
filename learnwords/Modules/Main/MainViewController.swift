@@ -59,13 +59,16 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
         self.textField.borderStyle = UITextBorderStyle.roundedRect
         self.textField.backgroundColor = UIColor.init(white: 1, alpha: 0.9)
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.action, target: self, action: #selector(rightBarButtonClicked))
+//        self.navigationItem.rightBarButtonItem =
+//        self.navigationController?.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.action, target: self, action: #selector(rightBarButtonClicked))
 //        self.checkButtonBg = self.checkButton.backgroundColor
-        initSwipe()
+        
+        self.initSwipe()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
+        self.navigationController?.navigationBar.topItem?.title = "Learning"
     }
 
     override func didReceiveMemoryWarning() {
@@ -326,13 +329,14 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
         }
         self.loadPrevWord()
     }
-    @IBAction func microphoneBtnClicked(_ sender: UIButton) {
+    @IBAction func microphoneBtnClicked(_ sender: RecordButton) {
         
         sender.isSelected = !sender.isSelected
         if sender.isSelected {
-            let tintedImage = sender.backgroundImage(for: .normal)?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
-            sender.setBackgroundImage(tintedImage, for: .normal)
-            sender.tintColor = #colorLiteral(red: 0.2980392157, green: 0.8196078431, blue: 0.2156862745, alpha: 1)
+            sender.animate()
+//            let tintedImage = sender.backgroundImage(for: .normal)?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+//            sender.setBackgroundImage(tintedImage, for: .normal)
+//            sender.tintColor = #colorLiteral(red: 0.2980392157, green: 0.8196078431, blue: 0.2156862745, alpha: 1)
             self.authorizeSpeechRecognition()
             
         } else {
@@ -392,6 +396,7 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
     }
     
     fileprivate func stopRecording() {
+        audioEngine.inputNode.removeTap(onBus: 0)
         audioEngine.stop()
         request.endAudio()
         recognitionTask?.cancel()

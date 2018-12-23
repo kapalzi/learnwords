@@ -13,12 +13,12 @@ class SettingsViewController: UITableViewController  {
     override func viewDidLoad() {
 //        super.navTitle = "Settings"
         super.viewDidLoad()
-        
 //        initControls()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
+        self.navigationController?.navigationBar.topItem?.title = "Settings"
     }
     
     func initControls() {

@@ -20,7 +20,6 @@ class StatisticsViewController: UITableViewController  {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-
         
     }
     
