@@ -71,7 +71,8 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
                 UIView.animateKeyframes(withDuration: duration, delay: 0.0, options: UIViewKeyframeAnimationOptions(rawValue: curve), animations: {
                     
                     if self.isKeyboardVisible {
-                        self.view.frame.origin.y -= 49
+//                        self.view.frame.origin.y -= 49
+                        self.view.frame = self.originalViewFrame
                     } else {
                         self.view.frame.origin.y += 49
                     }
