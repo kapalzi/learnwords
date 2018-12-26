@@ -13,62 +13,43 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
 
     @IBOutlet var wordLabel: UILabel!
     @IBOutlet var textField: UITextField!
-    @IBOutlet var checkButton: UIButton!
     var word: Word!
     var wordsTable: Array<Word>!
     var currentWordIndex: Int!
     var appDelegate: AppDelegate!
-    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var card: UIView!
     var cardCenter: CGPoint?
-//    var cardY: CGFloat?
     var checkButtonBg: UIColor?
     var isReadingMode: Bool = false
     
     let audioEngine = AVAudioEngine()
     let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "de"))
-    let request = SFSpeechAudioBufferRecognitionRequest()
+    var request = SFSpeechAudioBufferRecognitionRequest()
     var recognitionTask: SFSpeechRecognitionTask?
+    @IBOutlet weak var recordBtn: RecordButton!
     
     override func viewDidLoad() {
-        
-        let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
-        if launchedBefore  {
-            print("Not first launch.")
-        } else {
-            print("First launch, setting UserDefault.")
-            self.loadWordsFromFiles()
-            UserDefaults.standard.set(true, forKey: "launchedBefore")
-        }
-        
+        FillDb.loadWordsFromFilesIfFirstLaunch()
         super.viewDidLoad()
-//        self.cardY = self.card.frame.size.height/2 - self.card.frame.origin.y
-//        self.cardY = self.card.center.y
         self.cardCenter = CGPoint(x: self.view.center.x, y: self.card.center.y)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(_:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+        self.initSwipe()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.topItem?.title = "Learning"
         
-        
-
         self.loadWords()
-        if wordsTable != nil  {
+        if self.wordsTable != nil  {
             loadWord(index: firstWordIndex(numberOfWords: wordsTable.count))
         }
         else {
             wordLabel.text = "No words"
         }
-
-        self.textField.borderStyle = UITextBorderStyle.roundedRect
-        self.textField.backgroundColor = UIColor.init(white: 1, alpha: 0.9)
-        
-//        self.navigationItem.rightBarButtonItem =
-//        self.navigationController?.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.action, target: self, action: #selector(rightBarButtonClicked))
-//        self.checkButtonBg = self.checkButton.backgroundColor
-        
-        self.initSwipe()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
-        self.navigationController?.navigationBar.topItem?.title = "Learning"
+//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.action, target: self, action: #selector(rightBarButtonClicked))
+//        let navigationItem = UINavigationItem(title: "Title")
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.action, target: self, action: #selector(rightBarButtonClicked))
+//        self.navigationController?.navigationBar.pushItem(navigationItem, animated: false)
     }
 
     override func didReceiveMemoryWarning() {
@@ -80,46 +61,32 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
         let swipeUp = UISwipeGestureRecognizer.init(target: self, action: #selector(swipeU))
         swipeUp.direction = UISwipeGestureRecognizerDirection.up
         self.textField.addGestureRecognizer(swipeUp)
-        
-        let swipeRight = UISwipeGestureRecognizer.init(target: self, action: #selector(swipeR))
-        swipeRight.direction = UISwipeGestureRecognizerDirection.right
-        view.addGestureRecognizer(swipeRight)
-        
-        let swipeLeft = UISwipeGestureRecognizer.init(target: self, action: #selector(swipeL))
-        swipeRight.direction = UISwipeGestureRecognizerDirection.left
-        view.addGestureRecognizer(swipeLeft)
-        
     }
     
-    override func keyboardShow(notification: NSNotification) {
-        super.keyboardShow(notification: notification)
-//        self.cardY = self.card.frame.size.height/2 - self.card.frame.origin.y/2 + self.card.frame.origin.x
-//        self.cardY = self.card.center.y
-//        self.cardY = self.card.frame.size.height/2 + self.card.frame.origin.y
-//        self.cardCenter = CGPoint(x: self.view.center.x, y: self.cardY!)
-        self.card.layoutIfNeeded()
-    }
-    
-    override func keyboardHide(notification: NSNotification) {
-        super.keyboardHide(notification: notification)
-//        self.cardY = 255
-//        self.cardY = self.card.frame.size.height/2 + self.card.frame.origin.y
-//        self.cardCenter = CGPoint(x: self.view.center.x, y: self.cardY!)
-        self.card.layoutIfNeeded()
+    @objc func keyboardWillChange(_ notification: NSNotification) {
+        let duration = notification.userInfo![UIKeyboardAnimationDurationUserInfoKey] as! Double
+        let curve = notification.userInfo![UIKeyboardAnimationCurveUserInfoKey] as! UInt
+        let targetFrame = (notification.userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        
+                UIView.animateKeyframes(withDuration: duration, delay: 0.0, options: UIViewKeyframeAnimationOptions(rawValue: curve), animations: {
+                    
+                    if self.isKeyboardVisible {
+                        self.view.frame.origin.y -= 49
+                    } else {
+                        self.view.frame.origin.y += 49
+                    }
+                    
+                    self.view.frame.size.height = targetFrame.origin.y
+                    self.card.dropShadow()
+        
+                },completion: {(true) in
+                    self.card.layoutIfNeeded()
+                    
+                })
     }
     
     override func viewWillLayoutSubviews() {
         self.card.dropShadow()
-//        self.textField.dropShadow()
-//        self.checkButton.dropShadow()
-    }
-    
-    @objc func swipeR(){
-//        loadNextWord()
-    }
-    
-    @objc func swipeL(){
-//        loadPrevWord()
     }
     
     @objc func swipeU(){
@@ -173,6 +140,11 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
             self.textField.text = word.learningLanguage
         }
         UserDefaults.standard.set(index, forKey: "lastWordId")
+        
+        if self.recordBtn.isSelected {
+            self.stopRecording()
+            self.authorizeSpeechRecognition()
+        }
     }
     
     func loadNextWord() {
@@ -227,19 +199,14 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
                 Word.addGoodAnwer(wordId: word.id, context: context)
                 
                 if word.goodCounter >= UserDefaults.standard.integer(forKey: "answersToMaster") {
-                    wordsTable.remove(at: Int(word!.id-1))
+                    wordsTable.remove(at: Int(currentWordIndex))
                 }
                 
                 (UIApplication.shared.delegate as! AppDelegate).saveContext()
                 
             }
-            UIView.animate(withDuration: 0.2, animations: {
-//                self.checkButton.backgroundColor = UIColor.green
-                
-            }, completion: { (true) in
-//                self.checkButton.backgroundColor = self.checkButtonBg
-            })
             self.loadNextWord()
+
         }
         else {
             if !isReadingMode {
@@ -254,12 +221,6 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
             
             // Play the haptic signal
             lightImpactFeedbackGenerator.impactOccurred()
-            UIView.animate(withDuration: 0.3, animations: {
-//                self.checkButton.backgroundColor = UIColor.red
-
-            }, completion: { (true) in
-//                self.checkButton.backgroundColor = self.checkButtonBg
-            })
         }
     }
     
@@ -269,26 +230,6 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
     }
     
     @IBAction func showHelp(_ sender: UIButton) {
-        //        let popVC = storyboard?.instantiateViewController(withIdentifier: "popVC") as! HelpPopoverViewController
-        //
-        //        popVC.modalPresentationStyle = .popover
-        //
-        //        let popOverVC = popVC.popoverPresentationController
-        //        popOverVC?.delegate = self
-        //        popOverVC?.sourceView = self.textField
-        ////        popOverVC?.sourceRect = CGRect(x: self.helpBtn.bounds.midX, y: self.helpBtn.bounds.minY, width: 0, height: 0)
-        //        popOverVC?.sourceRect = CGRect(x: self.textField.center.x, y: self.textField.frame.origin.y, width: 0, height: 0)
-        //        popVC.preferredContentSize = CGSize(width: 250, height: 50)
-        //
-        //        let helpLbl = UILabel(frame: CGRect(x: 0, y: 0, width: 250, height: 50))
-        //        helpLbl.text = word.learningLanguage
-        //        helpLbl.font = UIFont.systemFont(ofSize: 30)
-        //        helpLbl.textAlignment = .center
-        //        helpLbl.textColor = UIColor.purple
-        //        popVC.view.addSubview(helpLbl)
-        //
-        //        self.present(popVC, animated: true)
-
     }
 
    @objc func rightBarButtonClicked() {
@@ -333,28 +274,32 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
         
         sender.isSelected = !sender.isSelected
         if sender.isSelected {
-            sender.animate()
+            sender.startAnimation()
 //            let tintedImage = sender.backgroundImage(for: .normal)?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
 //            sender.setBackgroundImage(tintedImage, for: .normal)
 //            sender.tintColor = #colorLiteral(red: 0.2980392157, green: 0.8196078431, blue: 0.2156862745, alpha: 1)
             self.authorizeSpeechRecognition()
             
         } else {
-            let tintedImage = sender.backgroundImage(for: .normal)?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
-            sender.setBackgroundImage(tintedImage, for: .normal)
-            sender.tintColor = .black
+            sender.stopAnimation()
+//            let tintedImage = sender.backgroundImage(for: .normal)?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+//            sender.setBackgroundImage(tintedImage, for: .normal)
+//            sender.tintColor = .black
             self.stopRecording()
         }
     }
     
     func authorizeSpeechRecognition() {
+        self.recordBtn.stopAnimation()
         SFSpeechRecognizer.requestAuthorization {
             [unowned self] (authStatus) in
             switch authStatus {
             case .authorized:
                 do {
+                    self.recordBtn.startAnimation()
                     try self.startRecording()
                 } catch let error {
+                    self.recordBtn.stopAnimation()
                     print("There was a problem starting recording: \(error.localizedDescription)")
                 }
             case .denied:
@@ -387,63 +332,23 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
             [unowned self]
             (result, _) in
             if let transcription = result?.bestTranscription {
+                print(transcription.formattedString)
                 self.textField.text = transcription.formattedString
+                self.stopRecording()
                 self.isWordCorrect(typedWord: self.textField.text)
                 
             }
-            self.stopRecording()
         }
     }
     
     fileprivate func stopRecording() {
+        self.recordBtn.stopAnimation()
         audioEngine.inputNode.removeTap(onBus: 0)
         audioEngine.stop()
         request.endAudio()
+        request = SFSpeechAudioBufferRecognitionRequest()
         recognitionTask?.cancel()
     }
     
-    func loadWordsFromFiles() {
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        LanguageSet.addNewLanguageSet(name: "German from English Top 1000", code: "germanenglishtop1000", isUnlocked: true, context: context)
-        LanguageSet.addNewLanguageSet(name: "French from English Top 1000", code: "frenchenglishtop1000", isUnlocked: true, context: context)
-        LanguageSet.addNewLanguageSet(name: "German from Polish Top 1000", code: "germanpolishtop1000", isUnlocked: true, context: context)
-        LanguageSet.addNewLanguageSet(name: "Polish from German Top 1000", code: "polishgermantop1000", isUnlocked: true, context: context)
-        (UIApplication.shared.delegate as! AppDelegate).saveContext()
-        var wordId = Int16(1)
-        for language in ["germanenglishtop1000","frenchenglishtop1000","germanpolishtop1000","polishgermantop1000"] {
-            if let path = Bundle.main.path(forResource: language, ofType: "txt") {
-                do {
-                    let info = ProcessInfo.processInfo
-                    let begin = info.systemUptime
-                    
-                    let data = try String(contentsOfFile: path, encoding: .utf8)
-                    let myStrings = data.components(separatedBy: .newlines)
-                    
-                    for myString in myStrings
-                    {
-                        let myStringArray = myString.components(separatedBy: " ")
-                        
-                        
-                        Word.addNewWord(id: wordId, knownLanguage: myStringArray.last, learningLanguage: myStringArray.first, languageSetCode: language, context: context)
-                        
-                        wordId = wordId + 1
-                        
-                    }
-                    let diff = (info.systemUptime - begin)
-                    (UIApplication.shared.delegate as! AppDelegate).saveContext()
-                    print("\(language) added in time: \(diff)")
-                } catch {
-                    print(error)
-                }
-            }
-        }
-        UserDefaults.standard.set(5, forKey: "answersToMaster")
-    }
-}
-
-extension UIViewController: UIPopoverPresentationControllerDelegate {
     
-    public func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
-        return .none
-}
 }

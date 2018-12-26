@@ -15,23 +15,16 @@ extension UIView{
                     opacity: Float = 0.5,
                     offset: CGSize = CGSize(width: 0.0, height: 1.0),
                     radius: CGFloat = 15,
-                    imgName: String = "") -> CAShapeLayer {
+                    imgName: String = "") {
         
         let shadowLayer = CAShapeLayer()
         shadowLayer.path = UIBezierPath(roundedRect: self.bounds, cornerRadius: radius).cgPath
         shadowLayer.fillColor = fillColor.cgColor
-//        shadowLayer.fillColor = UIColor.init(red: 36/255, green: 185/255, blue: 255/255, alpha: 1).cgColor
         shadowLayer.shadowColor = shadowColor.cgColor
         shadowLayer.shadowPath = shadowLayer.path
         shadowLayer.shadowOffset = offset
         shadowLayer.shadowOpacity = opacity
         shadowLayer.shadowRadius = radius
- 
-//        let whiteLayer = CALayer()
-//        whiteLayer.frame = self.bounds
-//        whiteLayer.cornerRadius = radius
-//        whiteLayer.masksToBounds = true
-//        shadowLayer.addSublayer(whiteLayer)
         
         if imgName != "" {
             let imgLayer = CALayer()
@@ -42,13 +35,7 @@ extension UIView{
             imgLayer.masksToBounds = true
             shadowLayer.addSublayer(imgLayer)
         }
-        
-        
-        
-        
-//        layer.insertSublayer(shadowLayer, at: 0)
         shadowLayer.name = "shadow"
-        
         
         if let layers = layer.sublayers {
             if let firstLayer = layers.first {
@@ -65,9 +52,7 @@ extension UIView{
         } else {
             layer.insertSublayer(shadowLayer, at: 0)
         }
-
-//        layer.insertSublayer(shadowLayer, at: 0)
-        return shadowLayer
+//        return shadowLayer
     }
     
     func shake() {

@@ -16,7 +16,6 @@ class BaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         originalViewFrame = self.view.frame;
-//        addBlurBackground()
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
@@ -26,32 +25,20 @@ class BaseViewController: UIViewController {
     }
     
     @objc func keyboardShow(notification: NSNotification) {
-        let info = notification.userInfo!
-        let keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-        self.view.frame.size.height = keyboardFrame.origin.y;
+//        let info = notification.userInfo!
+//        let keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+//        self.view.frame.size.height = keyboardFrame.origin.y;
         self.isKeyboardVisible = true
     }
     
     @objc func keyboardHide(notification: NSNotification) {
-        self.view.frame = originalViewFrame
+        self.isKeyboardVisible = false
     }
     
     @objc func dismissKeyboard() {
-        self.isKeyboardVisible = false
         view.endEditing(true)
     }
     
-    func addBlurBackground() {
-        
-        var modifiedFrame = originalViewFrame
-        modifiedFrame?.size.height+=90
-        let imgView = UIImageView.init(frame: modifiedFrame!)
-        let img = UIImage.init(named: "mainBg")
-        imgView.image = img
-        imgView.backgroundColor = UIColor.blue
-        imgView.addBlurEffect()
-        
-        self.view.insertSubview(imgView, at: 0)
-    }
+
     
 }

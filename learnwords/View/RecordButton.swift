@@ -26,22 +26,20 @@ class RecordButton: UIButton {
         
         print(self.center)
         
-        let circularPath = UIBezierPath(arcCenter: CGPoint(x: frame.width/2, y: frame.height/2), radius: 75, startAngle: -CGFloat.pi / 2, endAngle: 2 * CGFloat.pi, clockwise: true)
+        let circularPath = UIBezierPath(arcCenter: CGPoint(x: frame.width/2, y: frame.height/2), radius: 15, startAngle: -CGFloat.pi / 2, endAngle: 2 * CGFloat.pi, clockwise: true)
         trackLayer.path = circularPath.cgPath
         
         trackLayer.strokeColor = #colorLiteral(red: 0.262745098, green: 0.7589192986, blue: 0.9943001866, alpha: 0.4506367723)
-        trackLayer.lineWidth = 15
+        trackLayer.lineWidth = 5
         trackLayer.fillColor = UIColor.clear.cgColor
         trackLayer.lineCap = kCALineCapRound
         
         self.layer.addSublayer(trackLayer)
         
-        //        let circularPath = UIBezierPath(arcCenter: center, radius: 100, startAngle: -CGFloat.pi / 2, endAngle: 2 * CGFloat.pi, clockwise: true)
-        
         shapeLayer.path = circularPath.cgPath
         
         shapeLayer.strokeColor = #colorLiteral(red: 0.2642498016, green: 0.7589192986, blue: 0.9943001866, alpha: 1)
-        shapeLayer.lineWidth = 15
+        shapeLayer.lineWidth = 8
         shapeLayer.fillColor = UIColor.clear.cgColor
         shapeLayer.lineCap = kCALineCapRound
         
@@ -52,18 +50,19 @@ class RecordButton: UIButton {
 //        self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(animate)))
     }
     
-      func animate() {
+      func startAnimation() {
         
         let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
-        
-        basicAnimation.toValue = 0.69
-        
-        basicAnimation.duration = 4
-        
+        basicAnimation.toValue = 1
+        basicAnimation.duration = 60
         basicAnimation.fillMode = kCAFillModeForwards
-        basicAnimation.isRemovedOnCompletion = false
+        basicAnimation.isRemovedOnCompletion = true
         
         shapeLayer.add(basicAnimation, forKey: "urSoBasic")
+    }
+    
+    func stopAnimation() {
+        shapeLayer.removeAllAnimations()
     }
 
 }
