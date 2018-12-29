@@ -13,12 +13,14 @@ import CoreData
 @objc(LanguageSet)
 public class LanguageSet: NSManagedObject {
 
-    static func addNewLanguageSet(name: String, code: String, isUnlocked: Bool, context: NSManagedObjectContext) {
+    static func addNewLanguageSet(name: String, code: String, isUnlocked: Bool, identifier: String, context: NSManagedObjectContext) {
         let newSet = NSEntityDescription.insertNewObject(forEntityName: "LanguageSet", into: context) as! LanguageSet
         
         newSet.name = name
         newSet.code = code
         newSet.isUnlocked = isUnlocked
+        newSet.identifier = identifier
+        
     }
     
     static func setLanguageSetAsSelected(code: String, context: NSManagedObjectContext) {

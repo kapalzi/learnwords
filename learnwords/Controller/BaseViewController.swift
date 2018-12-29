@@ -39,6 +39,11 @@ class BaseViewController: UIViewController {
         view.endEditing(true)
     }
     
+    func playHaptic() {
+        let lightImpactFeedbackGenerator = UIImpactFeedbackGenerator(style: .light)
+        lightImpactFeedbackGenerator.prepare()
+        lightImpactFeedbackGenerator.impactOccurred()
+    }
 
     
 }

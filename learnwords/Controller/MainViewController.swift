@@ -23,7 +23,7 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
     var isReadingMode: Bool = false
     
     let audioEngine = AVAudioEngine()
-    let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "de"))
+    var speechRecognizer = SFSpeechRecognizer()
     var request = SFSpeechAudioBufferRecognitionRequest()
     var recognitionTask: SFSpeechRecognitionTask?
     @IBOutlet weak var recordBtn: RecordButton!
@@ -119,20 +119,19 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
             }
             
             UIView.animate(withDuration: 0.2) {
-//                print(self.wordLabel.frame.origin.y)
-//                let center = CGPoint(x: self.view.center.x, y:self.wordLabel.frame.origin.y + (self.card.frame.size.height/2))
                 card.center.x = self.cardCenter!.x
-                
             }
         }
     }
     func loadWords() {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         self.wordsTable = Word.getWordsForSelectedSet(inContext: context)
+        print( LanguageSet.getSelectedSet(context: context).identifier!)
+        speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: LanguageSet.getSelectedSet(context: context).identifier!))
     }
     
     func loadWord(index: Int) {
-        
+        self.playHaptic()
         word = wordsTable[index]
         currentWordIndex = index
         textField.text=""
@@ -215,13 +214,8 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
                 (UIApplication.shared.delegate as! AppDelegate).saveContext()
             }
             self.card.shake()
-            let lightImpactFeedbackGenerator = UIImpactFeedbackGenerator(style: .light)
-            
-            // Prepare shortly before playing
-            lightImpactFeedbackGenerator.prepare()
-            
-            // Play the haptic signal
-            lightImpactFeedbackGenerator.impactOccurred()
+            self.textField.text = ""
+            self.playHaptic()
         }
     }
     

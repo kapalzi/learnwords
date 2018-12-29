@@ -57,6 +57,7 @@
 		E25853B421B9D28E007DE2BB /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		E259C30C21D1BEA2005FFB50 /* KeyboardBoundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardBoundView.swift; sourceTree = "<group>"; };
 		E291CCA0206D701E001AD3B1 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		E2998D7821D4D87F00DBEA50 /* learnwords 1.1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "learnwords 1.1.xcdatamodel"; sourceTree = "<group>"; };
 		E2E181A221A42DB5001359F8 /* frenchenglishtop1000.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = frenchenglishtop1000.txt; sourceTree = "<group>"; };
 		E2E181A421A42E43001359F8 /* LanguageSet+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LanguageSet+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E2E181A621A42E43001359F8 /* Word+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Word+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -463,9 +464,10 @@
 		32A07365205BBFA500415A97 /* learnwords.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				E2998D7821D4D87F00DBEA50 /* learnwords 1.1.xcdatamodel */,
 				32A07366205BBFA500415A97 /* learnwords.xcdatamodel */,
 			);
-			currentVersion = 32A07366205BBFA500415A97 /* learnwords.xcdatamodel */;
+			currentVersion = E2998D7821D4D87F00DBEA50 /* learnwords 1.1.xcdatamodel */;
 			path = learnwords.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
