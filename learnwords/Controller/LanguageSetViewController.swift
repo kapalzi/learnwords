@@ -29,44 +29,38 @@ class LanguageSetViewController: UITableViewController  {
         }
     }
     
-    func initControls() {
-        
-    }
-    
-    func initNewWordButton() {
-       
+    override func viewWillLayoutSubviews() {
+        self.tableView.visibleCells.forEach {
+            ($0 as! SetsCell).shadowView.dropShadow()
+        }
     }
     
     //table
-    
    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return (self.tableData?.count)!
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIdentifier = "LanguageSetCell"
+        let cellIdentifier = "SetsCell"
         
         var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)
         if cell == nil {
-            cell = UITableViewCell.init(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: cellIdentifier)
+            cell = UITableViewCell.init(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: cellIdentifier) as! SetsCell
         }
         
-        self.configureCell(cell: cell!, indexPath: indexPath)
+        self.configureCell(cell: cell as! SetsCell, indexPath: indexPath)
         
         return cell!
     }
     
-    private func configureCell(cell: UITableViewCell, indexPath: IndexPath) {
+    private func configureCell(cell: SetsCell, indexPath: IndexPath) {
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = .white
+        cell.selectedBackgroundView = backgroundView
         
         let set = self.tableData![indexPath.row] as LanguageSet
-        
-        cell.textLabel?.text = set.name
-        
-        cell.backgroundColor = UIColor.clear
-        cell.textLabel?.textColor = UIColor(red: 50/255.0, green: 50/255.0, blue: 50/255.0, alpha: 1.0)
-        cell.textLabel?.font = UIFont.italicSystemFont(ofSize: 24)
-        cell.textLabel?.numberOfLines = 3
-        cell.textLabel?.lineBreakMode = .byWordWrapping
+        cell.nameLbl.text = set.name
+        cell.depictionLbl.text = set.depiction
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

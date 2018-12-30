@@ -20,7 +20,7 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
     @IBOutlet weak var card: UIView!
     var cardCenter: CGPoint?
     var checkButtonBg: UIColor?
-    var isReadingMode: Bool = false
+    var isRotated: Bool = false
     
     let audioEngine = AVAudioEngine()
     var speechRecognizer = SFSpeechRecognizer()
@@ -33,7 +33,6 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
         super.viewDidLoad()
         self.cardCenter = CGPoint(x: self.view.center.x, y: self.card.center.y)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(_:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
-        self.initSwipe()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,13 +53,6 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-
-    func initSwipe() {
-        
-        let swipeUp = UISwipeGestureRecognizer.init(target: self, action: #selector(swipeU))
-        swipeUp.direction = UISwipeGestureRecognizerDirection.up
-        self.textField.addGestureRecognizer(swipeUp)
     }
     
     @objc func keyboardWillChange(_ notification: NSNotification) {
@@ -90,14 +82,10 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
         self.card.dropShadow()
     }
     
-    @objc func swipeU(){
-        
-        self.textField.text = self.word.learningLanguage
-    }
-    
     @IBAction func panCard(_ sender: UIPanGestureRecognizer) {
         let card = sender.view!
         let point = sender.translation(in: view)
+        let velocity = sender.velocity(in: view)
         card.center = CGPoint(x: self.view.center.x + point.x, y: card.center.y)
 //        https://www.youtube.com/watch?v=sBnqFLJqn9M
         
@@ -117,10 +105,25 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
                 self.loadPrevWord()
                 return
             }
-            
             UIView.animate(withDuration: 0.2) {
                 card.center.x = self.cardCenter!.x
             }
+//            if card.center.x >= 75 && card.center.x <= (self.view.frame.width - 75) {
+//
+//                return
+//            }
+            
+            if velocity.y < 100 && point.y < -150 {
+                self.willRotate()
+                card.flipFromBot()
+                print("bot")
+            } else if velocity.y > 100 && point.y > 150 {
+                self.willRotate()
+                card.flipFromTop()
+                print("up")
+            }
+            print(velocity.y)
+            print(point.y)
         }
     }
     func loadWords() {
@@ -132,13 +135,11 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
     
     func loadWord(index: Int) {
         self.playHaptic()
+        self.isRotated = false
         word = wordsTable[index]
         currentWordIndex = index
         textField.text=""
         wordLabel.text = word.knownLanguage
-        if isReadingMode {
-            self.textField.text = word.learningLanguage
-        }
         UserDefaults.standard.set(index, forKey: "lastWordId")
         
         if self.recordBtn.isSelected {
@@ -192,27 +193,32 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
         return true
     }
     
+    func willRotate() {
+        self.isRotated = !self.isRotated
+        if self.isRotated {
+            self.wordLabel.text = self.word.learningLanguage
+        } else {
+            self.wordLabel.text = self.word.knownLanguage
+        }
+    }
+    
     func isWordCorrect(typedWord: String?) {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         if(typedWord?.lowercased() == word.learningLanguage?.lowercased()) {
-            if !self.isReadingMode {
-                Word.addGoodAnwer(wordId: word.id, context: context)
-                
-                if word.goodCounter >= UserDefaults.standard.integer(forKey: "answersToMaster") {
-                    wordsTable.remove(at: Int(currentWordIndex))
-                }
-                
-                (UIApplication.shared.delegate as! AppDelegate).saveContext()
-                
+            Word.addGoodAnwer(wordId: word.id, context: context)
+            
+            if word.goodCounter >= UserDefaults.standard.integer(forKey: "answersToMaster") {
+                wordsTable.remove(at: Int(currentWordIndex))
             }
+            
+            (UIApplication.shared.delegate as! AppDelegate).saveContext()
+                
             self.loadNextWord()
 
         }
         else {
-            if !isReadingMode {
-                Word.addBadAnwer(wordId: word.id, context: context)
-                (UIApplication.shared.delegate as! AppDelegate).saveContext()
-            }
+            Word.addBadAnwer(wordId: word.id, context: context)
+            (UIApplication.shared.delegate as! AppDelegate).saveContext()
             self.card.shake()
             self.textField.text = ""
             self.playHaptic()
@@ -232,12 +238,10 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
     
         ac = UIAlertController.init(title: "Mode", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
         ac.addAction(UIAlertAction.init(title: "Reading", style: UIAlertActionStyle.default, handler: { (UIAlertAction) in
-            self.isReadingMode = true
             self.loadPrevWord()
             self.loadNextWord()
         }))
         ac.addAction(UIAlertAction.init(title: "Writing", style: UIAlertActionStyle.default, handler: { (UIAlertAction) in
-            self.isReadingMode = false
             self.loadPrevWord()
             self.loadNextWord()
         }))

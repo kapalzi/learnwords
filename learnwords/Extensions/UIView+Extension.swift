@@ -62,5 +62,21 @@ extension UIView{
         animation.values = [-20.0, 20.0, -20.0, 20.0, -10.0, 10.0, -5.0, 5.0, 0.0 ]
         layer.add(animation, forKey: "shake")
     }
+    
+    func flipFromBot() {
+        UIView.transition(with: self,
+                          duration: 0.3,
+                          options: .transitionFlipFromTop,
+                          animations: nil,
+                          completion: nil)
+    }
+    
+    func flipFromTop() {
+        UIView.transition(with: self,
+                          duration: 0.3,
+                          options: .transitionFlipFromBottom,
+                          animations: nil,
+                          completion: nil)
+    }
 }
 
