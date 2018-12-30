@@ -26,6 +26,7 @@
 		E2505A5B20F6B6D700F70E49 /* germanenglishtop1000.txt in Resources */ = {isa = PBXBuildFile; fileRef = E2505A5A20F6B6D700F70E49 /* germanenglishtop1000.txt */; };
 		E25853B521B9D28E007DE2BB /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25853B421B9D28E007DE2BB /* UIView+Extension.swift */; };
 		E259C30D21D1BEA2005FFB50 /* KeyboardBoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E259C30C21D1BEA2005FFB50 /* KeyboardBoundView.swift */; };
+		E25DD69F21D8349F0099D543 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25DD69E21D8349F0099D543 /* SettingsCell.swift */; };
 		E291CCA1206D701E001AD3B1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E291CCA0206D701E001AD3B1 /* SettingsViewController.swift */; };
 		E2E181A321A42DB5001359F8 /* frenchenglishtop1000.txt in Resources */ = {isa = PBXBuildFile; fileRef = E2E181A221A42DB5001359F8 /* frenchenglishtop1000.txt */; };
 		E2E181AA21A42E43001359F8 /* LanguageSet+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E181A421A42E43001359F8 /* LanguageSet+CoreDataClass.swift */; };
@@ -56,6 +57,7 @@
 		E2505A5A20F6B6D700F70E49 /* germanenglishtop1000.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = germanenglishtop1000.txt; sourceTree = "<group>"; };
 		E25853B421B9D28E007DE2BB /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		E259C30C21D1BEA2005FFB50 /* KeyboardBoundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardBoundView.swift; sourceTree = "<group>"; };
+		E25DD69E21D8349F0099D543 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		E291CCA0206D701E001AD3B1 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E2998D7821D4D87F00DBEA50 /* learnwords 1.1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "learnwords 1.1.xcdatamodel"; sourceTree = "<group>"; };
 		E2E181A221A42DB5001359F8 /* frenchenglishtop1000.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = frenchenglishtop1000.txt; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				E2010BCD21CD9154006D9DD7 /* RecordButton.swift */,
 				E23B6DE021A58C3A000FAAEE /* StatisticsCell.swift */,
 				324C841E206E395900C19329 /* NewWordCell.swift */,
+				E25DD69E21D8349F0099D543 /* SettingsCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 				324C841B206E289C00C19329 /* NewWordViewController.swift in Sources */,
 				E23B6DDD21A55224000FAAEE /* LanguageSetViewController.swift in Sources */,
 				E2E181AE21A42E43001359F8 /* User+CoreDataClass.swift in Sources */,
+				E25DD69F21D8349F0099D543 /* SettingsCell.swift in Sources */,
 				32A0735F205BBFA500415A97 /* AppDelegate.swift in Sources */,
 				324C841F206E395900C19329 /* NewWordCell.swift in Sources */,
 				E25853B521B9D28E007DE2BB /* UIView+Extension.swift in Sources */,

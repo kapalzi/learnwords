@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ehH-rx-5TI">
-    <device id="retina5_5" orientation="portrait">
+    <device id="retina6_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,14 +15,14 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="learnwords" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gYc-Rx-Ofx">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g5P-AN-71M" userLabel="card">
-                                <rect key="frame" x="24" y="88" width="370" height="522"/>
+                                <rect key="frame" x="20" y="112" width="374" height="624"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WSa-0U-lzY">
-                                        <rect key="frame" x="8" y="8" width="88" height="508"/>
+                                        <rect key="frame" x="8" y="8" width="88" height="610"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="88" id="73C-sI-ZTa"/>
@@ -32,7 +32,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eJI-XN-nza">
-                                        <rect key="frame" x="274" y="8" width="88" height="506"/>
+                                        <rect key="frame" x="278" y="8" width="88" height="608"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="88" id="TuT-bP-08s"/>
@@ -42,7 +42,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="wordLbl" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="45" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zhu-1p-TuY">
-                                        <rect key="frame" x="53" y="211" width="264" height="100"/>
+                                        <rect key="frame" x="55" y="262" width="264" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="hpG-hD-M3q"/>
                                         </constraints>
@@ -69,7 +69,7 @@
                                 </connections>
                             </view>
                             <textField opaque="NO" alpha="0.55000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter word" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DtC-kp-pi0">
-                                <rect key="frame" x="21" y="634" width="349" height="45"/>
+                                <rect key="frame" x="21" y="760" width="349" height="45"/>
                                 <color key="backgroundColor" white="0.90421660958904104" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="9Bw-0N-mbo"/>
@@ -82,7 +82,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8sl-fw-9dG" customClass="RecordButton" customModule="learnwords" customModuleProvider="target">
-                                <rect key="frame" x="380" y="644" width="25" height="25"/>
+                                <rect key="frame" x="380" y="770" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="2xT-4q-RBW"/>
                                     <constraint firstAttribute="width" constant="25" id="gQ5-Ge-olg"/>
@@ -100,7 +100,7 @@
                         <constraints>
                             <constraint firstItem="cUG-WI-TIj" firstAttribute="trailing" secondItem="8sl-fw-9dG" secondAttribute="trailing" constant="9" id="3Jv-g5-IPh"/>
                             <constraint firstItem="DtC-kp-pi0" firstAttribute="leading" secondItem="cUG-WI-TIj" secondAttribute="leading" constant="21" id="81E-vQ-9ZG"/>
-                            <constraint firstItem="g5P-AN-71M" firstAttribute="leading" secondItem="cUG-WI-TIj" secondAttribute="leading" constant="24" id="JNV-1a-E7B"/>
+                            <constraint firstItem="g5P-AN-71M" firstAttribute="leading" secondItem="cUG-WI-TIj" secondAttribute="leading" constant="20" id="JNV-1a-E7B"/>
                             <constraint firstItem="8sl-fw-9dG" firstAttribute="leading" secondItem="DtC-kp-pi0" secondAttribute="trailing" constant="10" id="MeW-7t-Yvk"/>
                             <constraint firstItem="cUG-WI-TIj" firstAttribute="bottom" secondItem="8sl-fw-9dG" secondAttribute="bottom" constant="18" id="Tfx-ce-VVO"/>
                             <constraint firstItem="DtC-kp-pi0" firstAttribute="top" secondItem="g5P-AN-71M" secondAttribute="bottom" constant="24" id="ZPi-hQ-087"/>
@@ -132,7 +132,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="statistics" id="RUd-7B-CYO" customClass="StatisticsViewController" customModule="learnwords" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="van-50-zfl">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -205,9 +205,9 @@
         <!--Statistics-->
         <scene sceneID="gJo-gr-AW0">
             <objects>
-                <tableViewController id="vHI-cv-IOe" customClass="LanguageSetViewController" customModule="learnwords" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="languageSet" id="vHI-cv-IOe" customClass="LanguageSetViewController" customModule="learnwords" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="thn-Tc-yJH">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="separatorColor" red="0.13961067799999999" green="0.72532612090000004" blue="0.99992305039999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -231,32 +231,31 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kxL-fR-siJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1248" y="751"/>
+            <point key="canvasLocation" x="-1294" y="863"/>
         </scene>
         <!--Settings-->
         <scene sceneID="KM1-EP-gq7">
             <objects>
                 <viewController id="AdJ-Wc-FdU" customClass="SettingsViewController" customModule="learnwords" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xm8-cA-TDt">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="SRN-9b-2d2">
-                                <rect key="frame" x="20" y="84" width="374" height="583"/>
+                                <rect key="frame" x="20" y="64" width="374" height="778"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aiy-3T-h8S">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="180.33333333333334"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="245.33333333333334"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
                                         <state key="normal" title="Select language set">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <action selector="selectSetClicked:" destination="AdJ-Wc-FdU" eventType="touchUpInside" id="YOt-cg-BFb"/>
-                                            <segue destination="vHI-cv-IOe" kind="show" id="xao-4M-kiY"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9y2-Cb-tPI">
-                                        <rect key="frame" x="0.0" y="201.33333333333331" width="374" height="180.33333333333331"/>
+                                        <rect key="frame" x="0.0" y="266.33333333333331" width="374" height="245.33333333333331"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
                                         <state key="normal" title="Number of good answers to master">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -266,7 +265,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QtO-T2-5yX">
-                                        <rect key="frame" x="0.0" y="402.66666666666669" width="374" height="180.33333333333331"/>
+                                        <rect key="frame" x="0.0" y="532.66666666666663" width="374" height="245.33333333333337"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
                                         <state key="normal" title="Create set">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -296,18 +295,77 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a4C-fr-y9e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="29" y="751"/>
+            <point key="canvasLocation" x="-2164" y="1713"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="w9q-KK-cFs">
+            <objects>
+                <tableViewController id="8Bg-wZ-kzj" customClass="SettingsViewController" customModule="learnwords" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="153" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="OYN-gk-YHz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingsCell" id="w7g-OY-Wfy" customClass="SettingsCell" customModule="learnwords" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="153"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="w7g-OY-Wfy" id="PVl-o7-VFv">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="153"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gdM-a5-hKJ">
+                                            <rect key="frame" x="10" y="16" width="394" height="120"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BB3-7P-wm0">
+                                                    <rect key="frame" x="20" y="20" width="354" height="93"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="BB3-7P-wm0" firstAttribute="leading" secondItem="gdM-a5-hKJ" secondAttribute="leading" constant="20" id="400-yl-6tB"/>
+                                                <constraint firstAttribute="bottom" secondItem="BB3-7P-wm0" secondAttribute="bottom" constant="7" id="BCb-t1-vlr"/>
+                                                <constraint firstAttribute="trailing" secondItem="BB3-7P-wm0" secondAttribute="trailing" constant="20" id="ocX-e7-buA"/>
+                                                <constraint firstItem="BB3-7P-wm0" firstAttribute="top" secondItem="gdM-a5-hKJ" secondAttribute="top" constant="20" id="rha-jz-uRr"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="gdM-a5-hKJ" firstAttribute="top" secondItem="PVl-o7-VFv" secondAttribute="top" constant="16" id="1od-4Q-4cG"/>
+                                        <constraint firstItem="gdM-a5-hKJ" firstAttribute="leading" secondItem="PVl-o7-VFv" secondAttribute="leading" constant="10" id="DLE-eA-P0z"/>
+                                        <constraint firstAttribute="trailing" secondItem="gdM-a5-hKJ" secondAttribute="trailing" constant="10" id="lQF-GQ-4l9"/>
+                                        <constraint firstAttribute="bottom" secondItem="gdM-a5-hKJ" secondAttribute="bottom" constant="17" id="rkv-wl-Dka"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="mainLabel" destination="BB3-7P-wm0" id="ygz-Qb-pGT"/>
+                                    <outlet property="shadowView" destination="gdM-a5-hKJ" id="rj3-Dm-MYn"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="8Bg-wZ-kzj" id="wQ7-h4-Yei"/>
+                            <outlet property="delegate" destination="8Bg-wZ-kzj" id="4v8-l5-OXE"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings" selectedImage="settings" id="T3C-b1-87v"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Eh1-9K-WU4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-583" y="863"/>
         </scene>
         <!--New Word View Controller-->
         <scene sceneID="v6S-uM-VzB">
             <objects>
                 <viewController storyboardIdentifier="newWord" id="6Ea-pQ-DDI" customClass="NewWordViewController" customModule="learnwords" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MtP-qy-bTz">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GaF-3z-5Up">
-                                <rect key="frame" x="0.0" y="50" width="414" height="686"/>
+                                <rect key="frame" x="0.0" y="74" width="414" height="788"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewWordCell" rowHeight="60" id="w2V-gr-rdj" customClass="NewWordCell" customModule="learnwords" customModuleProvider="target">
@@ -374,14 +432,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TVX-3P-f9T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1430" y="691"/>
+            <point key="canvasLocation" x="-1422" y="1713"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="62h-6M-nZg">
             <objects>
                 <navigationController id="ehH-rx-5TI" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="sEk-2S-FCT">
-                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" red="0.14117647058823529" green="0.72549019607843135" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -409,7 +467,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="AdJ-Wc-FdU" kind="relationship" relationship="viewControllers" id="tOf-Pn-rIL"/>
+                        <segue destination="8Bg-wZ-kzj" kind="relationship" relationship="viewControllers" id="MHa-IQ-V5r"/>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="qAF-C5-9hh"/>
                         <segue destination="vHI-cv-IOe" kind="relationship" relationship="viewControllers" id="hRE-gU-G9i"/>
                     </connections>
@@ -425,7 +483,4 @@
         <image name="microphone" width="30" height="30"/>
         <image name="settings" width="30" height="30"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="xao-4M-kiY"/>
-    </inferredMetricsTieBreakers>
 </document>

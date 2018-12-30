@@ -8,15 +8,10 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController  {
-    
-    @IBOutlet weak var selectSetBtn: UIButton!
-    @IBOutlet weak var numberOfGoodBtn: UIButton!
-    @IBOutlet weak var createSetBtn: UIButton!
+class SettingsViewController: UITableViewController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initControls()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -24,53 +19,66 @@ class SettingsViewController: UIViewController  {
         self.navigationController?.navigationBar.topItem?.title = "Settings"
     }
     
-    func initControls() {
-        self.selectSetBtn.dropShadow()
-        self.numberOfGoodBtn.dropShadow()
-        self.createSetBtn.dropShadow()
-//        initButtons()
+    override func viewWillLayoutSubviews() {
+        self.tableView.visibleCells.forEach {
+            ($0 as! SettingsCell).shadowView.dropShadow()
+        }
     }
     
-    func initButtons() {
-        let newWordButton = UIButton.init(type: UIButtonType.roundedRect)
-        newWordButton.frame = CGRect.init(x:20, y: view.frame.height/2, width: view.frame.width-40, height: 90)
-        newWordButton.setTitle("Add New Word", for: UIControlState.normal)
-        newWordButton.setTitleColor(UIColor.black, for: UIControlState.normal)
-        newWordButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 40)
-        newWordButton.addTarget(self, action: #selector(newWordButtonPressed), for: UIControlEvents.touchUpInside)
-        newWordButton.dropShadow()
-        self.view.addSubview(newWordButton)
-        
-        let newWordButton2 = UIButton.init(type: UIButtonType.roundedRect)
-        newWordButton2.frame = CGRect.init(x:20, y: view.frame.height/2 + 100, width: view.frame.width-40, height: 90)
-        newWordButton2.setTitle("Add New Word", for: UIControlState.normal)
-        newWordButton2.setTitleColor(UIColor.black, for: UIControlState.normal)
-        newWordButton2.titleLabel?.font = UIFont.boldSystemFont(ofSize: 40)
-        newWordButton2.addTarget(self, action: #selector(newWordButtonPressed), for: UIControlEvents.touchUpInside)
-        newWordButton2.dropShadow()
-        self.view.addSubview(newWordButton2)
+    //table
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
     }
     
-    @objc func newWordButtonPressed() {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "newWord") as! NewWordViewController
-        self.present(vc, animated: true, completion: nil)
-    }
-    @IBAction func selectSetClicked(_ sender: UIButton) {
-    }
-    @IBAction func numberOfGoodCLicked(_ sender: UIButton) {
-        var ac = UIAlertController()
-        
-        ac = UIAlertController.init(title: nil, message: "Select number", preferredStyle: UIAlertControllerStyle.actionSheet)
-        ac.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
-        
-        for i in 1 ... 10 {
-            ac.addAction(UIAlertAction(title: String(i), style: .default, handler: { (UIAlertAction) in
-                UserDefaults.standard.set(i, forKey: "answersToMaster")
-            }))
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cellIdentifier = "SettingsCell"
+        var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)
+        if cell == nil {
+            cell = UITableViewCell.init(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: cellIdentifier) as! SettingsCell
         }
         
-        self.present(ac, animated: true, completion: nil)
+        self.configureCell(cell: cell as! SettingsCell, indexPath: indexPath)
+        return cell!
     }
-    @IBAction func createSetClicked(_ sender: UIButton) {
+    
+    private func configureCell(cell: SettingsCell, indexPath: IndexPath) {
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = .white
+        cell.selectedBackgroundView = backgroundView
+        switch indexPath.row {
+        case 0:
+            cell.mainLabel.text = "Select language set"
+        case 1:
+            cell.mainLabel.text = "Number of good answers to master"
+        case 2:
+            cell.mainLabel.text = "Create set"
+        default:
+            cell.mainLabel.text = "Coming soon"
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 0:
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "languageSet") as! LanguageSetViewController
+            self.navigationController?.show(vc, sender: nil)
+        case 1:
+            var ac = UIAlertController()
+            ac = UIAlertController.init(title: nil, message: "Select number", preferredStyle: UIAlertControllerStyle.actionSheet)
+            ac.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+            
+            for i in 1 ... 10 {
+                ac.addAction(UIAlertAction(title: String(i), style: .default, handler: { (UIAlertAction) in
+                    UserDefaults.standard.set(i, forKey: "answersToMaster")
+                }))
+            }
+            self.present(ac, animated: true, completion: nil)
+        case 2:
+            print("coming soon")
+            
+        default:
+            print("coming soon")
+        }
     }
 }
