@@ -75,7 +75,8 @@ class SettingsViewController: UITableViewController  {
             }
             self.present(ac, animated: true, completion: nil)
         case 2:
-            print("coming soon")
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "newSet") as! NewSetViewController
+            self.navigationController?.show(vc, sender: nil)
             
         default:
             print("coming soon")

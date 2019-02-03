@@ -8,86 +8,148 @@
 
 import UIKit
 
-class NewWordViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+protocol NewWordViewControllerDelegate: AnyObject {
+    func didSaveWord(sender: NewWordViewController)
+}
+
+class NewWordViewController: UITableViewController {
     
-    @IBOutlet var tableView: UITableView!
-    var language: String!
-    var original: String!
-    var english: String!
-    var polish: String!
-    var alternative: String!
+    var knownLanguage: String? = nil
+    var learningLanguage: String? = nil
+    var newWord: (knownLanguage:String?, learningLanguage:String?) = (knownLanguage: nil, learningLanguage: nil)
+    weak var delegate: NewWordViewControllerDelegate?
+    
     
     override func viewDidLoad() {
-        self.title = "Add New Word"
-//        super.navTitle = "Add New Word"
         super.viewDidLoad()
-        tableView.reloadData()
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+    override func viewWillLayoutSubviews() {
+        self.tableView.visibleCells.forEach {
+            ($0 as! NewSetCell).shadowView.dropShadow()
+        }
+         self.navigationController?.navigationBar.topItem?.title = "New Word"
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cellIdentifier = "NewSetCell"
+        var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)
+        if cell == nil {
+            cell = UITableViewCell.init(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: cellIdentifier) as! NewSetCell
+        }
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NewWordCell", for: indexPath) as! NewWordCell
-        
-        initCell(cell: cell, indexPath: indexPath)
-        
-        return cell
+        self.configureCell(cell: cell as! NewSetCell, indexPath: indexPath)
+        return cell!
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
-    }
-    
-    func initCell(cell: NewWordCell, indexPath: IndexPath) {
-        
+    private func configureCell(cell: NewSetCell, indexPath: IndexPath) {
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = .white
+        cell.selectedBackgroundView = backgroundView
         switch indexPath.row {
         case 0:
-            do {
-                cell.titleLabel?.text = "Language"
-                cell.valueField?.isEnabled = false
+            cell.mainButton.setTitle((self.knownLanguage != nil) ? self.knownLanguage : "Word in known language", for: .normal)
+            cell.mainButton.addTarget(self, action: #selector(setKnownDidTouch), for: .touchUpInside)
+        case 1:
+            cell.mainButton.setTitle((self.learningLanguage != nil) ? self.learningLanguage : "Word in learning language", for: .normal)
+            cell.mainButton.addTarget(self, action: #selector(setLearningDidTouch), for: .touchUpInside)
+            cell.mainButton.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
+        case 2:
+            cell.mainButton.setTitle("Save", for: .normal)
+            cell.mainButton.addTarget(self, action: #selector(saveDidTouch), for: .touchUpInside)
+        default:
+            print("default")
+        }
+    }
+    
+    @objc func setKnownDidTouch(){
+        let alert = UIAlertController(style: .actionSheet, title: "New Set Name")
+        let config: TextField.Config = { textField in
+            textField.becomeFirstResponder()
+            textField.textColor = .black
+            textField.placeholder = "Enter name"
+            //            textField.left(image: image, color: .black)
+            textField.leftViewPadding = 12
+            textField.borderWidth = 1
+            textField.cornerRadius = 8
+            textField.borderColor = UIColor.lightGray.withAlphaComponent(0.5)
+            textField.backgroundColor = nil
+            textField.keyboardAppearance = .default
+            textField.keyboardType = .default
+            textField.returnKeyType = .done
+            textField.action { textField in
+                if textField.text != "" {
+                    self.knownLanguage = textField.text
+                    self.tableView.reloadData()
+                }
                 
             }
-            break
-        case 1:
-            do {
-                cell.titleLabel?.text = "Original"
-            }
-            break
-        case 2:
-            do {
-                cell.titleLabel?.text = "English"
-            }
-            break
-        case 3:
-            do {
-                cell.titleLabel?.text = "Polish"
-            }
-            break
-        case 4:
-            do {
-                cell.titleLabel?.text = "Alternative Alphabet"
-            }
-            break
-        default:
-            break
         }
+        alert.addOneTextField(configuration: config)
+        alert.addAction(title: "OK", style: .cancel)
+        alert.show()
+    }
+    
+    @objc func setLearningDidTouch(){
+        let alert = UIAlertController(style: .actionSheet, title: "New Set Depiction")
+        let config: TextField.Config = { textField in
+            textField.becomeFirstResponder()
+            textField.textColor = .black
+            textField.placeholder = "Enter name"
+            //            textField.left(image: image, color: .black)
+            textField.leftViewPadding = 12
+            textField.borderWidth = 1
+            textField.cornerRadius = 8
+            textField.borderColor = UIColor.lightGray.withAlphaComponent(0.5)
+            textField.backgroundColor = nil
+            textField.keyboardAppearance = .default
+            textField.keyboardType = .default
+            textField.returnKeyType = .done
+            textField.action { textField in
+                if textField.text != "" {
+                    self.learningLanguage = textField.text
+                    self.tableView.reloadData()
+                }
+            }
+        }
+        alert.addOneTextField(configuration: config)
+        alert.addAction(title: "OK", style: .cancel)
+        alert.show()
+    }
+    
+    @objc func saveDidTouch(){
+        if self.knownLanguage != nil && self.knownLanguage != "" {
+            self.newWord.knownLanguage = self.knownLanguage
+        } else {
+            self.showAlert(title: "Known language is not set!")
+            return
+        }
+        
+        if self.learningLanguage != nil && self.learningLanguage != "" {
+            self.newWord.learningLanguage = self.learningLanguage
+        } else {
+            self.showAlert(title: "Learning language is not set!")
+            return
+        }
+        
+        delegate?.didSaveWord(sender: self)
+        
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    func showAlert(title: String){
+        let alert = UIAlertController.init(title: title, message: nil, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
     }
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row==0 {
-            let ac = UIAlertController.init(title: "Select Language", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
-            ac.addAction(UIAlertAction.init(title: "Japan", style: UIAlertActionStyle.default, handler: { (UIAlertAction) in
-                self.language = "Japan"
-            }))
-            ac.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
-            self.present(ac, animated: true, completion: nil)
-        }
-    }
 }
