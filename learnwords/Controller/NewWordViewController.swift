@@ -18,7 +18,7 @@ class NewWordViewController: UITableViewController {
     var learningLanguage: String? = nil
     var newWord: (knownLanguage:String?, learningLanguage:String?) = (knownLanguage: nil, learningLanguage: nil)
     weak var delegate: NewWordViewControllerDelegate?
-    
+    var isEditMode: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -140,6 +140,9 @@ class NewWordViewController: UITableViewController {
             return
         }
         
+        if  self.isEditMode {
+            
+        }
         delegate?.didSaveWord(sender: self)
         
         self.navigationController?.popViewController(animated: true)

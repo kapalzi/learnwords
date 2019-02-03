@@ -13,6 +13,7 @@ class SetsCell: UITableViewCell {
     @IBOutlet weak var shadowView: UIView!
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var depictionLbl: UILabel!
+    @IBOutlet weak var editBtn: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()

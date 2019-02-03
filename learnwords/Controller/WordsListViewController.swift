@@ -48,5 +48,11 @@ class WordsListViewController: UITableViewController {
         cell.rightCell.text = words[indexPath.row].learningLanguage
     }
     
+    @IBAction func editBtnTouchUpInside(_ sender: UIButton) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "newWord") as! NewWordViewController
+        self.navigationController?.show(vc, sender: nil)
+    }
+    @IBAction func deleteBtnTouchUpInside(_ sender: UIButton) {
+    }
 }
 //https://stackoverflow.com/questions/24103069/add-swipe-to-delete-uitableviewcell

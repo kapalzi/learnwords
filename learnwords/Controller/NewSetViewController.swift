@@ -18,7 +18,6 @@ class NewSetViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,7 +32,7 @@ class NewSetViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 6
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -68,6 +67,9 @@ class NewSetViewController: UITableViewController {
         case 4:
             cell.mainButton.setTitle("Show Words", for: .normal)
             cell.mainButton.addTarget(self, action: #selector(showWordsDidTouch), for: .touchUpInside)
+        case 5:
+            cell.mainButton.setTitle("Save", for: .normal)
+            cell.mainButton.addTarget(self, action: #selector(saveDidTouch), for: .touchUpInside)
         default:
             print("default")
         }
@@ -151,6 +153,51 @@ class NewSetViewController: UITableViewController {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "wordsList") as! WordsListViewController
         vc.words = self.words
         self.navigationController?.show(vc, sender: nil)
+    }
+    
+    @objc func saveDidTouch(){
+        if self.setName != nil && self.setName != "" {
+            if self.setDepiction != nil && self.setDepiction != "" {
+                if self.learningLanguage.code != nil && self.learningLanguage.code != "" {
+                    if self.words.count != 0 {
+                        
+                        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+                        let code = "mySetNr\(LanguageSet.countLanguageSets(inContext: context)!+1)"
+                        
+                        LanguageSet.addNewLanguageSet(name: self.setName!, depiction: self.setDepiction!, code: code, isUnlocked: true, identifier: self.learningLanguage.code!,isUserMade: true, context: context)
+                        
+                        for word in words {
+                            Word.addNewWord(id: Word.getWordsNextIndex(inContext: context)!, knownLanguage: word.knownLanguage, learningLanguage: word.learningLanguage, languageSetCode: code, context: context)
+                        }
+                        self.showAlert(title: "Succesfully added new set!")
+                        
+                    } else {
+                        self.showAlert(title: "No words were added!")
+                        return
+                    }
+                } else {
+                    self.showAlert(title: "Learning language is not set!")
+                    return
+                }
+            } else {
+                self.showAlert(title: "Depiction is not set!")
+                return
+            }
+        } else {
+            self.showAlert(title: "Name is not set!")
+            return
+        }
+        
+        
+        
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    func showAlert(title: String){
+        let alert = UIAlertController.init(title: title, message: nil, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
     }
 }
 

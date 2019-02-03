@@ -224,17 +224,28 @@
                                             <rect key="frame" x="30" y="27" width="354" height="98"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xWv-Kt-jA0">
-                                                    <rect key="frame" x="20" y="10.000000000000004" width="314" height="51.333333333333343"/>
+                                                    <rect key="frame" x="20" y="10" width="314" height="51"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qMZ-XM-3Bi">
-                                                    <rect key="frame" x="20" y="69.333333333333329" width="314" height="20.666666666666671"/>
+                                                    <rect key="frame" x="20" y="69" width="314" height="21"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UtT-w9-r86">
+                                                    <rect key="frame" x="309" y="11" width="30" height="33"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
+                                                    <state key="normal" title="Edit">
+                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="editBtnDidTouchUpInside:" destination="vHI-cv-IOe" eventType="touchUpInside" id="E8I-G0-lGI"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
@@ -257,6 +268,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="depictionLbl" destination="qMZ-XM-3Bi" id="aea-LO-LT2"/>
+                                    <outlet property="editBtn" destination="UtT-w9-r86" id="ezg-hd-WLL"/>
                                     <outlet property="nameLbl" destination="xWv-Kt-jA0" id="LAb-zs-UwN"/>
                                     <outlet property="shadowView" destination="MXb-ly-F1T" id="hk3-oL-ejL"/>
                                 </connections>
@@ -574,31 +586,48 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="79.666666666666671"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bX4-N1-U6U">
-                                            <rect key="frame" x="20" y="29.666666666666671" width="180" height="20.333333333333329"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="180" id="v2u-HU-sA5"/>
-                                            </constraints>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bX4-N1-U6U">
+                                            <rect key="frame" x="20" y="11" width="180" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kOq-Zj-YA6">
-                                            <rect key="frame" x="214" y="29.666666666666671" width="180" height="20.333333333333329"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kOq-Zj-YA6">
+                                            <rect key="frame" x="20" y="39" width="180" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="geZ-CF-Obq">
+                                            <rect key="frame" x="347" y="23" width="52" height="36"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                            <state key="normal" title="Delete">
+                                                <color key="titleColor" red="0.96168380980000001" green="0.0" blue="0.044815678150000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="deleteBtnTouchUpInside:" destination="pMW-f2-kg1" eventType="touchUpInside" id="BuC-RQ-Liv"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OKe-E4-OGh">
+                                            <rect key="frame" x="286" y="23" width="31" height="36"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                            <state key="normal" title="Edit">
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="0.0"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="editBtnTouchUpInside:" destination="pMW-f2-kg1" eventType="touchUpInside" id="ErX-NL-kDw"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
-                                    <constraints>
-                                        <constraint firstItem="bX4-N1-U6U" firstAttribute="leading" secondItem="bc1-3I-BiZ" secondAttribute="leadingMargin" id="07Z-dn-lE7"/>
-                                        <constraint firstItem="kOq-Zj-YA6" firstAttribute="leading" secondItem="bX4-N1-U6U" secondAttribute="trailing" constant="14" id="9uS-ot-q0B"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="bX4-N1-U6U" secondAttribute="bottom" constant="19" id="DM8-PS-dCK"/>
-                                        <constraint firstItem="bX4-N1-U6U" firstAttribute="firstBaseline" secondItem="kOq-Zj-YA6" secondAttribute="firstBaseline" id="NZN-BX-5ac"/>
-                                        <constraint firstItem="kOq-Zj-YA6" firstAttribute="trailing" secondItem="bc1-3I-BiZ" secondAttribute="trailingMargin" id="RXJ-NQ-Qps"/>
-                                        <constraint firstItem="bX4-N1-U6U" firstAttribute="baseline" secondItem="kOq-Zj-YA6" secondAttribute="baseline" id="XGQ-ka-nd1"/>
-                                        <constraint firstItem="bX4-N1-U6U" firstAttribute="centerY" secondItem="bc1-3I-BiZ" secondAttribute="centerY" id="dWa-el-G74"/>
-                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="leftCell" destination="bX4-N1-U6U" id="JRG-Mr-Tmx"/>

@@ -22,10 +22,10 @@ class FillDb {
 
    private static func loadWordsFromFiles() {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    LanguageSet.addNewLanguageSet(name: "German from English", depiction:"1000 most popular words.", code: "germanenglishtop1000", isUnlocked: true, identifier:"de", context: context)
-        LanguageSet.addNewLanguageSet(name: "French from English", depiction:"1000 most popular words.", code: "frenchenglishtop1000", isUnlocked: true, identifier:"fr", context: context)
-        LanguageSet.addNewLanguageSet(name: "German from Polish", depiction:"1000 most popular words.", code: "germanpolishtop1000", isUnlocked: true, identifier:"de", context: context)
-        LanguageSet.addNewLanguageSet(name: "Polish from German", depiction:"1000 most popular words.", code: "polishgermantop1000", isUnlocked: true, identifier:"pl", context: context)
+    LanguageSet.addNewLanguageSet(name: "German from English", depiction:"1000 most popular words.", code: "germanenglishtop1000", isUnlocked: true, identifier:"de",isUserMade: false, context: context)
+        LanguageSet.addNewLanguageSet(name: "French from English", depiction:"1000 most popular words.", code: "frenchenglishtop1000", isUnlocked: true, identifier:"fr",isUserMade: false, context: context)
+        LanguageSet.addNewLanguageSet(name: "German from Polish", depiction:"1000 most popular words.", code: "germanpolishtop1000", isUnlocked: true, identifier:"de",isUserMade: false, context: context)
+        LanguageSet.addNewLanguageSet(name: "Polish from German", depiction:"1000 most popular words.", code: "polishgermantop1000", isUnlocked: true, identifier:"pl",isUserMade: false, context: context)
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
         var wordId = Int16(1)
         for language in ["germanenglishtop1000","frenchenglishtop1000","germanpolishtop1000","polishgermantop1000"] {

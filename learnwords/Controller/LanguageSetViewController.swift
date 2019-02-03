@@ -61,6 +61,10 @@ class LanguageSetViewController: UITableViewController  {
         let set = self.tableData![indexPath.row] as LanguageSet
         cell.nameLbl.text = set.name
         cell.depictionLbl.text = set.depiction
+        
+        if set.isUserMade == true {
+            cell.editBtn.isHidden = false
+        }
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -82,5 +86,27 @@ class LanguageSetViewController: UITableViewController  {
         }
     }
     
+    @IBAction func editBtnDidTouchUpInside(_ sender: UIButton) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "newSet") as! NewSetViewController
+        guard let cell = sender.superview?.superview?.superview as? SetsCell else {
+            return // or fatalError() or whatever
+        }
+        let indexPath = tableView.indexPath(for: cell)
+        let set = self.tableData![indexPath!.row] as LanguageSet
+        
+        vc.setName = set.name
+        vc.setDepiction = set.depiction
+        vc.learningLanguage.code = set.identifier
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+
+        let words = Word.getWords(ForSet: set, inContext: context)
+        var tupleWords: [(knownLanguage:String?, learningLanguage:String?)] = [(knownLanguage:String?, learningLanguage:String?)]()
+        words.forEach { (word) in
+            let tuple = (knownLanguage:word.knownLanguage, learningLanguage:word.learningLanguage)
+            tupleWords.append(tuple)
+        }
+        vc.words = tupleWords
+        self.navigationController?.show(vc, sender: nil)
+    }
 }
 

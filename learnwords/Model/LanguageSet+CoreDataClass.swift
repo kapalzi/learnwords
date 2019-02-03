@@ -13,7 +13,7 @@ import CoreData
 @objc(LanguageSet)
 public class LanguageSet: NSManagedObject {
 
-    static func addNewLanguageSet(name: String, depiction: String, code: String, isUnlocked: Bool, identifier: String, context: NSManagedObjectContext) {
+    static func addNewLanguageSet(name: String, depiction: String, code: String, isUnlocked: Bool, identifier: String, isUserMade: Bool, context: NSManagedObjectContext) {
         let newSet = NSEntityDescription.insertNewObject(forEntityName: "LanguageSet", into: context) as! LanguageSet
         
         newSet.name = name
@@ -21,6 +21,7 @@ public class LanguageSet: NSManagedObject {
         newSet.isUnlocked = isUnlocked
         newSet.identifier = identifier
         newSet.depiction = depiction
+        newSet.isUserMade = isUserMade
         
     }
     
@@ -128,6 +129,30 @@ public class LanguageSet: NSManagedObject {
         
         if let results = fetchedResultController.fetchedObjects{
             return results
+        }
+        return nil
+    }
+    
+    static func countLanguageSets(inContext context: NSManagedObjectContext) -> Int? {
+        let request: NSFetchRequest<LanguageSet> = NSFetchRequest()
+        request .returnsObjectsAsFaults = false
+        let entity = NSEntityDescription.entity(forEntityName: "LanguageSet", in: context)
+        request.entity = entity
+        let sortDescriptor = NSSortDescriptor(key: "code", ascending: true)
+        request.sortDescriptors = [sortDescriptor]
+        
+        let fetchedResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        
+        do {
+            try fetchedResultController.performFetch()
+        } catch {
+            let fetchError = error as NSError
+            print("Unresolved error %@, %@", fetchError, fetchError.userInfo)
+            abort()
+        }
+        
+        if let results = fetchedResultController.fetchedObjects{
+            return results.count
         }
         return nil
     }

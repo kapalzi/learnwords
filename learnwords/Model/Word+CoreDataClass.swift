@@ -148,6 +148,28 @@ public class Word: NSManagedObject {
         }
         
         return fetchedResultController.fetchedObjects!.first!
+    }
+    
+    static func getWordsNextIndex(inContext context: NSManagedObjectContext) -> Int16? {
         
+        let request: NSFetchRequest<Word> = NSFetchRequest()
+        request .returnsObjectsAsFaults = false
+        let entity = NSEntityDescription.entity(forEntityName: "Word", in: context)
+        request.entity = entity
+        let sortDescriptor = NSSortDescriptor(key: "goodCounter", ascending: false)
+        request.sortDescriptors = [sortDescriptor]
+        let fetchedResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        
+        do {
+            try fetchedResultController.performFetch()
+        } catch {
+            let fetchError = error as NSError
+            print("Unresolved error %@, %@", fetchError, fetchError.userInfo)
+            abort()
+        }
+        if let results = fetchedResultController.fetchedObjects{
+            return Int16(results.count + 1)
+        }
+        return nil
     }
 }
