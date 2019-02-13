@@ -51,14 +51,16 @@ class RecordButton: UIButton {
     }
     
       func startAnimation() {
-        
-        let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
-        basicAnimation.toValue = 1
-        basicAnimation.duration = 60
-        basicAnimation.fillMode = kCAFillModeForwards
-        basicAnimation.isRemovedOnCompletion = true
-        
-        shapeLayer.add(basicAnimation, forKey: "urSoBasic")
+        DispatchQueue.main.async {
+            let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
+            basicAnimation.toValue = 1
+            basicAnimation.duration = 60
+            basicAnimation.fillMode = kCAFillModeForwards
+            basicAnimation.isRemovedOnCompletion = true
+            
+            self.shapeLayer.add(basicAnimation, forKey: "urSoBasic")
+        }
+
     }
     
     func stopAnimation() {

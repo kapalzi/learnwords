@@ -109,6 +109,24 @@ public class LanguageSet: NSManagedObject {
         return nil
     }
     
+    static func editLanguageSet(newName: String, forCode code:String, inContext context: NSManagedObjectContext) {
+        
+        let setToEdit = getLanguageSet(forCode: code, inContext: context)
+        setToEdit?.setValue(newName, forKey: "name")
+    }
+    
+    static func editLanguageSet(newDepiction: String, forCode code:String, inContext context: NSManagedObjectContext) {
+        
+        let setToEdit = getLanguageSet(forCode: code, inContext: context)
+        setToEdit?.setValue(newDepiction, forKey: "depiction")
+    }
+    
+    static func editLanguageSet(newIdentifier: String, forCode code:String, inContext context: NSManagedObjectContext) {
+        
+        let setToEdit = getLanguageSet(forCode: code, inContext: context)
+        setToEdit?.setValue(newIdentifier, forKey: "identifier")
+    }
+    
     static func getAllLanguageSets(inContext context: NSManagedObjectContext) -> [LanguageSet]? {
         let request: NSFetchRequest<LanguageSet> = NSFetchRequest()
         request .returnsObjectsAsFaults = false

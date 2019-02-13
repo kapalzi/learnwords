@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 protocol NewWordViewControllerDelegate: AnyObject {
     func didSaveWord(sender: NewWordViewController)
@@ -16,7 +17,8 @@ class NewWordViewController: UITableViewController {
     
     var knownLanguage: String? = nil
     var learningLanguage: String? = nil
-    var newWord: (knownLanguage:String?, learningLanguage:String?) = (knownLanguage: nil, learningLanguage: nil)
+//    var newWord: (knownLanguage:String?, learningLanguage:String?) = (knownLanguage: nil, learningLanguage: nil)
+    var newWord: Word? = nil
     weak var delegate: NewWordViewControllerDelegate?
     var isEditMode: Bool = false
     
@@ -127,16 +129,20 @@ class NewWordViewController: UITableViewController {
     
     @objc func saveDidTouch(){
         if self.knownLanguage != nil && self.knownLanguage != "" {
-            self.newWord.knownLanguage = self.knownLanguage
+            if self.learningLanguage != nil && self.learningLanguage != "" {
+                
+                let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+                let entityDescription = NSEntityDescription.entity(forEntityName: "Word", in: context)
+                
+                self.newWord = Word(entity: entityDescription!, insertInto: nil)
+                self.newWord?.learningLanguage = self.learningLanguage
+                self.newWord?.knownLanguage = self.knownLanguage
+            } else {
+                self.showAlert(title: "Learning language is not set!")
+                return
+            }
         } else {
             self.showAlert(title: "Known language is not set!")
-            return
-        }
-        
-        if self.learningLanguage != nil && self.learningLanguage != "" {
-            self.newWord.learningLanguage = self.learningLanguage
-        } else {
-            self.showAlert(title: "Learning language is not set!")
             return
         }
         

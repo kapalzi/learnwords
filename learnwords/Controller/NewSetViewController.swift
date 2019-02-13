@@ -13,8 +13,12 @@ class NewSetViewController: UITableViewController {
     var setName: String? = nil
     var setDepiction: String? = nil
     var learningLanguage: (name:String?, code:String?) = (name: nil, code: nil)
-    var words: [(knownLanguage:String?, learningLanguage:String?)] = [(knownLanguage:String?, learningLanguage:String?)]()
-    
+//    var words: [(knownLanguage:String?, learningLanguage:String?)] = [(knownLanguage:String?, learningLanguage:String?)]()
+    var words: [Word]? = nil
+    var wordsToEdit: [Word]? = nil
+    var wordsToDelete: [Word]? = nil
+    var wordsToAdd: [Word]? = nil
+    var setCode: String? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,6 +85,9 @@ class NewSetViewController: UITableViewController {
             textField.becomeFirstResponder()
             textField.textColor = .black
             textField.placeholder = "Enter name"
+            if let name = self.setName {
+                textField.text = name
+            }
 //            textField.left(image: image, color: .black)
             textField.leftViewPadding = 12
             textField.borderWidth = 1
@@ -109,6 +116,9 @@ class NewSetViewController: UITableViewController {
             textField.becomeFirstResponder()
             textField.textColor = .black
             textField.placeholder = "Enter name"
+            if let depiction = self.setDepiction {
+                textField.text = depiction
+            }
             //            textField.left(image: image, color: .black)
             textField.leftViewPadding = 12
             textField.borderWidth = 1
@@ -159,17 +169,26 @@ class NewSetViewController: UITableViewController {
         if self.setName != nil && self.setName != "" {
             if self.setDepiction != nil && self.setDepiction != "" {
                 if self.learningLanguage.code != nil && self.learningLanguage.code != "" {
-                    if self.words.count != 0 {
-                        
+                    if let words =  self.words, words.count != 0 {
                         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-                        let code = "mySetNr\(LanguageSet.countLanguageSets(inContext: context)!+1)"
-                        
-                        LanguageSet.addNewLanguageSet(name: self.setName!, depiction: self.setDepiction!, code: code, isUnlocked: true, identifier: self.learningLanguage.code!,isUserMade: true, context: context)
-                        
-                        for word in words {
-                            Word.addNewWord(id: Word.getWordsNextIndex(inContext: context)!, knownLanguage: word.knownLanguage, learningLanguage: word.learningLanguage, languageSetCode: code, context: context)
+                        if self.setCode != nil {
+                            LanguageSet.editLanguageSet(newName: self.setName!, forCode: self.setCode!, inContext: context)
+                            LanguageSet.editLanguageSet(newDepiction: self.setDepiction!, forCode: self.setCode!, inContext: context)
+                            LanguageSet.editLanguageSet(newIdentifier: self.learningLanguage.code!, forCode: self.setCode!, inContext: context)
+                            
+                            self.showAlert(title: "Succesfully edited set!")
+                            (UIApplication.shared.delegate as! AppDelegate).saveContext()
+                        } else {
+                            let code = "mySetNr\(LanguageSet.countLanguageSets(inContext: context)!+1)"
+                            
+                            LanguageSet.addNewLanguageSet(name: self.setName!, depiction: self.setDepiction!, code: code, isUnlocked: true, identifier: self.learningLanguage.code!,isUserMade: true, context: context)
+                            
+                            for word in words {
+                                Word.addNewWord(id: Word.getWordsNextIndex(inContext: context)!, knownLanguage: word.knownLanguage, learningLanguage: word.learningLanguage, languageSetCode: code, context: context)
+                            }
+                            self.showAlert(title: "Succesfully added new set!")
+                            (UIApplication.shared.delegate as! AppDelegate).saveContext()
                         }
-                        self.showAlert(title: "Succesfully added new set!")
                         
                     } else {
                         self.showAlert(title: "No words were added!")
@@ -187,9 +206,6 @@ class NewSetViewController: UITableViewController {
             self.showAlert(title: "Name is not set!")
             return
         }
-        
-        
-        
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -203,6 +219,7 @@ class NewSetViewController: UITableViewController {
 
 extension NewSetViewController: NewWordViewControllerDelegate {
     func didSaveWord(sender: NewWordViewController){
-        self.words.append(sender.newWord)
+        self.words?.append(sender.newWord!)
+//        self.editWords.append(sender.newWord)
     }
 }

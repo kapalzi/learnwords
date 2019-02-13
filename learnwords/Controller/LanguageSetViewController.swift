@@ -97,15 +97,16 @@ class LanguageSetViewController: UITableViewController  {
         vc.setName = set.name
         vc.setDepiction = set.depiction
         vc.learningLanguage.code = set.identifier
+        vc.setCode = set.code
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
         let words = Word.getWords(ForSet: set, inContext: context)
-        var tupleWords: [(knownLanguage:String?, learningLanguage:String?)] = [(knownLanguage:String?, learningLanguage:String?)]()
-        words.forEach { (word) in
-            let tuple = (knownLanguage:word.knownLanguage, learningLanguage:word.learningLanguage)
-            tupleWords.append(tuple)
-        }
-        vc.words = tupleWords
+//        var tupleWords: [(knownLanguage:String?, learningLanguage:String?)] = [(knownLanguage:String?, learningLanguage:String?)]()
+//        words.forEach { (word) in
+//            let tuple = (knownLanguage:word.knownLanguage, learningLanguage:word.learningLanguage)
+//            tupleWords.append(tuple)
+//        }
+        vc.words = words
         self.navigationController?.show(vc, sender: nil)
     }
 }

@@ -222,6 +222,10 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
             self.card.shake()
             self.textField.text = ""
             self.playHaptic()
+            if self.recordBtn.isSelected {
+                self.stopRecording()
+                self.authorizeSpeechRecognition()
+            }
         }
     }
     
@@ -270,20 +274,11 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
         self.loadPrevWord()
     }
     @IBAction func microphoneBtnClicked(_ sender: RecordButton) {
-        
-        sender.isSelected = !sender.isSelected
-        if sender.isSelected {
-            sender.startAnimation()
-//            let tintedImage = sender.backgroundImage(for: .normal)?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
-//            sender.setBackgroundImage(tintedImage, for: .normal)
-//            sender.tintColor = #colorLiteral(red: 0.2980392157, green: 0.8196078431, blue: 0.2156862745, alpha: 1)
+        print("DID CLICK")
+        self.recordBtn.isSelected = !sender.isSelected
+        if self.recordBtn.isSelected {
             self.authorizeSpeechRecognition()
-            
         } else {
-            sender.stopAnimation()
-//            let tintedImage = sender.backgroundImage(for: .normal)?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
-//            sender.setBackgroundImage(tintedImage, for: .normal)
-//            sender.tintColor = .black
             self.stopRecording()
         }
     }
