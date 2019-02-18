@@ -8,20 +8,29 @@
 
 import UIKit
 
+protocol WordsListViewControllerDelegate: AnyObject {
+    func didSaveWords(sender: WordsListViewController)
+}
+
 class WordsListViewController: UITableViewController {
     
 //    var words: [(knownLanguage:String?, learningLanguage:String?)] = [(knownLanguage:String?, learningLanguage:String?)]()
-     var words: [Word]? = nil
+    var words: [Word]? = nil
+    var editIndex = 0
+    weak var delegate: WordsListViewControllerDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
+        self.tableView.reloadData()
     }
     
     override func viewWillLayoutSubviews() {
         self.navigationController?.navigationBar.topItem?.title = "Words List"
+        self.navigationController?.navigationBar.topItem?.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .save, target: self, action: #selector(saveDidClick))
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -60,14 +69,37 @@ class WordsListViewController: UITableViewController {
         }
         let indexPath = tableView.indexPath(for: cell)
         let word = self.words?[indexPath!.row]
-        
         vc.learningLanguage = word?.learningLanguage
         vc.knownLanguage = word?.knownLanguage
         vc.isEditMode = true
+        vc.delegate = self
+        self.editIndex = indexPath!.row
         self.navigationController?.show(vc, sender: nil)
     }
     @IBAction func deleteBtnTouchUpInside(_ sender: UIButton) {
+        guard let cell = sender.superview?.superview as? WordsListTableViewCell else {
+            return // or fatalError() or whatever
+        }
+        let index = self.tableView.indexPath(for: cell)
         
+        self.words?.remove(at: (index?.row)!)
+        
+        self.tableView.reloadData()
     }
+    
+    @objc func saveDidClick() {
+        self.delegate?.didSaveWords(sender: self)
+        self.navigationController?.popViewController(animated: true)
+    }
+    
 }
 //https://stackoverflow.com/questions/24103069/add-swipe-to-delete-uitableviewcell
+extension WordsListViewController: NewWordViewControllerDelegate {
+    func didSaveWord(sender: NewWordViewController) {
+        
+    }
+    
+    func didEditWord(sender: NewWordViewController){
+        self.words![self.editIndex] = sender.newWord!
+    }
+}

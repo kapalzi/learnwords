@@ -96,7 +96,14 @@ class LanguageSetViewController: UITableViewController  {
         
         vc.setName = set.name
         vc.setDepiction = set.depiction
-        vc.learningLanguage.code = set.identifier
+        vc.learningLanguage = (set.learnignLanguage, set.identifier)
+        
+        let locale = NSLocale(localeIdentifier: set.knownLanguage!)
+        print(locale)
+        print(set)
+        print(locale.displayName(forKey: NSLocale.Key.identifier, value: set.knownLanguage)!)
+        
+        vc.yourLanguage = (locale.displayName(forKey: NSLocale.Key.identifier, value: set.knownLanguage)! , set.knownLanguage!)
         vc.setCode = set.code
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 

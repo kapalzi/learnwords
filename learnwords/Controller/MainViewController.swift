@@ -26,6 +26,7 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
     var speechRecognizer = SFSpeechRecognizer()
     var request = SFSpeechAudioBufferRecognitionRequest()
     var recognitionTask: SFSpeechRecognitionTask?
+    var isSpeechSupported = true
     @IBOutlet weak var recordBtn: RecordButton!
     
     override func viewDidLoad() {
@@ -130,7 +131,16 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         self.wordsTable = Word.getWordsForSelectedSet(inContext: context)
         print( LanguageSet.getSelectedSet(context: context).identifier!)
-        speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: LanguageSet.getSelectedSet(context: context).identifier!))
+        
+        guard let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: LanguageSet.getSelectedSet(context: context).identifier!)) else {
+            let alert = UIAlertController.init(title: "Selected set's language is not supported by speech recognition feature.", message: nil, preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+            alert.addAction(okAction)
+            self.present(alert, animated: true, completion: nil)
+            self.isSpeechSupported = false
+            return
+        }
+        self.speechRecognizer = speechRecognizer
     }
     
     func loadWord(index: Int) {
@@ -274,12 +284,13 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
         self.loadPrevWord()
     }
     @IBAction func microphoneBtnClicked(_ sender: RecordButton) {
-        print("DID CLICK")
-        self.recordBtn.isSelected = !sender.isSelected
-        if self.recordBtn.isSelected {
-            self.authorizeSpeechRecognition()
-        } else {
-            self.stopRecording()
+        if self.isSpeechSupported {
+            self.recordBtn.isSelected = !sender.isSelected
+            if self.recordBtn.isSelected {
+                self.authorizeSpeechRecognition()
+            } else {
+                self.stopRecording()
+            }
         }
     }
     

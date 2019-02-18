@@ -172,4 +172,11 @@ public class Word: NSManagedObject {
         }
         return nil
     }
+    
+    static func editWord(newKnownLanguage: String, newLearningLanguage: String, forId wordIndex: Int16, inContext context: NSManagedObjectContext) {
+        
+        let wordToEdit = self.getWord(forIndex: wordIndex, inContext: context)
+        wordToEdit.setValue(newKnownLanguage, forKey: "knownLanguage")
+        wordToEdit.setValue(newLearningLanguage, forKey: "learningLanguage")
+    }
 }

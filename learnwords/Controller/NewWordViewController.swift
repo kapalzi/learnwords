@@ -11,6 +11,7 @@ import CoreData
 
 protocol NewWordViewControllerDelegate: AnyObject {
     func didSaveWord(sender: NewWordViewController)
+    func didEditWord(sender: NewWordViewController)
 }
 
 class NewWordViewController: UITableViewController {
@@ -35,6 +36,7 @@ class NewWordViewController: UITableViewController {
             ($0 as! NewSetCell).shadowView.dropShadow()
         }
          self.navigationController?.navigationBar.topItem?.title = "New Word"
+        self.navigationController?.navigationBar.topItem?.rightBarButtonItem = nil
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -77,6 +79,7 @@ class NewWordViewController: UITableViewController {
         let config: TextField.Config = { textField in
             textField.becomeFirstResponder()
             textField.textColor = .black
+            textField.text = (self.knownLanguage != nil) ? self.knownLanguage : ""
             textField.placeholder = "Enter name"
             //            textField.left(image: image, color: .black)
             textField.leftViewPadding = 12
@@ -105,6 +108,7 @@ class NewWordViewController: UITableViewController {
         let config: TextField.Config = { textField in
             textField.becomeFirstResponder()
             textField.textColor = .black
+            textField.text = (self.learningLanguage != nil) ? self.learningLanguage : ""
             textField.placeholder = "Enter name"
             //            textField.left(image: image, color: .black)
             textField.leftViewPadding = 12
@@ -128,10 +132,11 @@ class NewWordViewController: UITableViewController {
     }
     
     @objc func saveDidTouch(){
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         if self.knownLanguage != nil && self.knownLanguage != "" {
             if self.learningLanguage != nil && self.learningLanguage != "" {
                 
-                let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+                
                 let entityDescription = NSEntityDescription.entity(forEntityName: "Word", in: context)
                 
                 self.newWord = Word(entity: entityDescription!, insertInto: nil)
@@ -147,7 +152,9 @@ class NewWordViewController: UITableViewController {
         }
         
         if  self.isEditMode {
-            
+            delegate?.didEditWord(sender: self)
+            self.navigationController?.popViewController(animated: true)
+            return
         }
         delegate?.didSaveWord(sender: self)
         
