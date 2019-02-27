@@ -8,7 +8,7 @@
         <attribute name="isUnlocked" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="isUserMade" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="knownLanguage" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="learnignLanguage" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="learningLanguage" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="languageSet" inverseEntity="User" syncable="YES"/>
         <relationship name="word" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Word" inverseName="languageSet" inverseEntity="Word" syncable="YES"/>

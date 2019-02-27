@@ -22,8 +22,8 @@ public class LanguageSet: NSManagedObject {
         newSet.identifier = identifier
         newSet.depiction = depiction
         newSet.isUserMade = isUserMade
-        newSet.learnignLanguage = ""
-        newSet.knownLanguage = ""
+        newSet.learningLanguage = learningLanguage
+        newSet.knownLanguage = knownLanguage
         
     }
     
@@ -111,22 +111,14 @@ public class LanguageSet: NSManagedObject {
         return nil
     }
     
-    static func editLanguageSet(newName: String, forCode code:String, inContext context: NSManagedObjectContext) {
+    static func editLanguageSet(newName: String, newDepiction: String, newIdentifier: String, newKnownLanguage: String, newLearningLanguage: String, forCode code:String, inContext context: NSManagedObjectContext) {
         
         let setToEdit = getLanguageSet(forCode: code, inContext: context)
         setToEdit?.setValue(newName, forKey: "name")
-    }
-    
-    static func editLanguageSet(newDepiction: String, forCode code:String, inContext context: NSManagedObjectContext) {
-        
-        let setToEdit = getLanguageSet(forCode: code, inContext: context)
         setToEdit?.setValue(newDepiction, forKey: "depiction")
-    }
-    
-    static func editLanguageSet(newIdentifier: String, forCode code:String, inContext context: NSManagedObjectContext) {
-        
-        let setToEdit = getLanguageSet(forCode: code, inContext: context)
         setToEdit?.setValue(newIdentifier, forKey: "identifier")
+        setToEdit?.setValue(newKnownLanguage, forKey: "knownLanguage")
+        setToEdit?.setValue(newLearningLanguage, forKey: "learningLanguage")
     }
     
     static func getAllLanguageSets(inContext context: NSManagedObjectContext) -> [LanguageSet]? {
@@ -136,6 +128,58 @@ public class LanguageSet: NSManagedObject {
         request.entity = entity
         let sortDescriptor = NSSortDescriptor(key: "code", ascending: true)
         request.sortDescriptors = [sortDescriptor]
+        
+        let fetchedResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        
+        do {
+            try fetchedResultController.performFetch()
+        } catch {
+            let fetchError = error as NSError
+            print("Unresolved error %@, %@", fetchError, fetchError.userInfo)
+            abort()
+        }
+        
+        if let results = fetchedResultController.fetchedObjects{
+            return results
+        }
+        return nil
+    }
+    
+    static func getAllLanguageSets(forKnownLanguage knownLanguage: String, inContext context: NSManagedObjectContext) -> [LanguageSet]? {
+        let request: NSFetchRequest<LanguageSet> = NSFetchRequest()
+        request .returnsObjectsAsFaults = false
+        let entity = NSEntityDescription.entity(forEntityName: "LanguageSet", in: context)
+        request.entity = entity
+        let sortDescriptor = NSSortDescriptor(key: "code", ascending: true)
+        request.sortDescriptors = [sortDescriptor]
+        let predicate = NSPredicate(format: "knownLanguage = %@", knownLanguage)
+        request.predicate = predicate
+        
+        let fetchedResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        
+        do {
+            try fetchedResultController.performFetch()
+        } catch {
+            let fetchError = error as NSError
+            print("Unresolved error %@, %@", fetchError, fetchError.userInfo)
+            abort()
+        }
+        
+        if let results = fetchedResultController.fetchedObjects{
+            return results
+        }
+        return nil
+    }
+    
+    static func getAllLanguageSets(forKnownLanguage knownLanguage: String, forLearningLanguage learningLanguage: String, inContext context: NSManagedObjectContext) -> [LanguageSet]? {
+        let request: NSFetchRequest<LanguageSet> = NSFetchRequest()
+        request .returnsObjectsAsFaults = false
+        let entity = NSEntityDescription.entity(forEntityName: "LanguageSet", in: context)
+        request.entity = entity
+        let sortDescriptor = NSSortDescriptor(key: "code", ascending: true)
+        request.sortDescriptors = [sortDescriptor]
+        let predicate = NSPredicate(format: "knownLanguage = %@ AND learningLanguage = %@", knownLanguage, learningLanguage)
+        request.predicate = predicate
         
         let fetchedResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         
@@ -176,4 +220,56 @@ public class LanguageSet: NSManagedObject {
         }
         return nil
     }
+    
+    static func getKnownLanguages(inContext context: NSManagedObjectContext) -> [(code: String, name: String)]? {
+       
+        if let sets = LanguageSet.getAllLanguageSets(inContext: context) {
+            var knownLanguages = sets.map{
+                $0.knownLanguage ?? ""
+            }
+            
+            knownLanguages = Array(Set(knownLanguages))
+            
+            var returnArray = [(code: String, name: String)]()
+            
+            knownLanguages.forEach { (languageCode) in
+                let locale = NSLocale(localeIdentifier: languageCode)
+                let current = NSLocale.current
+                
+                let currentLocale = NSLocale(localeIdentifier: current.languageCode!)
+                
+                if let countrName = currentLocale.displayName(forKey: NSLocale.Key.identifier, value: locale.localeIdentifier) {
+                    returnArray.append((code: languageCode, name: countrName))
+                }
+            }
+            return returnArray
+        }
+        return nil
+    }
+    
+    static func getLearningLanguages(forSelectedKnownLanguage knownLanguageCode: String, inContext context: NSManagedObjectContext) -> [(code: String, name: String)]? {
+        if let sets = LanguageSet.getAllLanguageSets(forKnownLanguage: knownLanguageCode, inContext: context) {
+            var learningLanguages = sets.map{
+                $0.learningLanguage ?? ""
+            }
+            
+            learningLanguages = Array(Set(learningLanguages))
+            
+            var returnArray = [(code: String, name: String)]()
+            
+            learningLanguages.forEach { (languageCode) in
+                let locale = NSLocale(localeIdentifier: languageCode)
+                let current = NSLocale.current
+                
+                let currentLocale = NSLocale(localeIdentifier: current.languageCode!)
+                
+                if let countrName = currentLocale.displayName(forKey: NSLocale.Key.identifier, value: locale.localeIdentifier) {
+                    returnArray.append((code: languageCode, name: countrName))
+                }
+            }
+            return returnArray
+        }
+        return nil
+    }
+        
 }

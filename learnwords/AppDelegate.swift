@@ -54,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
-        print(container.persistentStoreCoordinator.persistentStores.first!.url!.absoluteString)
+        print(container.persistentStoreCoordinator.persistentStores.first!.url!.path.replacingOccurrences(of: " ", with:"\\ "))
         return container
     }()
 

@@ -17,6 +17,9 @@
 		32A0736C205BBFA500415A97 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32A0736A205BBFA500415A97 /* LaunchScreen.storyboard */; };
 		E2010BCE21CD9154006D9DD7 /* RecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2010BCD21CD9154006D9DD7 /* RecordButton.swift */; };
 		E2010BD321CF118A006D9DD7 /* FillDb.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2010BD221CF118A006D9DD7 /* FillDb.swift */; };
+		E238686322269AD0000DEEC8 /* KnownLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E238686222269AD0000DEEC8 /* KnownLanguageViewController.swift */; };
+		E238686522269AE3000DEEC8 /* LearningLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E238686422269AE3000DEEC8 /* LearningLanguageViewController.swift */; };
+		E238686722269C69000DEEC8 /* BaseSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E238686622269C69000DEEC8 /* BaseSetViewController.swift */; };
 		E23B6DDD21A55224000FAAEE /* LanguageSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23B6DDC21A55224000FAAEE /* LanguageSetViewController.swift */; };
 		E23B6DDF21A58881000FAAEE /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23B6DDE21A58881000FAAEE /* StatisticsViewController.swift */; };
 		E23B6DE121A58C3A000FAAEE /* StatisticsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23B6DE021A58C3A000FAAEE /* StatisticsCell.swift */; };
@@ -107,6 +110,9 @@
 		E2010BCD21CD9154006D9DD7 /* RecordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordButton.swift; sourceTree = "<group>"; };
 		E2010BD221CF118A006D9DD7 /* FillDb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillDb.swift; sourceTree = "<group>"; };
 		E233634722157EDC0079F2ED /* learnwords 1.4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "learnwords 1.4.xcdatamodel"; sourceTree = "<group>"; };
+		E238686222269AD0000DEEC8 /* KnownLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnownLanguageViewController.swift; sourceTree = "<group>"; };
+		E238686422269AE3000DEEC8 /* LearningLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningLanguageViewController.swift; sourceTree = "<group>"; };
+		E238686622269C69000DEEC8 /* BaseSetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSetViewController.swift; sourceTree = "<group>"; };
 		E23B6DDC21A55224000FAAEE /* LanguageSetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSetViewController.swift; sourceTree = "<group>"; };
 		E23B6DDE21A58881000FAAEE /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		E23B6DE021A58C3A000FAAEE /* StatisticsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsCell.swift; sourceTree = "<group>"; };
@@ -236,6 +242,9 @@
 				32A07360205BBFA500415A97 /* MainViewController.swift */,
 				E291CCA0206D701E001AD3B1 /* SettingsViewController.swift */,
 				E23B6DDC21A55224000FAAEE /* LanguageSetViewController.swift */,
+				E238686622269C69000DEEC8 /* BaseSetViewController.swift */,
+				E238686222269AD0000DEEC8 /* KnownLanguageViewController.swift */,
+				E238686422269AE3000DEEC8 /* LearningLanguageViewController.swift */,
 				E23B6DDE21A58881000FAAEE /* StatisticsViewController.swift */,
 				E288565F2206422800DD8C22 /* NewSetViewController.swift */,
 				324C841A206E289C00C19329 /* NewWordViewController.swift */,
@@ -696,6 +705,7 @@
 				E28856B6220668CF00DD8C22 /* UIImageView+Extensions.swift in Sources */,
 				E28856B8220668CF00DD8C22 /* UIView+Extensions.swift in Sources */,
 				E28856CD220668CF00DD8C22 /* CountryCell.swift in Sources */,
+				E238686522269AE3000DEEC8 /* LearningLanguageViewController.swift in Sources */,
 				E28856BD220668CF00DD8C22 /* UIImage+Extensions.swift in Sources */,
 				E2E181AE21A42E43001359F8 /* User+CoreDataClass.swift in Sources */,
 				E28856CC220668CF00DD8C22 /* CurrencyCell.swift in Sources */,
@@ -737,7 +747,9 @@
 				E28856B9220668CF00DD8C22 /* Date+Extension.swift in Sources */,
 				E23B6DE121A58C3A000FAAEE /* StatisticsCell.swift in Sources */,
 				E28856E4220668CF00DD8C22 /* Label.swift in Sources */,
+				E238686322269AD0000DEEC8 /* KnownLanguageViewController.swift in Sources */,
 				E2E181AA21A42E43001359F8 /* LanguageSet+CoreDataClass.swift in Sources */,
+				E238686722269C69000DEEC8 /* BaseSetViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

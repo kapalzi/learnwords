@@ -61,8 +61,11 @@ class SettingsViewController: UITableViewController  {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "languageSet") as! LanguageSetViewController
+//            let vc = self.storyboard?.instantiateViewController(withIdentifier: "languageSet") as! LanguageSetViewController
+//            self.navigationController?.show(vc, sender: nil)
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "knownSet") as! KnownLanguageViewController
             self.navigationController?.show(vc, sender: nil)
+            
         case 1:
             var ac = UIAlertController()
             ac = UIAlertController.init(title: nil, message: "Select number", preferredStyle: UIAlertControllerStyle.actionSheet)

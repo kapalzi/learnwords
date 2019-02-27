@@ -13,7 +13,8 @@ public struct LocaleInfo {
     public var phoneCode: String
     
     public var flag: UIImage? {
-        return UIImage(named: "Countries.bundle/Images/\(code.uppercased())", in: Bundle.main, compatibleWith: nil)
+        return nil
+//        return UIImage(named: "Countries.bundle/Images/\(code.uppercased())", in: Bundle.main, compatibleWith: nil)
     }
     
     public var currencyCode: String? {

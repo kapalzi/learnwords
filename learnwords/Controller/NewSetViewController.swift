@@ -188,9 +188,8 @@ class NewSetViewController: UITableViewController {
                         if let words =  self.words, words.count != 0 {
                             let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
                             if self.setCode != nil {
-                                LanguageSet.editLanguageSet(newName: self.setName!, forCode: self.setCode!, inContext: context)
-                                LanguageSet.editLanguageSet(newDepiction: self.setDepiction!, forCode: self.setCode!, inContext: context)
-                                LanguageSet.editLanguageSet(newIdentifier: self.learningLanguage.code!, forCode: self.setCode!, inContext: context)
+                                
+                                LanguageSet.editLanguageSet(newName: self.setName!, newDepiction: self.setDepiction!, newIdentifier: self.learningLanguage.code!, newKnownLanguage: self.yourLanguage.code!, newLearningLanguage: self.learningLanguage.code!, forCode: self.setCode!, inContext: context)
                                 
                                 self.showAlert(title: "Succesfully edited set!")
                                 (UIApplication.shared.delegate as! AppDelegate).saveContext()

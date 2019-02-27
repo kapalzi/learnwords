@@ -8,10 +8,12 @@
 
 import UIKit
 
-class LanguageSetViewController: UITableViewController  {
+class LanguageSetViewController: BaseSetViewController  {
     
     var tableData: [LanguageSet]? = nil
     var isMainMode: Bool = false
+    var knownLanguage: String? = nil
+    var learningLanguage: String? = nil
     
     override func viewDidLoad() {
         
@@ -22,18 +24,21 @@ class LanguageSetViewController: UITableViewController  {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        tableData = LanguageSet.getAllLanguageSets(inContext: context)
+
         if self.navigationController?.viewControllers.count == 1 {
             self.isMainMode = true
             self.navigationController?.navigationBar.topItem?.title = "Statistics"
         }
-    }
-    
-    override func viewWillLayoutSubviews() {
-        self.tableView.visibleCells.forEach {
-            ($0 as! SetsCell).shadowView.dropShadow()
+        
+        if self.isMainMode {
+            tableData = LanguageSet.getAllLanguageSets(inContext: context)
+        } else {
+            tableData = LanguageSet.getAllLanguageSets(forKnownLanguage: self.knownLanguage!, forLearningLanguage: self.learningLanguage!, inContext: context)
+            
         }
     }
+    
+
     
     //table
    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -82,7 +87,11 @@ class LanguageSetViewController: UITableViewController  {
             LanguageSet.setLanguageSetAsSelected(code: set.code!, context: context)
             UserDefaults.standard.set(0, forKey: "lastWordId")
             (UIApplication.shared.delegate as! AppDelegate).saveContext()
-            self.navigationController?.popViewController(animated: true)
+            
+            let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
+            self.navigationController!.popToViewController(viewControllers[viewControllers.count - 4], animated: true)
+            
+            
         }
     }
     
@@ -96,14 +105,14 @@ class LanguageSetViewController: UITableViewController  {
         
         vc.setName = set.name
         vc.setDepiction = set.depiction
-        vc.learningLanguage = (set.learnignLanguage, set.identifier)
+        vc.learningLanguage = (set.learningLanguage, set.identifier)
         
-        let locale = NSLocale(localeIdentifier: set.knownLanguage!)
-        print(locale)
-        print(set)
-        print(locale.displayName(forKey: NSLocale.Key.identifier, value: set.knownLanguage)!)
-        
-        vc.yourLanguage = (locale.displayName(forKey: NSLocale.Key.identifier, value: set.knownLanguage)! , set.knownLanguage!)
+//        let locale = NSLocale(localeIdentifier: set.knownLanguage!)
+//        print(locale)
+//        print(set)
+//        print(locale.displayName(forKey: NSLocale.Key.identifier, value: set.knownLanguage)!)
+//        
+//        vc.yourLanguage = (locale.displayName(forKey: NSLocale.Key.identifier, value: set.knownLanguage)! , set.knownLanguage!)
         vc.setCode = set.code
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
