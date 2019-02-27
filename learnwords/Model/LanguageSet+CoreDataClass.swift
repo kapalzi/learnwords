@@ -260,9 +260,9 @@ public class LanguageSet: NSManagedObject {
             
             knownLanguages.forEach { (languageCode) in
                 let locale = NSLocale(localeIdentifier: languageCode)
-                let current = NSLocale.current
+                let current = NSLocale.autoupdatingCurrent
                 
-                let currentLocale = NSLocale(localeIdentifier: current.languageCode!)
+                let currentLocale = NSLocale(localeIdentifier: current.identifier)
                 
                 if let countrName = currentLocale.displayName(forKey: NSLocale.Key.identifier, value: locale.localeIdentifier) {
                     returnArray.append((code: languageCode, name: countrName))
