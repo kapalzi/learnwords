@@ -31,11 +31,12 @@ class LanguageSetViewController: BaseSetViewController  {
         }
         
         if self.isMainMode {
-            tableData = LanguageSet.getAllLanguageSets(inContext: context)
+            tableData = LanguageSet.getUsedLanguageSets(inContext: context)
         } else {
             tableData = LanguageSet.getAllLanguageSets(forKnownLanguage: self.knownLanguage!, forLearningLanguage: self.learningLanguage!, inContext: context)
-            
         }
+        
+        self.tableView.reloadData()
     }
     
 

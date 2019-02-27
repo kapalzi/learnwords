@@ -47,7 +47,8 @@ public class Word: NSManagedObject {
             abort()
         }
         
-         let word = fetchedResultController.fetchedObjects!.first
+        let word = fetchedResultController.fetchedObjects!.first
+        word?.languageSet?.startedLearning = true
         word?.goodCounter = (word?.goodCounter)!+1
     }
     
@@ -72,6 +73,7 @@ public class Word: NSManagedObject {
         }
         
         let word = fetchedResultController.fetchedObjects!.first
+        word?.languageSet?.startedLearning = true
         word?.badCounter = (word?.badCounter)!+1
     }
 

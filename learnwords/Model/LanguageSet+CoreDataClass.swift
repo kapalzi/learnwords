@@ -197,6 +197,32 @@ public class LanguageSet: NSManagedObject {
         return nil
     }
     
+    static func getUsedLanguageSets(inContext context: NSManagedObjectContext) -> [LanguageSet]? {
+        let request: NSFetchRequest<LanguageSet> = NSFetchRequest()
+        request .returnsObjectsAsFaults = false
+        let entity = NSEntityDescription.entity(forEntityName: "LanguageSet", in: context)
+        request.entity = entity
+        let sortDescriptor = NSSortDescriptor(key: "code", ascending: true)
+        request.sortDescriptors = [sortDescriptor]
+        let predicate = NSPredicate(format: "startedLearning = YES")
+        request.predicate = predicate
+        
+        let fetchedResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        
+        do {
+            try fetchedResultController.performFetch()
+        } catch {
+            let fetchError = error as NSError
+            print("Unresolved error %@, %@", fetchError, fetchError.userInfo)
+            abort()
+        }
+        
+        if let results = fetchedResultController.fetchedObjects{
+            return results
+        }
+        return nil
+    }
+    
     static func countLanguageSets(inContext context: NSManagedObjectContext) -> Int? {
         let request: NSFetchRequest<LanguageSet> = NSFetchRequest()
         request .returnsObjectsAsFaults = false

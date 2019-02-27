@@ -113,6 +113,7 @@
 		E238686222269AD0000DEEC8 /* KnownLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnownLanguageViewController.swift; sourceTree = "<group>"; };
 		E238686422269AE3000DEEC8 /* LearningLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningLanguageViewController.swift; sourceTree = "<group>"; };
 		E238686622269C69000DEEC8 /* BaseSetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSetViewController.swift; sourceTree = "<group>"; };
+		E23868682226A835000DEEC8 /* learnwords 1.5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "learnwords 1.5.xcdatamodel"; sourceTree = "<group>"; };
 		E23B6DDC21A55224000FAAEE /* LanguageSetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSetViewController.swift; sourceTree = "<group>"; };
 		E23B6DDE21A58881000FAAEE /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		E23B6DE021A58C3A000FAAEE /* StatisticsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsCell.swift; sourceTree = "<group>"; };
@@ -939,13 +940,14 @@
 		32A07365205BBFA500415A97 /* learnwords.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				E23868682226A835000DEEC8 /* learnwords 1.5.xcdatamodel */,
 				E233634722157EDC0079F2ED /* learnwords 1.4.xcdatamodel */,
 				E26BD4A42207685500D683CE /* learnwords 1.3.xcdatamodel */,
 				E25DD6A221D84C5B0099D543 /* learnwords 1.2.xcdatamodel */,
 				E2998D7821D4D87F00DBEA50 /* learnwords 1.1.xcdatamodel */,
 				32A07366205BBFA500415A97 /* learnwords.xcdatamodel */,
 			);
-			currentVersion = E233634722157EDC0079F2ED /* learnwords 1.4.xcdatamodel */;
+			currentVersion = E23868682226A835000DEEC8 /* learnwords 1.5.xcdatamodel */;
 			path = learnwords.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
