@@ -68,7 +68,7 @@ class LanguageSetViewController: BaseSetViewController  {
         cell.nameLbl.text = set.name
         cell.depictionLbl.text = set.depiction
         
-        if set.isUserMade == true &&  self.isMainMode {
+        if set.isUserMade == true &&  self.isMainMode {//
             cell.editBtn.isHidden = false
         }
     }
