@@ -216,9 +216,10 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         if(typedWord?.lowercased() == word.learningLanguage?.lowercased()) {
             Word.addGoodAnwer(wordId: word.id, context: context)
-            
+            WordHistory.addOneRememberedForToday(inContext: context)
             if word.goodCounter >= UserDefaults.standard.integer(forKey: "answersToMaster") {
                 wordsTable.remove(at: Int(currentWordIndex))
+                WordHistory.addOneMasteredForToday(inContext: context)
             }
             
             (UIApplication.shared.delegate as! AppDelegate).saveContext()

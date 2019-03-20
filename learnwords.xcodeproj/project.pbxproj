@@ -17,6 +17,7 @@
 		32A0736C205BBFA500415A97 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32A0736A205BBFA500415A97 /* LaunchScreen.storyboard */; };
 		E2010BCE21CD9154006D9DD7 /* RecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2010BCD21CD9154006D9DD7 /* RecordButton.swift */; };
 		E2010BD321CF118A006D9DD7 /* FillDb.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2010BD221CF118A006D9DD7 /* FillDb.swift */; };
+		E22EBF5A2242EBEA0019A36E /* WordHistory+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22EBF582242EBEA0019A36E /* WordHistory+CoreDataClass.swift */; };
 		E238686322269AD0000DEEC8 /* KnownLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E238686222269AD0000DEEC8 /* KnownLanguageViewController.swift */; };
 		E238686522269AE3000DEEC8 /* LearningLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E238686422269AE3000DEEC8 /* LearningLanguageViewController.swift */; };
 		E238686722269C69000DEEC8 /* BaseSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E238686622269C69000DEEC8 /* BaseSetViewController.swift */; };
@@ -109,6 +110,8 @@
 		32A0736D205BBFA500415A97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E2010BCD21CD9154006D9DD7 /* RecordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordButton.swift; sourceTree = "<group>"; };
 		E2010BD221CF118A006D9DD7 /* FillDb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillDb.swift; sourceTree = "<group>"; };
+		E22EBF572242EB560019A36E /* learnwords 1.6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "learnwords 1.6.xcdatamodel"; sourceTree = "<group>"; };
+		E22EBF582242EBEA0019A36E /* WordHistory+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WordHistory+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E233634722157EDC0079F2ED /* learnwords 1.4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "learnwords 1.4.xcdatamodel"; sourceTree = "<group>"; };
 		E238686222269AD0000DEEC8 /* KnownLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnownLanguageViewController.swift; sourceTree = "<group>"; };
 		E238686422269AE3000DEEC8 /* LearningLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningLanguageViewController.swift; sourceTree = "<group>"; };
@@ -291,6 +294,7 @@
 			isa = PBXGroup;
 			children = (
 				32A07365205BBFA500415A97 /* learnwords.xcdatamodeld */,
+				E22EBF582242EBEA0019A36E /* WordHistory+CoreDataClass.swift */,
 				E2E181A421A42E43001359F8 /* LanguageSet+CoreDataClass.swift */,
 				E2E181A621A42E43001359F8 /* Word+CoreDataClass.swift */,
 				E2E181A821A42E43001359F8 /* User+CoreDataClass.swift */,
@@ -684,6 +688,7 @@
 				E28856CB220668CF00DD8C22 /* PhoneCodeCell.swift in Sources */,
 				E28856D6220668CF00DD8C22 /* Address.swift in Sources */,
 				E28856BB220668CF00DD8C22 /* UITextView+Extensions.swift in Sources */,
+				E22EBF5A2242EBEA0019A36E /* WordHistory+CoreDataClass.swift in Sources */,
 				E24391F52103673E00EDE25F /* UIImageView+Extension.swift in Sources */,
 				E28856B7220668CF00DD8C22 /* UIViewController+Extensions.swift in Sources */,
 				E28856D0220668CF00DD8C22 /* Assets.swift in Sources */,
@@ -940,6 +945,7 @@
 		32A07365205BBFA500415A97 /* learnwords.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				E22EBF572242EB560019A36E /* learnwords 1.6.xcdatamodel */,
 				E23868682226A835000DEEC8 /* learnwords 1.5.xcdatamodel */,
 				E233634722157EDC0079F2ED /* learnwords 1.4.xcdatamodel */,
 				E26BD4A42207685500D683CE /* learnwords 1.3.xcdatamodel */,
@@ -947,7 +953,7 @@
 				E2998D7821D4D87F00DBEA50 /* learnwords 1.1.xcdatamodel */,
 				32A07366205BBFA500415A97 /* learnwords.xcdatamodel */,
 			);
-			currentVersion = E23868682226A835000DEEC8 /* learnwords 1.5.xcdatamodel */;
+			currentVersion = E22EBF572242EB560019A36E /* learnwords 1.6.xcdatamodel */;
 			path = learnwords.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
