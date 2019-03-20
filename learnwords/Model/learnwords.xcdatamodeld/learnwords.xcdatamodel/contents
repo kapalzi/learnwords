@@ -23,7 +23,7 @@
         <relationship name="languageSet" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="LanguageSet" inverseName="word" inverseEntity="LanguageSet" syncable="YES"/>
     </entity>
     <elements>
-        <element name="LanguageSet" positionX="-531" positionY="-189" width="128" height="133"/>
+        <element name="LanguageSet" positionX="-531" positionY="-189" width="128" height="135"/>
         <element name="User" positionX="54" positionY="-216" width="128" height="90"/>
         <element name="Word" positionX="-715.62890625" positionY="-299.77734375" width="128" height="148"/>
     </elements>

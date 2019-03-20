@@ -47,7 +47,8 @@ public class Word: NSManagedObject {
             abort()
         }
         
-         let word = fetchedResultController.fetchedObjects!.first
+        let word = fetchedResultController.fetchedObjects!.first
+        word?.languageSet?.startedLearning = true
         word?.goodCounter = (word?.goodCounter)!+1
     }
     
@@ -72,6 +73,7 @@ public class Word: NSManagedObject {
         }
         
         let word = fetchedResultController.fetchedObjects!.first
+        word?.languageSet?.startedLearning = true
         word?.badCounter = (word?.badCounter)!+1
     }
 
@@ -148,6 +150,35 @@ public class Word: NSManagedObject {
         }
         
         return fetchedResultController.fetchedObjects!.first!
+    }
+    
+    static func getWordsNextIndex(inContext context: NSManagedObjectContext) -> Int16? {
         
+        let request: NSFetchRequest<Word> = NSFetchRequest()
+        request .returnsObjectsAsFaults = false
+        let entity = NSEntityDescription.entity(forEntityName: "Word", in: context)
+        request.entity = entity
+        let sortDescriptor = NSSortDescriptor(key: "goodCounter", ascending: false)
+        request.sortDescriptors = [sortDescriptor]
+        let fetchedResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        
+        do {
+            try fetchedResultController.performFetch()
+        } catch {
+            let fetchError = error as NSError
+            print("Unresolved error %@, %@", fetchError, fetchError.userInfo)
+            abort()
+        }
+        if let results = fetchedResultController.fetchedObjects{
+            return Int16(results.count + 1)
+        }
+        return nil
+    }
+    
+    static func editWord(newKnownLanguage: String, newLearningLanguage: String, forId wordIndex: Int16, inContext context: NSManagedObjectContext) {
+        
+        let wordToEdit = self.getWord(forIndex: wordIndex, inContext: context)
+        wordToEdit.setValue(newKnownLanguage, forKey: "knownLanguage")
+        wordToEdit.setValue(newLearningLanguage, forKey: "learningLanguage")
     }
 }

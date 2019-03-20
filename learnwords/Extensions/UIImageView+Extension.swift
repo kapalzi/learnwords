@@ -18,4 +18,17 @@ extension UIImageView
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.addSubview(blurEffectView)
     }
+    
+//    func addBlurBackground() {
+//
+//        var modifiedFrame = originalViewFrame
+//        modifiedFrame?.size.height+=90
+//        let imgView = UIImageView.init(frame: modifiedFrame!)
+//        let img = UIImage.init(named: "mainBg")
+//        imgView.image = img
+//        imgView.backgroundColor = UIColor.blue
+//        imgView.addBlurEffect()
+//
+//        self.view.insertSubview(imgView, at: 0)
+//    }
 }
