@@ -10,9 +10,6 @@ import UIKit
 
 class StatisticsViewController: UIViewController  {
     
-    var tableData: [Word]? = nil
-    var masteredWords: [Word]? = nil
-    var restOfWords: [Word]? = nil
     @IBOutlet weak var rememberedWordsLbl: UILabel!
     @IBOutlet weak var masteredWordsLbl: UILabel!
     @IBOutlet weak var lastMonthBtn: UIButton!
@@ -24,9 +21,6 @@ class StatisticsViewController: UIViewController  {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        let toMaster = UserDefaults.standard.value(forKey: "answersToMaster") as! Int16
-        self.masteredWords = tableData?.filter{$0.goodCounter >= toMaster}
-        self.restOfWords = tableData?.filter{$0.goodCounter < toMaster}
         self.cardView.dropShadow()
         self.filtersView.dropShadow()
 

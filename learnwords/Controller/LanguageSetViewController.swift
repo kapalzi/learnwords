@@ -81,7 +81,7 @@ class LanguageSetViewController: BaseSetViewController  {
         if self.isMainMode {
             
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "statistics") as! StatisticsViewController
-            vc.tableData = Word.getWords(ForSet: set, inContext: context)
+//            vc.tableData = Word.getWords(ForSet: set, inContext: context)
             self.navigationController?.pushViewController(vc, animated: true)
             
         } else {
