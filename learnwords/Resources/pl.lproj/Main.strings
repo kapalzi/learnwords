@@ -1,0 +1,120 @@
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "0BW-Ke-fVg"; */
+"0BW-Ke-fVg.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Last Month"; ObjectID = "0Ns-yz-eCL"; */
+"0Ns-yz-eCL.normalTitle" = "Last Month";
+
+/* Class = "UITabBarItem"; title = "Statistics"; ObjectID = "0YZ-XT-Vjc"; */
+"0YZ-XT-Vjc.title" = "Statistics";
+
+/* Class = "UILabel"; text = "And mastered"; ObjectID = "0hA-gR-oI6"; */
+"0hA-gR-oI6.text" = "And mastered";
+
+/* Class = "UILabel"; text = "words!"; ObjectID = "25k-6S-peY"; */
+"25k-6S-peY.text" = "words!";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "52w-XK-XSN"; */
+"52w-XK-XSN.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Number of good answers to master"; ObjectID = "9y2-Cb-tPI"; */
+"9y2-Cb-tPI.normalTitle" = "Number of good answers to master";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "BB3-7P-wm0"; */
+"BB3-7P-wm0.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Cll-lb-Bv7"; */
+"Cll-lb-Bv7.text" = "Label";
+
+/* Class = "UITextField"; placeholder = "Enter word"; ObjectID = "DtC-kp-pi0"; */
+"DtC-kp-pi0.placeholder" = "Enter word";
+
+/* Class = "UITabBarItem"; title = "Statistics"; ObjectID = "GwP-pB-bhT"; */
+"GwP-pB-bhT.title" = "Statistics";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "HBW-A4-mP7"; */
+"HBW-A4-mP7.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Edit"; ObjectID = "HJl-v7-Bet"; */
+"HJl-v7-Bet.normalTitle" = "Edit";
+
+/* Class = "UIButton"; normalTitle = "Edit"; ObjectID = "OKe-E4-OGh"; */
+"OKe-E4-OGh.normalTitle" = "Edit";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Qnb-xI-98B"; */
+"Qnb-xI-98B.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Create set"; ObjectID = "QtO-T2-5yX"; */
+"QtO-T2-5yX.normalTitle" = "Create set";
+
+/* Class = "UITabBarItem"; title = "Settings"; ObjectID = "T3C-b1-87v"; */
+"T3C-b1-87v.title" = "Settings";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "UZj-U6-IGp"; */
+"UZj-U6-IGp.text" = "0";
+
+/* Class = "UIButton"; normalTitle = "Edit"; ObjectID = "UtT-w9-r86"; */
+"UtT-w9-r86.normalTitle" = "Edit";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "VYc-aD-0bC"; */
+"VYc-aD-0bC.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Last Year"; ObjectID = "Wtd-bO-0a4"; */
+"Wtd-bO-0a4.normalTitle" = "Last Year";
+
+/* Class = "UIButton"; normalTitle = "Last 7 days"; ObjectID = "aTS-cZ-fN7"; */
+"aTS-cZ-fN7.normalTitle" = "Last 7 days";
+
+/* Class = "UIButton"; normalTitle = "Select language set"; ObjectID = "aiy-3T-h8S"; */
+"aiy-3T-h8S.normalTitle" = "Select language set";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "bX4-N1-U6U"; */
+"bX4-N1-U6U.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "be0-f5-QhT"; */
+"be0-f5-QhT.text" = "Label";
+
+/* Class = "UITabBarItem"; title = "Statistics"; ObjectID = "eTu-Iy-wVg"; */
+"eTu-Iy-wVg.title" = "Statistics";
+
+/* Class = "UIButton"; normalTitle = "Edit"; ObjectID = "fxJ-bj-bqe"; */
+"fxJ-bj-bqe.normalTitle" = "Edit";
+
+/* Class = "UIButton"; normalTitle = "Delete"; ObjectID = "geZ-CF-Obq"; */
+"geZ-CF-Obq.normalTitle" = "Delete";
+
+/* Class = "UITabBarItem"; title = "Statistics"; ObjectID = "hdK-qk-1nn"; */
+"hdK-qk-1nn.title" = "Statistics";
+
+/* Class = "UITabBarItem"; title = "Settings"; ObjectID = "iqj-hE-qkh"; */
+"iqj-hE-qkh.title" = "Settings";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "kOq-Zj-YA6"; */
+"kOq-Zj-YA6.text" = "Label";
+
+/* Class = "UITabBarItem"; title = "Learning"; ObjectID = "nFG-xs-TWn"; */
+"nFG-xs-TWn.title" = "Learning";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "q5p-nK-1rU"; */
+"q5p-nK-1rU.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "qMZ-XM-3Bi"; */
+"qMZ-XM-3Bi.text" = "Label";
+
+/* Class = "UILabel"; text = "Today You remembered"; ObjectID = "r35-Oi-9Bx"; */
+"r35-Oi-9Bx.text" = "Today You remembered";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "vlM-oa-aE5"; */
+"vlM-oa-aE5.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "wha-fk-Cn5"; */
+"wha-fk-Cn5.text" = "0";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "xWv-Kt-jA0"; */
+"xWv-Kt-jA0.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "zPv-oj-DY8"; */
+"zPv-oj-DY8.text" = "Label";
+
+/* Class = "UILabel"; text = "wordLbl"; ObjectID = "zhu-1p-TuY"; */
+"zhu-1p-TuY.text" = "wordLbl";

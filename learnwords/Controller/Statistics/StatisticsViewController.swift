@@ -101,9 +101,10 @@ class StatisticsViewController: UIViewController  {
         //here is the for loop
         for i in 0..<days {
             
-            let value = ChartDataEntry(x: Double(i), y: chartValues[i]) // here we set the X and Y status in a data chart entry
+            let value = ChartDataEntry(x: Double(i+1), y: chartValues[i]) // here we set the X and Y status in a data chart entry
             lineChartEntry.append(value) // here we add it to the data set
         }
+        
         
         let line1 = LineChartDataSet(values: lineChartEntry, label: "Remembered") //Here we convert lineChartEntry to a LineChartDataSet
         line1.mode = .cubicBezier
@@ -122,7 +123,6 @@ class StatisticsViewController: UIViewController  {
         let data = LineChartData() //This is the object that will be added to the chart
         data.addDataSet(line1) //Adds the line to the dataSet
         data.setDrawValues(false)
-        
         chartView.data = data //finally - it adds the chart data to the chart and causes an update
         chartView.animate(xAxisDuration: 0, yAxisDuration: 2)
     }

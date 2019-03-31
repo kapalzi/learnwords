@@ -29,7 +29,12 @@ class NewSetViewController: UITableViewController {
         self.tableView.visibleCells.forEach {
             ($0 as! NewSetCell).shadowView.dropShadow()
         }
-         self.navigationController?.navigationBar.topItem?.title = "New Set"
+        
+        if self.setName == nil {
+            self.navigationController?.navigationBar.topItem?.title = "New Set"
+        } else {
+            self.navigationController?.navigationBar.topItem?.title = "Edit Set"
+        }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -80,7 +85,7 @@ class NewSetViewController: UITableViewController {
     }
     
     @objc func setNameDidTouch(){
-        let alert = UIAlertController(style: .actionSheet, title: "New Set Name")
+        let alert = UIAlertController(style: .actionSheet, title: "Set Name")
         let config: TextField.Config = { textField in
             textField.becomeFirstResponder()
             textField.textColor = .black
@@ -111,7 +116,7 @@ class NewSetViewController: UITableViewController {
     }
     
     @objc func setDepictionDidTouch(){
-        let alert = UIAlertController(style: .actionSheet, title: "New Set Depiction")
+        let alert = UIAlertController(style: .actionSheet, title: "Set Depiction")
         let config: TextField.Config = { textField in
             textField.becomeFirstResponder()
             textField.textColor = .black

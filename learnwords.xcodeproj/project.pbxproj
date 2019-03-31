@@ -92,6 +92,9 @@
 		E28856EC220723E100DD8C22 /* WordsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28856EB220723E100DD8C22 /* WordsListTableViewCell.swift */; };
 		E291CCA1206D701E001AD3B1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E291CCA0206D701E001AD3B1 /* SettingsViewController.swift */; };
 		E2A5A9B72250F2DF00C257E0 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A5A9B62250F2DF00C257E0 /* String+Extension.swift */; };
+		E2A5A9C02250F78800C257E0 /* Localizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A5A9BC2250F78800C257E0 /* Localizations.swift */; };
+		E2A5A9C12250F78800C257E0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E2A5A9BD2250F78800C257E0 /* Localizable.strings */; };
+		E2A5A9CA22510B2700C257E0 /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A5A9C922510B2700C257E0 /* StoreViewController.swift */; };
 		E2E181A321A42DB5001359F8 /* frenchenglishtop1000.txt in Resources */ = {isa = PBXBuildFile; fileRef = E2E181A221A42DB5001359F8 /* frenchenglishtop1000.txt */; };
 		E2E181AA21A42E43001359F8 /* LanguageSet+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E181A421A42E43001359F8 /* LanguageSet+CoreDataClass.swift */; };
 		E2E181AC21A42E43001359F8 /* Word+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E181A621A42E43001359F8 /* Word+CoreDataClass.swift */; };
@@ -194,6 +197,13 @@
 		E291CCA0206D701E001AD3B1 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E2998D7821D4D87F00DBEA50 /* learnwords 1.1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "learnwords 1.1.xcdatamodel"; sourceTree = "<group>"; };
 		E2A5A9B62250F2DF00C257E0 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		E2A5A9BC2250F78800C257E0 /* Localizations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizations.swift; sourceTree = "<group>"; };
+		E2A5A9BE2250F78800C257E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E2A5A9C22251039900C257E0 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Main.strings; sourceTree = "<group>"; };
+		E2A5A9C32251039900C257E0 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		E2A5A9C4225103AB00C257E0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E2A5A9C5225103B100C257E0 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E2A5A9C922510B2700C257E0 /* StoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
 		E2E181A221A42DB5001359F8 /* frenchenglishtop1000.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = frenchenglishtop1000.txt; sourceTree = "<group>"; };
 		E2E181A421A42E43001359F8 /* LanguageSet+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LanguageSet+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E2E181A621A42E43001359F8 /* Word+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Word+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -243,6 +253,7 @@
 		32A0735D205BBFA500415A97 /* learnwords */ = {
 			isa = PBXGroup;
 			children = (
+				E2A5A9BB2250F78800C257E0 /* Localization */,
 				E24391F7210367C500EDE25F /* Model */,
 				E2010BD021CF0F6C006D9DD7 /* View */,
 				E2010BCF21CF0F66006D9DD7 /* Controller */,
@@ -343,14 +354,10 @@
 		E24978742246F55C00BD8146 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				E2A5A9C8225104F900C257E0 /* Store */,
+				E2A5A9C7225104DB00C257E0 /* Sets */,
+				E2A5A9C6225104C600C257E0 /* Words */,
 				E291CCA0206D701E001AD3B1 /* SettingsViewController.swift */,
-				E23B6DDC21A55224000FAAEE /* LanguageSetViewController.swift */,
-				E238686622269C69000DEEC8 /* BaseSetViewController.swift */,
-				E238686222269AD0000DEEC8 /* KnownLanguageViewController.swift */,
-				E238686422269AE3000DEEC8 /* LearningLanguageViewController.swift */,
-				E288565F2206422800DD8C22 /* NewSetViewController.swift */,
-				324C841A206E289C00C19329 /* NewWordViewController.swift */,
-				E28856E9220721F600DD8C22 /* WordsListViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -650,6 +657,44 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		E2A5A9BB2250F78800C257E0 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				E2A5A9BC2250F78800C257E0 /* Localizations.swift */,
+				E2A5A9BD2250F78800C257E0 /* Localizable.strings */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
+		E2A5A9C6225104C600C257E0 /* Words */ = {
+			isa = PBXGroup;
+			children = (
+				E28856E9220721F600DD8C22 /* WordsListViewController.swift */,
+				324C841A206E289C00C19329 /* NewWordViewController.swift */,
+			);
+			path = Words;
+			sourceTree = "<group>";
+		};
+		E2A5A9C7225104DB00C257E0 /* Sets */ = {
+			isa = PBXGroup;
+			children = (
+				E288565F2206422800DD8C22 /* NewSetViewController.swift */,
+				E238686422269AE3000DEEC8 /* LearningLanguageViewController.swift */,
+				E238686222269AD0000DEEC8 /* KnownLanguageViewController.swift */,
+				E238686622269C69000DEEC8 /* BaseSetViewController.swift */,
+				E23B6DDC21A55224000FAAEE /* LanguageSetViewController.swift */,
+			);
+			path = Sets;
+			sourceTree = "<group>";
+		};
+		E2A5A9C8225104F900C257E0 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				E2A5A9C922510B2700C257E0 /* StoreViewController.swift */,
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -662,6 +707,7 @@
 				32A07358205BBFA500415A97 /* Frameworks */,
 				32A07359205BBFA500415A97 /* Resources */,
 				C693253BE6438582F75217E3 /* [CP] Embed Pods Frameworks */,
+				E2A5A9B82250F5E200C257E0 /* Laurine Generator */,
 			);
 			buildRules = (
 			);
@@ -695,6 +741,7 @@
 			knownRegions = (
 				en,
 				Base,
+				pl,
 			);
 			mainGroup = 32A07352205BBFA500415A97;
 			productRefGroup = 32A0735C205BBFA500415A97 /* Products */;
@@ -715,6 +762,7 @@
 				32A07369205BBFA500415A97 /* Assets.xcassets in Resources */,
 				E2505A5B20F6B6D700F70E49 /* germanenglishtop1000.txt in Resources */,
 				32A07364205BBFA500415A97 /* Main.storyboard in Resources */,
+				E2A5A9C12250F78800C257E0 /* Localizable.strings in Resources */,
 				E28856C7220668CF00DD8C22 /* Countries.bundle in Resources */,
 				E23B6DE421A5A2FE000FAAEE /* polishgermantop1000.txt in Resources */,
 				E2E181A321A42DB5001359F8 /* frenchenglishtop1000.txt in Resources */,
@@ -769,6 +817,24 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-learnwords/Pods-learnwords-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E2A5A9B82250F5E200C257E0 /* Laurine Generator */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Laurine Generator";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -x\n\n# Get base path to project\nBASE_PATH=\"$PROJECT_DIR/$PROJECT_NAME\"\n\n#--------- START OF YOUR CONFIGURATION (change Path_To_.. to fit)\n\n# Get path to Laurine Generator script\nLAURINE_PATH=\"$PROJECT_DIR/Libraries/Laurine/LaurineGenerator.swift\"\n\n# Get path to main localization file (usually english).\nSOURCE_PATH=\"$BASE_PATH/Localization/Base.lproj/Localizable.strings\"\n\n# Get path to output. If you use ObjC version of output, set implementation file (.m), as header will be generated automatically\nOUTPUT_PATH=\"$BASE_PATH/Localization/Localizations.swift\"\n\n#--------- END OF YOUR CONFIGURATION\n\n# Add permission to generator for script execution\nchmod 755 \"$LAURINE_PATH\"\n\n# Actually generate output. -- CUSTOMIZE -- parameters to your needs (see documentation).\n# Will only re-generate script if something changed\nif [ \"$OUTPUT_PATH\" -ot \"$SOURCE_PATH\" ]; then\n\"$LAURINE_PATH\" -i \"$SOURCE_PATH\" -o \"$OUTPUT_PATH\"\nfi\n\n\n\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -783,6 +849,7 @@
 				E2010BD321CF118A006D9DD7 /* FillDb.swift in Sources */,
 				E28856C2220668CF00DD8C22 /* Common+Extensions.swift in Sources */,
 				E28856DC220668CF00DD8C22 /* ColorPickerViewController.swift in Sources */,
+				E2A5A9CA22510B2700C257E0 /* StoreViewController.swift in Sources */,
 				E28856CE220668CF00DD8C22 /* TwoTextFieldsViewController.swift in Sources */,
 				E28856D4220668CF00DD8C22 /* SearchHistoryManager.swift in Sources */,
 				E28856CB220668CF00DD8C22 /* PhoneCodeCell.swift in Sources */,
@@ -828,6 +895,7 @@
 				E28856B4220668CF00DD8C22 /* Array+Extensions.swift in Sources */,
 				E28856C1220668CF00DD8C22 /* Optional+Extensions.swift in Sources */,
 				E28856C3220668CF00DD8C22 /* Locale+Extensions.swift in Sources */,
+				E2A5A9C02250F78800C257E0 /* Localizations.swift in Sources */,
 				E28856C0220668CF00DD8C22 /* UIAlertController+Extensions.swift in Sources */,
 				E28856D2220668CF00DD8C22 /* LocationSearchResultsViewController.swift in Sources */,
 				E28856BE220668CF00DD8C22 /* UISearchBar+Extensions.swift in Sources */,
@@ -867,6 +935,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				32A07363205BBFA500415A97 /* Base */,
+				E2A5A9C22251039900C257E0 /* pl */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -875,8 +944,19 @@
 			isa = PBXVariantGroup;
 			children = (
 				32A0736B205BBFA500415A97 /* Base */,
+				E2A5A9C32251039900C257E0 /* pl */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		E2A5A9BD2250F78800C257E0 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E2A5A9BE2250F78800C257E0 /* Base */,
+				E2A5A9C4225103AB00C257E0 /* en */,
+				E2A5A9C5225103B100C257E0 /* pl */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -886,6 +966,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -943,6 +1024,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -995,7 +1077,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = W2457BUSA4;
+				DEVELOPMENT_TEAM = ZVAPY9CY9V;
 				INFOPLIST_FILE = learnwords/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kapala.learnwords;
@@ -1011,7 +1093,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = W2457BUSA4;
+				DEVELOPMENT_TEAM = ZVAPY9CY9V;
 				INFOPLIST_FILE = learnwords/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kapala.learnwords;

@@ -1,14 +1,14 @@
 //
-//  SettingsViewController.swift
+//  StoreViewController.swift
 //  learnwords
 //
-//  Created by Krzysztof Kapała on 29.03.2018.
-//  Copyright © 2018 kapala. All rights reserved.
+//  Created by Krzysztof Kapała on 31/03/2019.
+//  Copyright © 2019 kapala. All rights reserved.
 //
 
 import UIKit
 
-class SettingsViewController: UITableViewController  {
+class StoreViewController: UITableViewController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,7 +16,7 @@ class SettingsViewController: UITableViewController  {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-        self.navigationController?.navigationBar.topItem?.title = "Settings"
+        self.navigationController?.navigationBar.topItem?.title = "Store"
     }
     
     override func viewWillLayoutSubviews() {
@@ -28,7 +28,7 @@ class SettingsViewController: UITableViewController  {
     //table
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 2
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -48,11 +48,11 @@ class SettingsViewController: UITableViewController  {
         cell.selectedBackgroundView = backgroundView
         switch indexPath.row {
         case 0:
-            cell.mainLabel.text = "Select language set"
+            cell.mainLabel.text = "Browse Sets"
         case 1:
-            cell.mainLabel.text = "Create set"
+            cell.mainLabel.text = "Remove Ads"
         case 2:
-            cell.mainLabel.text = "Store"
+            cell.mainLabel.text = "dupa dupa"
         default:
             cell.mainLabel.text = "Coming soon"
         }
@@ -61,8 +61,8 @@ class SettingsViewController: UITableViewController  {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-//            let vc = self.storyboard?.instantiateViewController(withIdentifier: "languageSet") as! LanguageSetViewController
-//            self.navigationController?.show(vc, sender: nil)
+            //            let vc = self.storyboard?.instantiateViewController(withIdentifier: "languageSet") as! LanguageSetViewController
+            //            self.navigationController?.show(vc, sender: nil)
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "knownSet") as! KnownLanguageViewController
             self.navigationController?.show(vc, sender: nil)
             
@@ -70,7 +70,7 @@ class SettingsViewController: UITableViewController  {
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "newSet") as! NewSetViewController
             self.navigationController?.show(vc, sender: nil)
         case 2:
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "store") as! StoreViewController
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "newSet") as! KnownLanguageViewController
             self.navigationController?.show(vc, sender: nil)
         case 10:
             var ac = UIAlertController()
@@ -89,3 +89,4 @@ class SettingsViewController: UITableViewController  {
         }
     }
 }
+

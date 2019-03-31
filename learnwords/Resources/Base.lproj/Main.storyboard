@@ -412,7 +412,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eh1-9K-WU4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-583" y="863"/>
+            <point key="canvasLocation" x="-541" y="863"/>
         </scene>
         <!--New Set View Controller-->
         <scene sceneID="2S6-MO-TXP">
@@ -573,6 +573,7 @@
                             <outlet property="delegate" destination="eO4-6y-o1Z" id="dlg-PV-8kI"/>
                         </connections>
                     </tableView>
+                    <size key="freeformSize" width="414" height="736"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PDb-L8-t4P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -981,7 +982,6 @@
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="e6G-81-Eep" secondAttribute="trailing" id="0HW-J4-Zmz"/>
                                             <constraint firstAttribute="height" constant="349" id="EZK-yg-9xB"/>
-                                            <constraint firstAttribute="bottom" secondItem="e6G-81-Eep" secondAttribute="bottom" constant="8" id="Zr5-BG-4Ks"/>
                                             <constraint firstItem="e6G-81-Eep" firstAttribute="top" secondItem="yRk-Ry-gUe" secondAttribute="top" id="c5j-bE-1UZ"/>
                                             <constraint firstAttribute="bottom" secondItem="e6G-81-Eep" secondAttribute="bottom" id="sv6-SW-8TG"/>
                                             <constraint firstItem="e6G-81-Eep" firstAttribute="leading" secondItem="yRk-Ry-gUe" secondAttribute="leading" id="uUc-6B-0uN"/>
@@ -1031,6 +1031,65 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tTX-YB-YA6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="730" y="775"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="8Qj-M2-DtK">
+            <objects>
+                <tableViewController storyboardIdentifier="store" id="p4d-Ja-D1o" customClass="StoreViewController" customModule="learnwords" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="153" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="qtl-5F-fN2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingsCell" id="rfX-ob-aUg" customClass="SettingsCell" customModule="learnwords" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="153"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rfX-ob-aUg" id="nAd-ph-aX2">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="153"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qdY-gG-FT4">
+                                            <rect key="frame" x="10" y="16" width="394" height="120"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xGF-0j-Ou2">
+                                                    <rect key="frame" x="20" y="20" width="354" height="93"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="xGF-0j-Ou2" firstAttribute="leading" secondItem="qdY-gG-FT4" secondAttribute="leading" constant="20" id="IxD-g1-oDI"/>
+                                                <constraint firstItem="xGF-0j-Ou2" firstAttribute="top" secondItem="qdY-gG-FT4" secondAttribute="top" constant="20" id="obt-Bg-lwB"/>
+                                                <constraint firstAttribute="trailing" secondItem="xGF-0j-Ou2" secondAttribute="trailing" constant="20" id="sYV-5K-VXt"/>
+                                                <constraint firstAttribute="bottom" secondItem="xGF-0j-Ou2" secondAttribute="bottom" constant="7" id="tfV-uG-SEi"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="qdY-gG-FT4" secondAttribute="bottom" constant="17" id="NC5-3y-7bl"/>
+                                        <constraint firstItem="qdY-gG-FT4" firstAttribute="leading" secondItem="nAd-ph-aX2" secondAttribute="leading" constant="10" id="YUm-Oc-T5z"/>
+                                        <constraint firstItem="qdY-gG-FT4" firstAttribute="top" secondItem="nAd-ph-aX2" secondAttribute="top" constant="16" id="fdQ-qt-528"/>
+                                        <constraint firstAttribute="trailing" secondItem="qdY-gG-FT4" secondAttribute="trailing" constant="10" id="kz3-NX-Ug5"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="mainLabel" destination="xGF-0j-Ou2" id="bIa-Jb-iux"/>
+                                    <outlet property="shadowView" destination="qdY-gG-FT4" id="WyN-8J-1G8"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="p4d-Ja-D1o" id="A4X-M4-E9z"/>
+                            <outlet property="delegate" destination="p4d-Ja-D1o" id="iPW-el-b0e"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings" selectedImage="settings" id="gic-vb-Cn5"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8qS-ch-SwA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1497" y="863"/>
         </scene>
     </scenes>
     <resources>

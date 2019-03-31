@@ -49,12 +49,6 @@ public class WordHistory: NSManagedObject {
             wordHistory.remembered = wordHistory.remembered + 1
         } else {
             self.addNewWordHistory(context: context)
-//            do {
-//                try context.save()
-//            }
-//            catch {
-//                print("chuj")
-//            }
             self.addOneRememberedForToday(inContext: context)
         }
     }
@@ -73,24 +67,20 @@ public class WordHistory: NSManagedObject {
         var dates = [Date]()
         
         let startDate = Date()
-        
-        for i in 0...numberOfDays {
+        for i in 0...numberOfDays-1 {
             let nextDate = Calendar.current.date(byAdding: .day, value: -i, to: startDate)
-            var comp: DateComponents = Calendar.current.dateComponents([.year, .month, .day], from: nextDate!)
+            let comp: DateComponents = Calendar.current.dateComponents([.year, .month, .day], from: nextDate!)
             
             let truncated = Calendar.current.date(from: comp)!
-            
             dates.append(truncated)
         }
-        
-        for date in dates {
+        for date in dates.reversed() {
             if let wordHistory = WordHistory.getWordHistory(forDate: date, inContext: context){
                 counts.append(Double(wordHistory.remembered))
             } else {
                 counts.append(0)
             }
         }
-        
         return counts
     }
     

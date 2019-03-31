@@ -19,6 +19,11 @@ class RecordButton: UIButton {
 
     }
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.addAnimation()
+    }
+    
     private func addAnimation() {
         
         // create my track layer
