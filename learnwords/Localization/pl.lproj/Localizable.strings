@@ -1,0 +1,40 @@
+/* 
+  Localizable.strings
+  Personal-Health
+
+  Created by Krzysztof Kapała on 20.07.2018.
+  Copyright © 2018 Yumasoft. All rights reserved.
+*/
+
+
+//MARK: - Common Strings
+"commonStrings.cancel" = "Cancel";
+"commonStrings.ok" = "Ok";
+"commonStrings.yes" = "Yes";
+"commonStrings.no" = "No";
+"commonStrings.send" = "Send";
+"commonStrings.rename" = "Rename";
+"commonStrings.delete" = "Delete";
+"commonStrings.back" = "Back";
+"commonStrings.openSettings" = "Open settings";
+
+//MARK: - Navigation Bar
+"navbar.title.learning" = "Learning";
+"navbar.title.settings" = "Settings";
+"navbar.title.statistics" = "Statistics";
+
+//MARK: - Settings
+"settings.selectLanguageSet" = "Select Language Set";
+"settings.createSet" = "Create Set";
+"settings.selectLanguageSet.navbar.selectYourKnownLanguage" = "Select Your Known Language";
+"settings.selectLanguageSet.navbar.selectYourLearningLanguage" = "Select Your Learning Language";
+"settings.selectLanguageSet.navbar.yourLanguageSets" = "Your Language Sets";
+"settings.createSet.navbar.newSet" = "New Set";
+"settings.createSet.setName" = "Set Name";
+"settings.createSet.setDepiction" = "Set Depiction";
+"settings.createSet.learningLanguage" = "Learning Language";
+"settings.createSet.yourLanguage" = "Your Language";
+"settings.createSet.addWord" = "Add Word";
+"settings.createSet.showWords" = "Show Word";
+"settings.createSet.save" = "Save";
+

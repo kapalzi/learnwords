@@ -239,9 +239,10 @@ extension LocalePickerViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
         if let searchText = searchController.searchBar.text, searchController.isActive {
+            let upperCased = searchText.capitalizingFirstLetter()
             filteredInfo = []
-            if searchText.count > 0, let values = orderedInfo[String(searchText[searchText.startIndex])] {
-                filteredInfo.append(contentsOf: values.filter { $0.country.hasPrefix(searchText) })
+            if upperCased.count > 0, let values = orderedInfo[String(upperCased[upperCased.startIndex])] {
+                filteredInfo.append(contentsOf: values.filter { $0.country.hasPrefix(upperCased) })
             } else {
                 orderedInfo.forEach { key, value in
                     filteredInfo += value

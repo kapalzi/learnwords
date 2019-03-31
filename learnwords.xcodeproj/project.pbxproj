@@ -15,8 +15,10 @@
 		32A07367205BBFA500415A97 /* learnwords.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 32A07365205BBFA500415A97 /* learnwords.xcdatamodeld */; };
 		32A07369205BBFA500415A97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32A07368205BBFA500415A97 /* Assets.xcassets */; };
 		32A0736C205BBFA500415A97 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32A0736A205BBFA500415A97 /* LaunchScreen.storyboard */; };
+		D18B9A1205C44873352A2531 /* Pods_learnwords.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3CB232BFE61927E5B158267 /* Pods_learnwords.framework */; };
 		E2010BCE21CD9154006D9DD7 /* RecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2010BCD21CD9154006D9DD7 /* RecordButton.swift */; };
 		E2010BD321CF118A006D9DD7 /* FillDb.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2010BD221CF118A006D9DD7 /* FillDb.swift */; };
+		E22EBF5A2242EBEA0019A36E /* WordHistory+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22EBF582242EBEA0019A36E /* WordHistory+CoreDataClass.swift */; };
 		E238686322269AD0000DEEC8 /* KnownLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E238686222269AD0000DEEC8 /* KnownLanguageViewController.swift */; };
 		E238686522269AE3000DEEC8 /* LearningLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E238686422269AE3000DEEC8 /* LearningLanguageViewController.swift */; };
 		E238686722269C69000DEEC8 /* BaseSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E238686622269C69000DEEC8 /* BaseSetViewController.swift */; };
@@ -89,6 +91,10 @@
 		E28856EA220721F600DD8C22 /* WordsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28856E9220721F600DD8C22 /* WordsListViewController.swift */; };
 		E28856EC220723E100DD8C22 /* WordsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28856EB220723E100DD8C22 /* WordsListTableViewCell.swift */; };
 		E291CCA1206D701E001AD3B1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E291CCA0206D701E001AD3B1 /* SettingsViewController.swift */; };
+		E2A5A9B72250F2DF00C257E0 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A5A9B62250F2DF00C257E0 /* String+Extension.swift */; };
+		E2A5A9C02250F78800C257E0 /* Localizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A5A9BC2250F78800C257E0 /* Localizations.swift */; };
+		E2A5A9C12250F78800C257E0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E2A5A9BD2250F78800C257E0 /* Localizable.strings */; };
+		E2A5A9CA22510B2700C257E0 /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A5A9C922510B2700C257E0 /* StoreViewController.swift */; };
 		E2E181A321A42DB5001359F8 /* frenchenglishtop1000.txt in Resources */ = {isa = PBXBuildFile; fileRef = E2E181A221A42DB5001359F8 /* frenchenglishtop1000.txt */; };
 		E2E181AA21A42E43001359F8 /* LanguageSet+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E181A421A42E43001359F8 /* LanguageSet+CoreDataClass.swift */; };
 		E2E181AC21A42E43001359F8 /* Word+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E181A621A42E43001359F8 /* Word+CoreDataClass.swift */; };
@@ -107,8 +113,12 @@
 		32A07368205BBFA500415A97 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32A0736B205BBFA500415A97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		32A0736D205BBFA500415A97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		681C92A3F231C14B81EA1AF9 /* Pods-learnwords.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-learnwords.debug.xcconfig"; path = "Target Support Files/Pods-learnwords/Pods-learnwords.debug.xcconfig"; sourceTree = "<group>"; };
+		ABDE6CEBB4A42781E69649C6 /* Pods-learnwords.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-learnwords.release.xcconfig"; path = "Target Support Files/Pods-learnwords/Pods-learnwords.release.xcconfig"; sourceTree = "<group>"; };
 		E2010BCD21CD9154006D9DD7 /* RecordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordButton.swift; sourceTree = "<group>"; };
 		E2010BD221CF118A006D9DD7 /* FillDb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillDb.swift; sourceTree = "<group>"; };
+		E22EBF572242EB560019A36E /* learnwords 1.6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "learnwords 1.6.xcdatamodel"; sourceTree = "<group>"; };
+		E22EBF582242EBEA0019A36E /* WordHistory+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WordHistory+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E233634722157EDC0079F2ED /* learnwords 1.4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "learnwords 1.4.xcdatamodel"; sourceTree = "<group>"; };
 		E238686222269AD0000DEEC8 /* KnownLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnownLanguageViewController.swift; sourceTree = "<group>"; };
 		E238686422269AE3000DEEC8 /* LearningLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningLanguageViewController.swift; sourceTree = "<group>"; };
@@ -186,11 +196,20 @@
 		E28856EB220723E100DD8C22 /* WordsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsListTableViewCell.swift; sourceTree = "<group>"; };
 		E291CCA0206D701E001AD3B1 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E2998D7821D4D87F00DBEA50 /* learnwords 1.1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "learnwords 1.1.xcdatamodel"; sourceTree = "<group>"; };
+		E2A5A9B62250F2DF00C257E0 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		E2A5A9BC2250F78800C257E0 /* Localizations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizations.swift; sourceTree = "<group>"; };
+		E2A5A9BE2250F78800C257E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E2A5A9C22251039900C257E0 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Main.strings; sourceTree = "<group>"; };
+		E2A5A9C32251039900C257E0 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		E2A5A9C4225103AB00C257E0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E2A5A9C5225103B100C257E0 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E2A5A9C922510B2700C257E0 /* StoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
 		E2E181A221A42DB5001359F8 /* frenchenglishtop1000.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = frenchenglishtop1000.txt; sourceTree = "<group>"; };
 		E2E181A421A42E43001359F8 /* LanguageSet+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LanguageSet+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E2E181A621A42E43001359F8 /* Word+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Word+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E2E181A821A42E43001359F8 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E2EC61F7206FCD2600317AA2 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		E3CB232BFE61927E5B158267 /* Pods_learnwords.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_learnwords.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,17 +217,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D18B9A1205C44873352A2531 /* Pods_learnwords.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1907EE80DDD2CC0896FA1CBB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E3CB232BFE61927E5B158267 /* Pods_learnwords.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		32A07352205BBFA500415A97 = {
 			isa = PBXGroup;
 			children = (
 				32A0735D205BBFA500415A97 /* learnwords */,
 				32A0735C205BBFA500415A97 /* Products */,
+				C1B7ACFE6267AFD2E0F99784 /* Pods */,
+				1907EE80DDD2CC0896FA1CBB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -223,6 +253,7 @@
 		32A0735D205BBFA500415A97 /* learnwords */ = {
 			isa = PBXGroup;
 			children = (
+				E2A5A9BB2250F78800C257E0 /* Localization */,
 				E24391F7210367C500EDE25F /* Model */,
 				E2010BD021CF0F6C006D9DD7 /* View */,
 				E2010BCF21CF0F66006D9DD7 /* Controller */,
@@ -236,20 +267,22 @@
 			path = learnwords;
 			sourceTree = "<group>";
 		};
+		C1B7ACFE6267AFD2E0F99784 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				681C92A3F231C14B81EA1AF9 /* Pods-learnwords.debug.xcconfig */,
+				ABDE6CEBB4A42781E69649C6 /* Pods-learnwords.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		E2010BCF21CF0F66006D9DD7 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E24978732246F55400BD8146 /* Main */,
+				E24978742246F55C00BD8146 /* Settings */,
+				E24978752246F56200BD8146 /* Statistics */,
 				E2EC61F7206FCD2600317AA2 /* BaseViewController.swift */,
-				32A07360205BBFA500415A97 /* MainViewController.swift */,
-				E291CCA0206D701E001AD3B1 /* SettingsViewController.swift */,
-				E23B6DDC21A55224000FAAEE /* LanguageSetViewController.swift */,
-				E238686622269C69000DEEC8 /* BaseSetViewController.swift */,
-				E238686222269AD0000DEEC8 /* KnownLanguageViewController.swift */,
-				E238686422269AE3000DEEC8 /* LearningLanguageViewController.swift */,
-				E23B6DDE21A58881000FAAEE /* StatisticsViewController.swift */,
-				E288565F2206422800DD8C22 /* NewSetViewController.swift */,
-				324C841A206E289C00C19329 /* NewWordViewController.swift */,
-				E28856E9220721F600DD8C22 /* WordsListViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -282,6 +315,7 @@
 			children = (
 				E24391F42103673E00EDE25F /* UIImageView+Extension.swift */,
 				E25853B421B9D28E007DE2BB /* UIView+Extension.swift */,
+				E2A5A9B62250F2DF00C257E0 /* String+Extension.swift */,
 				E259C30C21D1BEA2005FFB50 /* KeyboardBoundView.swift */,
 			);
 			path = Extensions;
@@ -291,6 +325,7 @@
 			isa = PBXGroup;
 			children = (
 				32A07365205BBFA500415A97 /* learnwords.xcdatamodeld */,
+				E22EBF582242EBEA0019A36E /* WordHistory+CoreDataClass.swift */,
 				E2E181A421A42E43001359F8 /* LanguageSet+CoreDataClass.swift */,
 				E2E181A621A42E43001359F8 /* Word+CoreDataClass.swift */,
 				E2E181A821A42E43001359F8 /* User+CoreDataClass.swift */,
@@ -306,6 +341,33 @@
 				32A07368205BBFA500415A97 /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		E24978732246F55400BD8146 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				32A07360205BBFA500415A97 /* MainViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		E24978742246F55C00BD8146 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				E2A5A9C8225104F900C257E0 /* Store */,
+				E2A5A9C7225104DB00C257E0 /* Sets */,
+				E2A5A9C6225104C600C257E0 /* Words */,
+				E291CCA0206D701E001AD3B1 /* SettingsViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		E24978752246F56200BD8146 /* Statistics */ = {
+			isa = PBXGroup;
+			children = (
+				E23B6DDE21A58881000FAAEE /* StatisticsViewController.swift */,
+			);
+			path = Statistics;
 			sourceTree = "<group>";
 		};
 		E2505A5C20F6BD1000F70E49 /* languages */ = {
@@ -595,6 +657,44 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		E2A5A9BB2250F78800C257E0 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				E2A5A9BC2250F78800C257E0 /* Localizations.swift */,
+				E2A5A9BD2250F78800C257E0 /* Localizable.strings */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
+		E2A5A9C6225104C600C257E0 /* Words */ = {
+			isa = PBXGroup;
+			children = (
+				E28856E9220721F600DD8C22 /* WordsListViewController.swift */,
+				324C841A206E289C00C19329 /* NewWordViewController.swift */,
+			);
+			path = Words;
+			sourceTree = "<group>";
+		};
+		E2A5A9C7225104DB00C257E0 /* Sets */ = {
+			isa = PBXGroup;
+			children = (
+				E288565F2206422800DD8C22 /* NewSetViewController.swift */,
+				E238686422269AE3000DEEC8 /* LearningLanguageViewController.swift */,
+				E238686222269AD0000DEEC8 /* KnownLanguageViewController.swift */,
+				E238686622269C69000DEEC8 /* BaseSetViewController.swift */,
+				E23B6DDC21A55224000FAAEE /* LanguageSetViewController.swift */,
+			);
+			path = Sets;
+			sourceTree = "<group>";
+		};
+		E2A5A9C8225104F900C257E0 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				E2A5A9C922510B2700C257E0 /* StoreViewController.swift */,
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -602,9 +702,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 32A07370205BBFA500415A97 /* Build configuration list for PBXNativeTarget "learnwords" */;
 			buildPhases = (
+				3086640BC7CEA0945091864D /* [CP] Check Pods Manifest.lock */,
 				32A07357205BBFA500415A97 /* Sources */,
 				32A07358205BBFA500415A97 /* Frameworks */,
 				32A07359205BBFA500415A97 /* Resources */,
+				C693253BE6438582F75217E3 /* [CP] Embed Pods Frameworks */,
+				E2A5A9B82250F5E200C257E0 /* Laurine Generator */,
 			);
 			buildRules = (
 			);
@@ -638,6 +741,7 @@
 			knownRegions = (
 				en,
 				Base,
+				pl,
 			);
 			mainGroup = 32A07352205BBFA500415A97;
 			productRefGroup = 32A0735C205BBFA500415A97 /* Products */;
@@ -658,6 +762,7 @@
 				32A07369205BBFA500415A97 /* Assets.xcassets in Resources */,
 				E2505A5B20F6B6D700F70E49 /* germanenglishtop1000.txt in Resources */,
 				32A07364205BBFA500415A97 /* Main.storyboard in Resources */,
+				E2A5A9C12250F78800C257E0 /* Localizable.strings in Resources */,
 				E28856C7220668CF00DD8C22 /* Countries.bundle in Resources */,
 				E23B6DE421A5A2FE000FAAEE /* polishgermantop1000.txt in Resources */,
 				E2E181A321A42DB5001359F8 /* frenchenglishtop1000.txt in Resources */,
@@ -666,6 +771,71 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3086640BC7CEA0945091864D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-learnwords-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C693253BE6438582F75217E3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-learnwords/Pods-learnwords-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-learnwords/Pods-learnwords-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E2A5A9B82250F5E200C257E0 /* Laurine Generator */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Laurine Generator";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -x\n\n# Get base path to project\nBASE_PATH=\"$PROJECT_DIR/$PROJECT_NAME\"\n\n#--------- START OF YOUR CONFIGURATION (change Path_To_.. to fit)\n\n# Get path to Laurine Generator script\nLAURINE_PATH=\"$PROJECT_DIR/Libraries/Laurine/LaurineGenerator.swift\"\n\n# Get path to main localization file (usually english).\nSOURCE_PATH=\"$BASE_PATH/Localization/Base.lproj/Localizable.strings\"\n\n# Get path to output. If you use ObjC version of output, set implementation file (.m), as header will be generated automatically\nOUTPUT_PATH=\"$BASE_PATH/Localization/Localizations.swift\"\n\n#--------- END OF YOUR CONFIGURATION\n\n# Add permission to generator for script execution\nchmod 755 \"$LAURINE_PATH\"\n\n# Actually generate output. -- CUSTOMIZE -- parameters to your needs (see documentation).\n# Will only re-generate script if something changed\nif [ \"$OUTPUT_PATH\" -ot \"$SOURCE_PATH\" ]; then\n\"$LAURINE_PATH\" -i \"$SOURCE_PATH\" -o \"$OUTPUT_PATH\"\nfi\n\n\n\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		32A07357205BBFA500415A97 /* Sources */ = {
@@ -679,11 +849,13 @@
 				E2010BD321CF118A006D9DD7 /* FillDb.swift in Sources */,
 				E28856C2220668CF00DD8C22 /* Common+Extensions.swift in Sources */,
 				E28856DC220668CF00DD8C22 /* ColorPickerViewController.swift in Sources */,
+				E2A5A9CA22510B2700C257E0 /* StoreViewController.swift in Sources */,
 				E28856CE220668CF00DD8C22 /* TwoTextFieldsViewController.swift in Sources */,
 				E28856D4220668CF00DD8C22 /* SearchHistoryManager.swift in Sources */,
 				E28856CB220668CF00DD8C22 /* PhoneCodeCell.swift in Sources */,
 				E28856D6220668CF00DD8C22 /* Address.swift in Sources */,
 				E28856BB220668CF00DD8C22 /* UITextView+Extensions.swift in Sources */,
+				E22EBF5A2242EBEA0019A36E /* WordHistory+CoreDataClass.swift in Sources */,
 				E24391F52103673E00EDE25F /* UIImageView+Extension.swift in Sources */,
 				E28856B7220668CF00DD8C22 /* UIViewController+Extensions.swift in Sources */,
 				E28856D0220668CF00DD8C22 /* Assets.swift in Sources */,
@@ -723,6 +895,7 @@
 				E28856B4220668CF00DD8C22 /* Array+Extensions.swift in Sources */,
 				E28856C1220668CF00DD8C22 /* Optional+Extensions.swift in Sources */,
 				E28856C3220668CF00DD8C22 /* Locale+Extensions.swift in Sources */,
+				E2A5A9C02250F78800C257E0 /* Localizations.swift in Sources */,
 				E28856C0220668CF00DD8C22 /* UIAlertController+Extensions.swift in Sources */,
 				E28856D2220668CF00DD8C22 /* LocationSearchResultsViewController.swift in Sources */,
 				E28856BE220668CF00DD8C22 /* UISearchBar+Extensions.swift in Sources */,
@@ -744,6 +917,7 @@
 				E28856E6220668CF00DD8C22 /* GradientSlider.swift in Sources */,
 				E28856E0220668CF00DD8C22 /* PhotoLayout.swift in Sources */,
 				E28856C8220668CF00DD8C22 /* LocaleStore.swift in Sources */,
+				E2A5A9B72250F2DF00C257E0 /* String+Extension.swift in Sources */,
 				E28856C5220668CF00DD8C22 /* AttributedTextBlock.swift in Sources */,
 				E28856B9220668CF00DD8C22 /* Date+Extension.swift in Sources */,
 				E23B6DE121A58C3A000FAAEE /* StatisticsCell.swift in Sources */,
@@ -761,6 +935,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				32A07363205BBFA500415A97 /* Base */,
+				E2A5A9C22251039900C257E0 /* pl */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -769,8 +944,19 @@
 			isa = PBXVariantGroup;
 			children = (
 				32A0736B205BBFA500415A97 /* Base */,
+				E2A5A9C32251039900C257E0 /* pl */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		E2A5A9BD2250F78800C257E0 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E2A5A9BE2250F78800C257E0 /* Base */,
+				E2A5A9C4225103AB00C257E0 /* en */,
+				E2A5A9C5225103B100C257E0 /* pl */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -780,6 +966,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -837,6 +1024,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -885,10 +1073,11 @@
 		};
 		32A07371205BBFA500415A97 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 681C92A3F231C14B81EA1AF9 /* Pods-learnwords.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = W2457BUSA4;
+				DEVELOPMENT_TEAM = ZVAPY9CY9V;
 				INFOPLIST_FILE = learnwords/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kapala.learnwords;
@@ -900,10 +1089,11 @@
 		};
 		32A07372205BBFA500415A97 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ABDE6CEBB4A42781E69649C6 /* Pods-learnwords.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = W2457BUSA4;
+				DEVELOPMENT_TEAM = ZVAPY9CY9V;
 				INFOPLIST_FILE = learnwords/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kapala.learnwords;
@@ -940,6 +1130,7 @@
 		32A07365205BBFA500415A97 /* learnwords.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				E22EBF572242EB560019A36E /* learnwords 1.6.xcdatamodel */,
 				E23868682226A835000DEEC8 /* learnwords 1.5.xcdatamodel */,
 				E233634722157EDC0079F2ED /* learnwords 1.4.xcdatamodel */,
 				E26BD4A42207685500D683CE /* learnwords 1.3.xcdatamodel */,
@@ -947,7 +1138,7 @@
 				E2998D7821D4D87F00DBEA50 /* learnwords 1.1.xcdatamodel */,
 				32A07366205BBFA500415A97 /* learnwords.xcdatamodel */,
 			);
-			currentVersion = E23868682226A835000DEEC8 /* learnwords 1.5.xcdatamodel */;
+			currentVersion = E22EBF572242EB560019A36E /* learnwords 1.6.xcdatamodel */;
 			path = learnwords.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
