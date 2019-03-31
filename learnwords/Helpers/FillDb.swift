@@ -55,7 +55,7 @@ class FillDb {
                 }
             }
         }
-        UserDefaults.standard.set(5, forKey: "answersToMaster")
+        UserDefaults.standard.set(3, forKey: "answersToMaster")
     }
     
 }

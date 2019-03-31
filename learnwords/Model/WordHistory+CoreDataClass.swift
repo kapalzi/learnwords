@@ -68,4 +68,30 @@ public class WordHistory: NSManagedObject {
         }
     }
     
+    static func getRememberedCount(forNumberOfDays numberOfDays: Int, inContext context: NSManagedObjectContext) -> [Double] {
+        var counts = [Double]()
+        var dates = [Date]()
+        
+        let startDate = Date()
+        
+        for i in 0...numberOfDays {
+            let nextDate = Calendar.current.date(byAdding: .day, value: -i, to: startDate)
+            var comp: DateComponents = Calendar.current.dateComponents([.year, .month, .day], from: nextDate!)
+            
+            let truncated = Calendar.current.date(from: comp)!
+            
+            dates.append(truncated)
+        }
+        
+        for date in dates {
+            if let wordHistory = WordHistory.getWordHistory(forDate: date, inContext: context){
+                counts.append(Double(wordHistory.remembered))
+            } else {
+                counts.append(0)
+            }
+        }
+        
+        return counts
+    }
+    
 }
