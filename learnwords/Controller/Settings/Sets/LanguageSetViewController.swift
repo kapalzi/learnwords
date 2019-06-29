@@ -30,8 +30,6 @@ class LanguageSetViewController: BaseSetViewController  {
         self.tableView.reloadData()
     }
     
-
-    
     //table
    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return (self.tableData?.count)!
@@ -87,23 +85,13 @@ class LanguageSetViewController: BaseSetViewController  {
         
         vc.setName = set.name
         vc.setDepiction = set.depiction
-        vc.learningLanguage = (set.learningLanguage, set.identifier)
-        
-//        let locale = NSLocale(localeIdentifier: set.knownLanguage!)
-//        print(locale)
-//        print(set)
-//        print(locale.displayName(forKey: NSLocale.Key.identifier, value: set.knownLanguage)!)
-//        
-//        vc.yourLanguage = (locale.displayName(forKey: NSLocale.Key.identifier, value: set.knownLanguage)! , set.knownLanguage!)
+        vc.learningLanguage = (set.learningLanguageName, set.learningLanguage)
+        vc.yourLanguage = (set.knownLanguageName, set.knownLanguage) //pierwsze ma byc pelna nazwa a drugie kodem
+
         vc.setCode = set.code
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
         let words = Word.getWords(ForSet: set, inContext: context)
-//        var tupleWords: [(knownLanguage:String?, learningLanguage:String?)] = [(knownLanguage:String?, learningLanguage:String?)]()
-//        words.forEach { (word) in
-//            let tuple = (knownLanguage:word.knownLanguage, learningLanguage:word.learningLanguage)
-//            tupleWords.append(tuple)
-//        }
         vc.words = words
         self.navigationController?.show(vc, sender: nil)
     }

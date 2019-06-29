@@ -18,10 +18,11 @@ class NewWordViewController: UITableViewController {
     
     var knownLanguage: String? = nil
     var learningLanguage: String? = nil
-//    var newWord: (knownLanguage:String?, learningLanguage:String?) = (knownLanguage: nil, learningLanguage: nil)
     var newWord: Word? = nil
     weak var delegate: NewWordViewControllerDelegate?
     var isEditMode: Bool = false
+    var setCode: String?
+    var wordId: Int16?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,7 +76,7 @@ class NewWordViewController: UITableViewController {
     }
     
     @objc func setKnownDidTouch(){
-        let alert = UIAlertController(style: .actionSheet, title: "New Set Name")
+        let alert = UIAlertController(style: .actionSheet, title: "Word in known language")
         let config: TextField.Config = { textField in
             textField.becomeFirstResponder()
             textField.textColor = .black
@@ -104,7 +105,7 @@ class NewWordViewController: UITableViewController {
     }
     
     @objc func setLearningDidTouch(){
-        let alert = UIAlertController(style: .actionSheet, title: "New Set Depiction")
+        let alert = UIAlertController(style: .actionSheet, title: "Word in learning language")
         let config: TextField.Config = { textField in
             textField.becomeFirstResponder()
             textField.textColor = .black
@@ -135,9 +136,25 @@ class NewWordViewController: UITableViewController {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         if self.knownLanguage != nil && self.knownLanguage != "" {
             if self.learningLanguage != nil && self.learningLanguage != "" {
-                
-                
                 let entityDescription = NSEntityDescription.entity(forEntityName: "Word", in: context)
+                
+                
+                if self.isEditMode {
+                    Word.editWord(
+                        newKnownLanguage: self.knownLanguage!,
+                        newLearningLanguage: self.learningLanguage!,
+                        forId: self.wordId!,
+                        inContext: context)
+                } else {
+                    if let code = self.setCode {
+                        Word.addNewWord(
+                            id: Word.getWordsNextIndex(inContext: context)!,
+                            knownLanguage: self.knownLanguage,
+                            learningLanguage: self.learningLanguage,
+                            languageSetCode: code,
+                            context: context)
+                    }
+                }
                 
                 self.newWord = Word(entity: entityDescription!, insertInto: nil)
                 self.newWord?.learningLanguage = self.learningLanguage

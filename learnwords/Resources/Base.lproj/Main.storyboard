@@ -449,16 +449,27 @@
                                                 <constraint firstAttribute="trailing" secondItem="VYc-aD-0bC" secondAttribute="trailing" constant="8" id="vGX-PN-UvQ"/>
                                             </constraints>
                                         </view>
+                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RQx-XJ-Djg">
+                                            <rect key="frame" x="50" y="68" width="314" height="21"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
+                                            <color key="textColor" red="0.12446462563451777" green="0.12446462563451777" blue="0.12446462563451777" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="eGR-hG-688" firstAttribute="centerY" secondItem="n3L-fd-gi7" secondAttribute="centerY" id="Ecm-mI-mvQ"/>
                                         <constraint firstItem="eGR-hG-688" firstAttribute="centerX" secondItem="n3L-fd-gi7" secondAttribute="centerX" id="FOJ-Cb-Fs9"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="eGR-hG-688" secondAttribute="bottom" constant="8" id="O8H-He-FGy"/>
                                         <constraint firstItem="eGR-hG-688" firstAttribute="leading" secondItem="n3L-fd-gi7" secondAttribute="leadingMargin" constant="10" id="TfR-yU-pxg"/>
+                                        <constraint firstItem="RQx-XJ-Djg" firstAttribute="bottom" secondItem="n3L-fd-gi7" secondAttribute="bottomMargin" id="asT-rs-JGX"/>
+                                        <constraint firstItem="RQx-XJ-Djg" firstAttribute="top" secondItem="n3L-fd-gi7" secondAttribute="topMargin" constant="57" id="cOF-Wd-TB1"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="RQx-XJ-Djg" secondAttribute="trailing" constant="30" id="iHB-3x-51R"/>
+                                        <constraint firstItem="RQx-XJ-Djg" firstAttribute="leading" secondItem="n3L-fd-gi7" secondAttribute="leadingMargin" constant="30" id="s2O-85-xAV"/>
                                         <constraint firstItem="eGR-hG-688" firstAttribute="top" secondItem="n3L-fd-gi7" secondAttribute="topMargin" constant="8" id="xAX-rQ-fHF"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="bottomLabel" destination="RQx-XJ-Djg" id="h2r-Ra-rVH"/>
                                     <outlet property="mainButton" destination="VYc-aD-0bC" id="InU-WF-c2x"/>
                                     <outlet property="shadowView" destination="eGR-hG-688" id="Rmt-mB-YrR"/>
                                 </connections>

@@ -30,7 +30,7 @@ class WordsListViewController: UITableViewController {
     
     override func viewWillLayoutSubviews() {
         self.navigationController?.navigationBar.topItem?.title = "Words List"
-        self.navigationController?.navigationBar.topItem?.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .save, target: self, action: #selector(saveDidClick))
+//        self.navigationController?.navigationBar.topItem?.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .save, target: self, action: #selector(saveDidClick))
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -73,6 +73,7 @@ class WordsListViewController: UITableViewController {
         vc.knownLanguage = word?.knownLanguage
         vc.isEditMode = true
         vc.delegate = self
+        vc.wordId = word?.id
         self.editIndex = indexPath!.row
         self.navigationController?.show(vc, sender: nil)
     }
@@ -80,18 +81,15 @@ class WordsListViewController: UITableViewController {
         guard let cell = sender.superview?.superview as? WordsListTableViewCell else {
             return // or fatalError() or whatever
         }
-        let index = self.tableView.indexPath(for: cell)
+        guard let index = self.tableView.indexPath(for: cell) else { return }
         
-        self.words?.remove(at: (index?.row)!)
-        
+        guard let words = self.words else { return }
+        let wordToDelete = words[index.row]
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        Word.deleteWord(wordId: wordToDelete.id, inContext: context)
+        self.words?.remove(at: index.row)
         self.tableView.reloadData()
     }
-    
-    @objc func saveDidClick() {
-        self.delegate?.didSaveWords(sender: self)
-        self.navigationController?.popViewController(animated: true)
-    }
-    
 }
 //https://stackoverflow.com/questions/24103069/add-swipe-to-delete-uitableviewcell
 extension WordsListViewController: NewWordViewControllerDelegate {

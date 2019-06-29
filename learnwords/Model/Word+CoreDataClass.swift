@@ -181,4 +181,10 @@ public class Word: NSManagedObject {
         wordToEdit.setValue(newKnownLanguage, forKey: "knownLanguage")
         wordToEdit.setValue(newLearningLanguage, forKey: "learningLanguage")
     }
+    
+    static func deleteWord(wordId: Int16, inContext context: NSManagedObjectContext) {
+        let wordToDelete = self.getWord(forIndex: wordId, inContext: context)
+        
+        context.delete(wordToDelete)
+    }
 }

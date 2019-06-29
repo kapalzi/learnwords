@@ -19,6 +19,12 @@ class NewSetViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if self.setName == nil {
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            self.setCode = "mySetNr\(LanguageSet.countLanguageSets(inContext: context)!+1)"
+            LanguageSet.addNewLanguageSet(name: "", depiction: "", code: self.setCode!, isUnlocked: true, identifier: "", isUserMade: true, learningLanguage: "", knownLanguage: "", learningLanguageName: "", knownLanguageName: "", context: context)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,16 +66,36 @@ class NewSetViewController: UITableViewController {
         case 0:
             cell.mainButton.setTitle((self.setName != nil) ? self.setName : "Set Name", for: .normal)
             cell.mainButton.addTarget(self, action: #selector(setNameDidTouch), for: .touchUpInside)
+            
+            if self.setName != nil {
+                cell.bottomLabel.isHidden = false
+                cell.bottomLabel.text = "Set's Name"
+            }
         case 1:
             cell.mainButton.setTitle((self.setDepiction != nil) ? self.setDepiction : "Set Depiction", for: .normal)
             cell.mainButton.addTarget(self, action: #selector(setDepictionDidTouch), for: .touchUpInside)
             cell.mainButton.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
+            
+            if self.setDepiction != nil {
+                cell.bottomLabel.isHidden = false
+                cell.bottomLabel.text = "Set's Depiction"
+            }
         case 2:
             cell.mainButton.setTitle((self.learningLanguage.name != nil) ? self.learningLanguage.name : "Learning Language", for: .normal)
             cell.mainButton.addTarget(self, action: #selector(learningLanguageDidTouch), for: .touchUpInside)
+            
+            if self.learningLanguage.name != nil {
+                cell.bottomLabel.isHidden = false
+                cell.bottomLabel.text = "Learning Language"
+            }
         case 3:
             cell.mainButton.setTitle((self.yourLanguage.name != nil) ? self.yourLanguage.name : "Your Language", for: .normal)
             cell.mainButton.addTarget(self, action: #selector(yourLanguageDidTouch), for: .touchUpInside)
+            
+            if self.yourLanguage.name != nil {
+                cell.bottomLabel.isHidden = false
+                cell.bottomLabel.text = "Your Language"
+            }
         case 4:
             cell.mainButton.setTitle("Add Word", for: .normal)
             cell.mainButton.addTarget(self, action: #selector(addWordDidTouch), for: .touchUpInside)
@@ -93,7 +119,6 @@ class NewSetViewController: UITableViewController {
             if let name = self.setName {
                 textField.text = name
             }
-//            textField.left(image: image, color: .black)
             textField.leftViewPadding = 12
             textField.borderWidth = 1
             textField.cornerRadius = 8
@@ -124,7 +149,6 @@ class NewSetViewController: UITableViewController {
             if let depiction = self.setDepiction {
                 textField.text = depiction
             }
-            //            textField.left(image: image, color: .black)
             textField.leftViewPadding = 12
             textField.borderWidth = 1
             textField.cornerRadius = 8
@@ -174,6 +198,7 @@ class NewSetViewController: UITableViewController {
     @objc func addWordDidTouch(){
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "newWord") as! NewWordViewController
         vc.delegate = self
+        vc.setCode = self.setCode
         self.navigationController?.show(vc, sender: nil)
     }
     
@@ -185,39 +210,35 @@ class NewSetViewController: UITableViewController {
     }
     
     @objc func saveDidTouch(){
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         if self.setName != nil && self.setName != "" {
             if self.setDepiction != nil && self.setDepiction != "" {
-                if self.learningLanguage.code != nil && self.learningLanguage.code != "" {
-                    if self.yourLanguage.code != nil && self.yourLanguage.code != "" {
-                        if let words =  self.words, words.count != 0 {
-                            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-                            if self.setCode != nil {
+                if self.learningLanguage.code != nil && self.learningLanguage.code != "" && self.learningLanguage.name != nil && self.learningLanguage.name != "" {
+                    if self.yourLanguage.code != nil && self.yourLanguage.code != "" && self.yourLanguage.name != nil && self.yourLanguage.name != "" {
+                        if let set = LanguageSet.getLanguageSet(forCode: self.setCode!, inContext: context) {
+                            if Word.getWords(ForSet: set, inContext: context).count > 0 {
+                                LanguageSet.editLanguageSet(
+                                    newName: self.setName!,
+                                    newDepiction: self.setDepiction!,
+                                    newIdentifier: self.learningLanguage.code!,
+                                    newKnownLanguage: self.yourLanguage.code!,
+                                    newLearningLanguage: self.learningLanguage.code!,
+                                    newKnownLanguageName: self.yourLanguage.name!,
+                                    newLearningLanguageName: self.learningLanguage.name!,
+                                    forCode: self.setCode!,
+                                    inContext: context)
                                 
-                                LanguageSet.editLanguageSet(newName: self.setName!, newDepiction: self.setDepiction!, newIdentifier: self.learningLanguage.code!, newKnownLanguage: self.yourLanguage.code!, newLearningLanguage: self.learningLanguage.code!, forCode: self.setCode!, inContext: context)
-                                
-                                self.showAlert(title: "Succesfully edited set!")
                                 (UIApplication.shared.delegate as! AppDelegate).saveContext()
-                            } else {
-                                let code = "mySetNr\(LanguageSet.countLanguageSets(inContext: context)!+1)"
-                                
-                                LanguageSet.addNewLanguageSet(name: self.setName!, depiction: self.setDepiction!, code: code, isUnlocked: true, identifier: self.learningLanguage.code!,isUserMade: true, learningLanguage: self.learningLanguage.code!, knownLanguage: self.yourLanguage.code!, context: context)
-                                
-                                for word in words {
-                                    Word.addNewWord(id: Word.getWordsNextIndex(inContext: context)!, knownLanguage: word.knownLanguage, learningLanguage: word.learningLanguage, languageSetCode: code, context: context)
-                                }
-                                (UIApplication.shared.delegate as! AppDelegate).saveContext()
-                                
-                                let alert = UIAlertController(title: "Succesfully added new set!", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+                                let alert = UIAlertController(title: "Succesfully edited set!", message: nil, preferredStyle: UIAlertControllerStyle.alert)
                                 alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
                                     self.navigationController?.popViewController(animated: true)
                                 }))
-                                
                                 self.present(alert, animated: true, completion: nil)
-
                             }
-                        } else {
-                            self.showAlert(title: "No words were added!")
-                            return
+                            else {
+                                self.showAlert(title: "No words were added!")
+                                return
+                            }
                         }
                     } else {
                         self.showAlert(title: "Your language is not set or is not supported!")

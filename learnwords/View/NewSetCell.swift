@@ -14,6 +14,7 @@ class NewSetCell: UITableViewCell {
     @IBOutlet weak var mainLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var mainButton: UIButton!
+    @IBOutlet weak var bottomLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

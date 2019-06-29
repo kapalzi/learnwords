@@ -13,7 +13,7 @@ import CoreData
 @objc(LanguageSet)
 public class LanguageSet: NSManagedObject {
 
-    static func addNewLanguageSet(name: String, depiction: String, code: String, isUnlocked: Bool, identifier: String, isUserMade: Bool, learningLanguage: String, knownLanguage: String, context: NSManagedObjectContext) {
+    static func addNewLanguageSet(name: String, depiction: String, code: String, isUnlocked: Bool, identifier: String, isUserMade: Bool, learningLanguage: String, knownLanguage: String, learningLanguageName: String, knownLanguageName: String, context: NSManagedObjectContext) {
         let newSet = NSEntityDescription.insertNewObject(forEntityName: "LanguageSet", into: context) as! LanguageSet
         
         newSet.name = name
@@ -24,6 +24,8 @@ public class LanguageSet: NSManagedObject {
         newSet.isUserMade = isUserMade
         newSet.learningLanguage = learningLanguage
         newSet.knownLanguage = knownLanguage
+        newSet.learningLanguageName = learningLanguageName
+        newSet.knownLanguageName = knownLanguageName
         
     }
     
@@ -111,7 +113,7 @@ public class LanguageSet: NSManagedObject {
         return nil
     }
     
-    static func editLanguageSet(newName: String, newDepiction: String, newIdentifier: String, newKnownLanguage: String, newLearningLanguage: String, forCode code:String, inContext context: NSManagedObjectContext) {
+    static func editLanguageSet(newName: String, newDepiction: String, newIdentifier: String, newKnownLanguage: String, newLearningLanguage: String, newKnownLanguageName: String, newLearningLanguageName: String, forCode code:String, inContext context: NSManagedObjectContext) {
         
         let setToEdit = getLanguageSet(forCode: code, inContext: context)
         setToEdit?.setValue(newName, forKey: "name")
@@ -119,6 +121,8 @@ public class LanguageSet: NSManagedObject {
         setToEdit?.setValue(newIdentifier, forKey: "identifier")
         setToEdit?.setValue(newKnownLanguage, forKey: "knownLanguage")
         setToEdit?.setValue(newLearningLanguage, forKey: "learningLanguage")
+        setToEdit?.setValue(newKnownLanguageName, forKey: "knownLanguageName")
+        setToEdit?.setValue(newLearningLanguageName, forKey: "learningLanguageName")
     }
     
     static func getAllLanguageSets(inContext context: NSManagedObjectContext) -> [LanguageSet]? {
