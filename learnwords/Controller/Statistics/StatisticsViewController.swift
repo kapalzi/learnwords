@@ -34,7 +34,7 @@ class StatisticsViewController: UIViewController  {
         self.last7DaysBtn.backgroundColor = #colorLiteral(red: 0.2628087699, green: 0.7599683404, blue: 0.9947128892, alpha: 1)
         
         chartView.dragEnabled = false
-        chartView.setScaleEnabled(true)
+        chartView.setScaleEnabled(false)
         chartView.pinchZoomEnabled = false
         
         chartView.xAxis.enabled = true
@@ -50,6 +50,7 @@ class StatisticsViewController: UIViewController  {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.topItem?.title = "Statistics"
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         if let wordHistory = WordHistory.getWordHistory(forDate: Calendar.current.startOfDay(for: Date()), inContext: context) {
@@ -112,12 +113,12 @@ class StatisticsViewController: UIViewController  {
         line1.lineWidth = 1.8
         line1.circleRadius = 1
         line1.setCircleColor(.white)
-        line1.highlightColor = #colorLiteral(red: 0.2628087699, green: 0.7599683404, blue: 0.9947128892, alpha: 1)
+//        line1.highlightColor = #colorLiteral(red: 0.2628087699, green: 0.7599683404, blue: 0.9947128892, alpha: 1)
         
         line1.drawHorizontalHighlightIndicatorEnabled = false
         line1.fillFormatter = CubicLineSampleFillFormatter()
         line1.drawFilledEnabled = true
-        line1.fillColor = #colorLiteral(red: 0.2628087699, green: 0.7599683404, blue: 0.9947128892, alpha: 1)
+//        line1.fillColor = #colorLiteral(red: 0.2628087699, green: 0.7599683404, blue: 0.9947128892, alpha: 1)
         line1.fillAlpha = 1
         
         let data = LineChartData() //This is the object that will be added to the chart

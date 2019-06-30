@@ -14,15 +14,14 @@ class LearningLanguageViewController: BaseSetViewController  {
     var knownLanguage: String? = nil
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        tableData = LanguageSet.getLearningLanguages(forSelectedKnownLanguage: self.knownLanguage!, inContext: context)
         self.navigationItem.title = "Select Your Learning Language"
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        tableData = LanguageSet.getLearningLanguages(forSelectedKnownLanguage: self.knownLanguage!, inContext: context)
     }
     
     //table

@@ -18,16 +18,16 @@ class LanguageSetViewController: BaseSetViewController  {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
+        tableData = LanguageSet.getAllLanguageSets(forKnownLanguage: self.knownLanguage!, forLearningLanguage: self.learningLanguage!, inContext: context)
+        
+        self.tableView.reloadData()
         self.navigationItem.title = "Your Language Sets"
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-
-        tableData = LanguageSet.getAllLanguageSets(forKnownLanguage: self.knownLanguage!, forLearningLanguage: self.learningLanguage!, inContext: context)
-        
-        self.tableView.reloadData()
     }
     
     //table
