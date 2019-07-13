@@ -27,6 +27,9 @@
 		E23B6DE121A58C3A000FAAEE /* StatisticsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23B6DE021A58C3A000FAAEE /* StatisticsCell.swift */; };
 		E23B6DE421A5A2FE000FAAEE /* polishgermantop1000.txt in Resources */ = {isa = PBXBuildFile; fileRef = E23B6DE221A5A2FD000FAAEE /* polishgermantop1000.txt */; };
 		E23B6DE521A5A2FE000FAAEE /* germanpolishtop1000.txt in Resources */ = {isa = PBXBuildFile; fileRef = E23B6DE321A5A2FE000FAAEE /* germanpolishtop1000.txt */; };
+		E241946722D9EF4C00341DE5 /* MainViewController+SpeechRecognition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E241946622D9EF4C00341DE5 /* MainViewController+SpeechRecognition.swift */; };
+		E241946922D9F0B500341DE5 /* MainViewController+IBActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E241946822D9F0B500341DE5 /* MainViewController+IBActions.swift */; };
+		E241946B22D9F20F00341DE5 /* MainViewController+WordsLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E241946A22D9F20F00341DE5 /* MainViewController+WordsLogic.swift */; };
 		E24391F52103673E00EDE25F /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24391F42103673E00EDE25F /* UIImageView+Extension.swift */; };
 		E2505A5B20F6B6D700F70E49 /* germanenglishtop1000.txt in Resources */ = {isa = PBXBuildFile; fileRef = E2505A5A20F6B6D700F70E49 /* germanenglishtop1000.txt */; };
 		E25853B521B9D28E007DE2BB /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25853B421B9D28E007DE2BB /* UIView+Extension.swift */; };
@@ -129,6 +132,9 @@
 		E23B6DE021A58C3A000FAAEE /* StatisticsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsCell.swift; sourceTree = "<group>"; };
 		E23B6DE221A5A2FD000FAAEE /* polishgermantop1000.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = polishgermantop1000.txt; sourceTree = "<group>"; };
 		E23B6DE321A5A2FE000FAAEE /* germanpolishtop1000.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = germanpolishtop1000.txt; sourceTree = "<group>"; };
+		E241946622D9EF4C00341DE5 /* MainViewController+SpeechRecognition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+SpeechRecognition.swift"; sourceTree = "<group>"; };
+		E241946822D9F0B500341DE5 /* MainViewController+IBActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+IBActions.swift"; sourceTree = "<group>"; };
+		E241946A22D9F20F00341DE5 /* MainViewController+WordsLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+WordsLogic.swift"; sourceTree = "<group>"; };
 		E24391F42103673E00EDE25F /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		E2505A5A20F6B6D700F70E49 /* germanenglishtop1000.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = germanenglishtop1000.txt; sourceTree = "<group>"; };
 		E25853B421B9D28E007DE2BB /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
@@ -348,6 +354,9 @@
 			isa = PBXGroup;
 			children = (
 				32A07360205BBFA500415A97 /* MainViewController.swift */,
+				E241946A22D9F20F00341DE5 /* MainViewController+WordsLogic.swift */,
+				E241946622D9EF4C00341DE5 /* MainViewController+SpeechRecognition.swift */,
+				E241946822D9F0B500341DE5 /* MainViewController+IBActions.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -680,9 +689,9 @@
 			isa = PBXGroup;
 			children = (
 				E288565F2206422800DD8C22 /* NewSetViewController.swift */,
+				E238686622269C69000DEEC8 /* BaseSetViewController.swift */,
 				E238686422269AE3000DEEC8 /* LearningLanguageViewController.swift */,
 				E238686222269AD0000DEEC8 /* KnownLanguageViewController.swift */,
-				E238686622269C69000DEEC8 /* BaseSetViewController.swift */,
 				E23B6DDC21A55224000FAAEE /* LanguageSetViewController.swift */,
 			);
 			path = Sets;
@@ -843,6 +852,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E241946B22D9F20F00341DE5 /* MainViewController+WordsLogic.swift in Sources */,
 				E28856C4220668CF00DD8C22 /* UITextField+Extensions.swift in Sources */,
 				E28856D8220668CF00DD8C22 /* ContactsPickerViewController.swift in Sources */,
 				E28856EA220721F600DD8C22 /* WordsListViewController.swift in Sources */,
@@ -865,6 +875,7 @@
 				E28856BF220668CF00DD8C22 /* UIApplication+Extensions.swift in Sources */,
 				32A07367205BBFA500415A97 /* learnwords.xcdatamodeld in Sources */,
 				E28856D5220668CF00DD8C22 /* Location.swift in Sources */,
+				E241946922D9F0B500341DE5 /* MainViewController+IBActions.swift in Sources */,
 				E28856DB220668CF00DD8C22 /* ContactCell.swift in Sources */,
 				E2E181AC21A42E43001359F8 /* Word+CoreDataClass.swift in Sources */,
 				E23B6DDF21A58881000FAAEE /* StatisticsViewController.swift in Sources */,
@@ -884,6 +895,7 @@
 				E2E181AE21A42E43001359F8 /* User+CoreDataClass.swift in Sources */,
 				E28856CC220668CF00DD8C22 /* CurrencyCell.swift in Sources */,
 				E25DD69F21D8349F0099D543 /* SettingsCell.swift in Sources */,
+				E241946722D9EF4C00341DE5 /* MainViewController+SpeechRecognition.swift in Sources */,
 				32A0735F205BBFA500415A97 /* AppDelegate.swift in Sources */,
 				E25DD6A121D84A690099D543 /* SetsCell.swift in Sources */,
 				324C841F206E395900C19329 /* NewWordCell.swift in Sources */,
