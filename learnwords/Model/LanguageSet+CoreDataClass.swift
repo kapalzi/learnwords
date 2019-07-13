@@ -10,6 +10,16 @@
 import Foundation
 import CoreData
 
+enum Category: String {
+    case medicine = "Medicine"
+    case economy = "Economy"
+    case it = "IT"
+    case law = "Law"
+    case politics = "Politics"
+    case culture = "Culture"
+    case sport = "Sport"
+}
+
 @objc(LanguageSet)
 public class LanguageSet: NSManagedObject {
 
@@ -26,6 +36,23 @@ public class LanguageSet: NSManagedObject {
         newSet.knownLanguage = knownLanguage
         newSet.learningLanguageName = learningLanguageName
         newSet.knownLanguageName = knownLanguageName
+        
+    }
+    
+    static func addNewLanguageSet(name: String, depiction: String, code: String, isUnlocked: Bool, identifier: String, isUserMade: Bool, learningLanguage: String, knownLanguage: String, learningLanguageName: String, knownLanguageName: String, category:String, context: NSManagedObjectContext) {
+        let newSet = NSEntityDescription.insertNewObject(forEntityName: "LanguageSet", into: context) as! LanguageSet
+        
+        newSet.name = name
+        newSet.code = code
+        newSet.isUnlocked = isUnlocked
+        newSet.identifier = identifier
+        newSet.depiction = depiction
+        newSet.isUserMade = isUserMade
+        newSet.learningLanguage = learningLanguage
+        newSet.knownLanguage = knownLanguage
+        newSet.learningLanguageName = learningLanguageName
+        newSet.knownLanguageName = knownLanguageName
+        newSet.category = category
         
     }
     
@@ -257,7 +284,7 @@ public class LanguageSet: NSManagedObject {
             var knownLanguages = sets.map{
                 $0.knownLanguage ?? ""
             }
-            
+       
             knownLanguages = Array(Set(knownLanguages))
             
             var returnArray = [(code: String, name: String)]()

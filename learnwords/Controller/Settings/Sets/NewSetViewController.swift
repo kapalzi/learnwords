@@ -110,14 +110,15 @@ class NewSetViewController: UITableViewController {
         }
     }
     
-    @objc func setNameDidTouch(){
-        let alert = UIAlertController(style: .actionSheet, title: "Set Name")
+    func showAlertWithTextField(withTitle title:String, text:String?, placeholder:String, action:@escaping (UITextField)->Void) {
+        
+        let alert = UIAlertController(style: .actionSheet, title: title)
         let config: TextField.Config = { textField in
             textField.becomeFirstResponder()
             textField.textColor = .black
-            textField.placeholder = "Enter name"
-            if let name = self.setName {
-                textField.text = name
+            textField.placeholder = placeholder
+            if let _ = text {
+                textField.text = text
             }
             textField.leftViewPadding = 12
             textField.borderWidth = 1
@@ -127,46 +128,29 @@ class NewSetViewController: UITableViewController {
             textField.keyboardAppearance = .default
             textField.keyboardType = .default
             textField.returnKeyType = .done
-            textField.action { textField in
-                if textField.text != "" {
-                    self.setName = textField.text
-                    self.tableView.reloadData()
-                }
-                
-            }
+            textField.action(closure: action)
         }
         alert.addOneTextField(configuration: config)
         alert.addAction(title: "OK", style: .cancel)
         alert.show()
     }
     
-    @objc func setDepictionDidTouch(){
-        let alert = UIAlertController(style: .actionSheet, title: "Set Depiction")
-        let config: TextField.Config = { textField in
-            textField.becomeFirstResponder()
-            textField.textColor = .black
-            textField.placeholder = "Enter name"
-            if let depiction = self.setDepiction {
-                textField.text = depiction
-            }
-            textField.leftViewPadding = 12
-            textField.borderWidth = 1
-            textField.cornerRadius = 8
-            textField.borderColor = UIColor.lightGray.withAlphaComponent(0.5)
-            textField.backgroundColor = nil
-            textField.keyboardAppearance = .default
-            textField.keyboardType = .default
-            textField.returnKeyType = .done
-            textField.action { textField in
-                if textField.text != "" {
-                    self.setDepiction = textField.text
-                    self.tableView.reloadData()
-                }
+    @objc func setNameDidTouch(){
+        self.showAlertWithTextField(withTitle: "Set Name", text:self.setName, placeholder: "Enter Name") { (textField) in
+            if textField.text != "" {
+                self.setName = textField.text
+                self.tableView.reloadData()
             }
         }
-        alert.addOneTextField(configuration: config)
-        alert.addAction(title: "OK", style: .cancel)
-        alert.show()
+    }
+    
+    @objc func setDepictionDidTouch(){
+        self.showAlertWithTextField(withTitle: "Set Depiction", text:self.setDepiction, placeholder: "Enter depiction") { (textField) in
+            if textField.text != "" {
+                self.setDepiction = textField.text
+                self.tableView.reloadData()
+            }
+        }
     }
     
     @objc func learningLanguageDidTouch(){
