@@ -54,7 +54,7 @@ class LanguageSetViewController: BaseSetViewController  {
         cell.selectedBackgroundView = backgroundView
         
         let set = self.tableData![indexPath.row] as LanguageSet
-        cell.nameLbl.text = set.name
+        cell.mainLabel.text = set.name
         cell.depictionLbl.text = set.depiction
         
         if set.isUserMade == true {//

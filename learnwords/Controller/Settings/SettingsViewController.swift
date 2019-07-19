@@ -19,14 +19,6 @@ class SettingsViewController: UITableViewController  {
         self.navigationController?.navigationBar.topItem?.title = "Settings"
     }
     
-    override func viewWillLayoutSubviews() {
-        self.tableView.visibleCells.forEach {
-            ($0 as! SettingsCell).shadowView.dropShadow()
-        }
-    }
-    
-    //table
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
     }

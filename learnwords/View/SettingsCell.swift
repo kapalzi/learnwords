@@ -8,19 +8,6 @@
 
 import UIKit
 
-class SettingsCell: UITableViewCell {
-
-    @IBOutlet weak var mainLabel: UILabel!
-    @IBOutlet weak var shadowView: UIView!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+class SettingsCell: BaseTableViewCell {
 
 }

@@ -10,8 +10,6 @@ import UIKit
 
 class NewWordCell: UITableViewCell {
     
-//    var titleLabel: UILabel!
-//    var valueField: UITextField!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var valueField: UITextField!
     

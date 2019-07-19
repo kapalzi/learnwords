@@ -10,7 +10,6 @@
 		324C841B206E289C00C19329 /* NewWordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324C841A206E289C00C19329 /* NewWordViewController.swift */; };
 		324C841F206E395900C19329 /* NewWordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324C841E206E395900C19329 /* NewWordCell.swift */; };
 		32A0735F205BBFA500415A97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A0735E205BBFA500415A97 /* AppDelegate.swift */; };
-		32A07361205BBFA500415A97 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A07360205BBFA500415A97 /* MainViewController.swift */; };
 		32A07364205BBFA500415A97 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32A07362205BBFA500415A97 /* Main.storyboard */; };
 		32A07367205BBFA500415A97 /* learnwords.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 32A07365205BBFA500415A97 /* learnwords.xcdatamodeld */; };
 		32A07369205BBFA500415A97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32A07368205BBFA500415A97 /* Assets.xcassets */; };
@@ -24,13 +23,15 @@
 		E238686722269C69000DEEC8 /* BaseSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E238686622269C69000DEEC8 /* BaseSetViewController.swift */; };
 		E23B6DDD21A55224000FAAEE /* LanguageSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23B6DDC21A55224000FAAEE /* LanguageSetViewController.swift */; };
 		E23B6DDF21A58881000FAAEE /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23B6DDE21A58881000FAAEE /* StatisticsViewController.swift */; };
-		E23B6DE121A58C3A000FAAEE /* StatisticsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23B6DE021A58C3A000FAAEE /* StatisticsCell.swift */; };
 		E23B6DE421A5A2FE000FAAEE /* polishgermantop1000.txt in Resources */ = {isa = PBXBuildFile; fileRef = E23B6DE221A5A2FD000FAAEE /* polishgermantop1000.txt */; };
 		E23B6DE521A5A2FE000FAAEE /* germanpolishtop1000.txt in Resources */ = {isa = PBXBuildFile; fileRef = E23B6DE321A5A2FE000FAAEE /* germanpolishtop1000.txt */; };
 		E241946722D9EF4C00341DE5 /* MainViewController+SpeechRecognition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E241946622D9EF4C00341DE5 /* MainViewController+SpeechRecognition.swift */; };
 		E241946922D9F0B500341DE5 /* MainViewController+IBActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E241946822D9F0B500341DE5 /* MainViewController+IBActions.swift */; };
 		E241946B22D9F20F00341DE5 /* MainViewController+WordsLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E241946A22D9F20F00341DE5 /* MainViewController+WordsLogic.swift */; };
 		E241946D22D9F8E500341DE5 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E241946C22D9F8E500341DE5 /* CategoryViewController.swift */; };
+		E241947622DA0B4900341DE5 /* learnwordsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E241947522DA0B4900341DE5 /* learnwordsTests.swift */; };
+		E241948722DA10FE00341DE5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A07360205BBFA500415A97 /* MainViewController.swift */; };
+		E241948822DA111A00341DE5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A0735E205BBFA500415A97 /* AppDelegate.swift */; };
 		E24391F52103673E00EDE25F /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24391F42103673E00EDE25F /* UIImageView+Extension.swift */; };
 		E2505A5B20F6B6D700F70E49 /* germanenglishtop1000.txt in Resources */ = {isa = PBXBuildFile; fileRef = E2505A5A20F6B6D700F70E49 /* germanenglishtop1000.txt */; };
 		E25853B521B9D28E007DE2BB /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25853B421B9D28E007DE2BB /* UIView+Extension.swift */; };
@@ -99,12 +100,23 @@
 		E2A5A9C02250F78800C257E0 /* Localizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A5A9BC2250F78800C257E0 /* Localizations.swift */; };
 		E2A5A9C12250F78800C257E0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E2A5A9BD2250F78800C257E0 /* Localizable.strings */; };
 		E2A5A9CA22510B2700C257E0 /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A5A9C922510B2700C257E0 /* StoreViewController.swift */; };
+		E2B7092122E24AFD00FC7659 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B7092022E24AFD00FC7659 /* BaseTableViewCell.swift */; };
 		E2E181A321A42DB5001359F8 /* frenchenglishtop1000.txt in Resources */ = {isa = PBXBuildFile; fileRef = E2E181A221A42DB5001359F8 /* frenchenglishtop1000.txt */; };
 		E2E181AA21A42E43001359F8 /* LanguageSet+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E181A421A42E43001359F8 /* LanguageSet+CoreDataClass.swift */; };
 		E2E181AC21A42E43001359F8 /* Word+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E181A621A42E43001359F8 /* Word+CoreDataClass.swift */; };
 		E2E181AE21A42E43001359F8 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E181A821A42E43001359F8 /* User+CoreDataClass.swift */; };
 		E2EC61F8206FCD2600317AA2 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EC61F7206FCD2600317AA2 /* BaseViewController.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E241947822DA0B4900341DE5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 32A07353205BBFA500415A97 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 32A0735A205BBFA500415A97;
+			remoteInfo = learnwords;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		324C841A206E289C00C19329 /* NewWordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWordViewController.swift; sourceTree = "<group>"; };
@@ -130,7 +142,6 @@
 		E23868682226A835000DEEC8 /* learnwords 1.5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "learnwords 1.5.xcdatamodel"; sourceTree = "<group>"; };
 		E23B6DDC21A55224000FAAEE /* LanguageSetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSetViewController.swift; sourceTree = "<group>"; };
 		E23B6DDE21A58881000FAAEE /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
-		E23B6DE021A58C3A000FAAEE /* StatisticsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsCell.swift; sourceTree = "<group>"; };
 		E23B6DE221A5A2FD000FAAEE /* polishgermantop1000.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = polishgermantop1000.txt; sourceTree = "<group>"; };
 		E23B6DE321A5A2FE000FAAEE /* germanpolishtop1000.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = germanpolishtop1000.txt; sourceTree = "<group>"; };
 		E241946622D9EF4C00341DE5 /* MainViewController+SpeechRecognition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+SpeechRecognition.swift"; sourceTree = "<group>"; };
@@ -138,6 +149,9 @@
 		E241946A22D9F20F00341DE5 /* MainViewController+WordsLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+WordsLogic.swift"; sourceTree = "<group>"; };
 		E241946C22D9F8E500341DE5 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		E241946E22D9FBBB00341DE5 /* learnwords 1.8.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "learnwords 1.8.xcdatamodel"; sourceTree = "<group>"; };
+		E241947322DA0B4800341DE5 /* learnwordsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = learnwordsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E241947522DA0B4900341DE5 /* learnwordsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = learnwordsTests.swift; sourceTree = "<group>"; };
+		E241947722DA0B4900341DE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E24391F42103673E00EDE25F /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		E2505A5A20F6B6D700F70E49 /* germanenglishtop1000.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = germanenglishtop1000.txt; sourceTree = "<group>"; };
 		E25853B421B9D28E007DE2BB /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
@@ -213,6 +227,7 @@
 		E2A5A9C4225103AB00C257E0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E2A5A9C5225103B100C257E0 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E2A5A9C922510B2700C257E0 /* StoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
+		E2B7092022E24AFD00FC7659 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		E2E181A221A42DB5001359F8 /* frenchenglishtop1000.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = frenchenglishtop1000.txt; sourceTree = "<group>"; };
 		E2E181A421A42E43001359F8 /* LanguageSet+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LanguageSet+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E2E181A621A42E43001359F8 /* Word+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Word+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -231,6 +246,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E241947022DA0B4800341DE5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -246,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				32A0735D205BBFA500415A97 /* learnwords */,
+				E241947422DA0B4900341DE5 /* learnwordsTests */,
 				32A0735C205BBFA500415A97 /* Products */,
 				C1B7ACFE6267AFD2E0F99784 /* Pods */,
 				1907EE80DDD2CC0896FA1CBB /* Frameworks */,
@@ -256,6 +279,7 @@
 			isa = PBXGroup;
 			children = (
 				32A0735B205BBFA500415A97 /* learnwords.app */,
+				E241947322DA0B4800341DE5 /* learnwordsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -301,12 +325,12 @@
 			isa = PBXGroup;
 			children = (
 				E2010BCD21CD9154006D9DD7 /* RecordButton.swift */,
-				E23B6DE021A58C3A000FAAEE /* StatisticsCell.swift */,
-				324C841E206E395900C19329 /* NewWordCell.swift */,
 				E25DD69E21D8349F0099D543 /* SettingsCell.swift */,
 				E28856612206455600DD8C22 /* NewSetCell.swift */,
 				E25DD6A021D84A690099D543 /* SetsCell.swift */,
+				324C841E206E395900C19329 /* NewWordCell.swift */,
 				E28856EB220723E100DD8C22 /* WordsListTableViewCell.swift */,
+				E2B7092022E24AFD00FC7659 /* BaseTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -318,6 +342,15 @@
 				E2010BD221CF118A006D9DD7 /* FillDb.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		E241947422DA0B4900341DE5 /* learnwordsTests */ = {
+			isa = PBXGroup;
+			children = (
+				E241947522DA0B4900341DE5 /* learnwordsTests.swift */,
+				E241947722DA0B4900341DE5 /* Info.plist */,
+			);
+			path = learnwordsTests;
 			sourceTree = "<group>";
 		};
 		E24391F32103672C00EDE25F /* Extensions */ = {
@@ -732,19 +765,42 @@
 			productReference = 32A0735B205BBFA500415A97 /* learnwords.app */;
 			productType = "com.apple.product-type.application";
 		};
+		E241947222DA0B4800341DE5 /* learnwordsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E241947A22DA0B4900341DE5 /* Build configuration list for PBXNativeTarget "learnwordsTests" */;
+			buildPhases = (
+				E241946F22DA0B4800341DE5 /* Sources */,
+				E241947022DA0B4800341DE5 /* Frameworks */,
+				E241947122DA0B4800341DE5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E241947922DA0B4900341DE5 /* PBXTargetDependency */,
+			);
+			name = learnwordsTests;
+			productName = learnwordsTests;
+			productReference = E241947322DA0B4800341DE5 /* learnwordsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		32A07353205BBFA500415A97 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0910;
+				LastSwiftUpdateCheck = 1020;
 				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = kapala;
 				TargetAttributes = {
 					32A0735A205BBFA500415A97 = {
 						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Automatic;
+					};
+					E241947222DA0B4800341DE5 = {
+						CreatedOnToolsVersion = 10.2.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 32A0735A205BBFA500415A97;
 					};
 				};
 			};
@@ -763,6 +819,7 @@
 			projectRoot = "";
 			targets = (
 				32A0735A205BBFA500415A97 /* learnwords */,
+				E241947222DA0B4800341DE5 /* learnwordsTests */,
 			);
 		};
 /* End PBXProject section */
@@ -781,6 +838,13 @@
 				E23B6DE421A5A2FE000FAAEE /* polishgermantop1000.txt in Resources */,
 				E2E181A321A42DB5001359F8 /* frenchenglishtop1000.txt in Resources */,
 				E23B6DE521A5A2FE000FAAEE /* germanpolishtop1000.txt in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E241947122DA0B4800341DE5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -872,6 +936,7 @@
 				E28856BB220668CF00DD8C22 /* UITextView+Extensions.swift in Sources */,
 				E22EBF5A2242EBEA0019A36E /* WordHistory+CoreDataClass.swift in Sources */,
 				E24391F52103673E00EDE25F /* UIImageView+Extension.swift in Sources */,
+				E2B7092122E24AFD00FC7659 /* BaseTableViewCell.swift in Sources */,
 				E28856B7220668CF00DD8C22 /* UIViewController+Extensions.swift in Sources */,
 				E28856D0220668CF00DD8C22 /* Assets.swift in Sources */,
 				E28856E1220668CF00DD8C22 /* TelegramPickerViewController.swift in Sources */,
@@ -886,7 +951,6 @@
 				E28856D3220668CF00DD8C22 /* LocationPickerViewController.swift in Sources */,
 				E28856602206422800DD8C22 /* NewSetViewController.swift in Sources */,
 				E2010BCE21CD9154006D9DD7 /* RecordButton.swift in Sources */,
-				32A07361205BBFA500415A97 /* MainViewController.swift in Sources */,
 				324C841B206E289C00C19329 /* NewWordViewController.swift in Sources */,
 				E23B6DDD21A55224000FAAEE /* LanguageSetViewController.swift in Sources */,
 				E28856BC220668CF00DD8C22 /* UIColor+Extensions.swift in Sources */,
@@ -899,6 +963,7 @@
 				E2E181AE21A42E43001359F8 /* User+CoreDataClass.swift in Sources */,
 				E28856CC220668CF00DD8C22 /* CurrencyCell.swift in Sources */,
 				E25DD69F21D8349F0099D543 /* SettingsCell.swift in Sources */,
+				E241948722DA10FE00341DE5 /* MainViewController.swift in Sources */,
 				E241946722D9EF4C00341DE5 /* MainViewController+SpeechRecognition.swift in Sources */,
 				32A0735F205BBFA500415A97 /* AppDelegate.swift in Sources */,
 				E25DD6A121D84A690099D543 /* SetsCell.swift in Sources */,
@@ -937,7 +1002,6 @@
 				E2A5A9B72250F2DF00C257E0 /* String+Extension.swift in Sources */,
 				E28856C5220668CF00DD8C22 /* AttributedTextBlock.swift in Sources */,
 				E28856B9220668CF00DD8C22 /* Date+Extension.swift in Sources */,
-				E23B6DE121A58C3A000FAAEE /* StatisticsCell.swift in Sources */,
 				E241946D22D9F8E500341DE5 /* CategoryViewController.swift in Sources */,
 				E28856E4220668CF00DD8C22 /* Label.swift in Sources */,
 				E238686322269AD0000DEEC8 /* KnownLanguageViewController.swift in Sources */,
@@ -946,7 +1010,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E241946F22DA0B4800341DE5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E241948822DA111A00341DE5 /* AppDelegate.swift in Sources */,
+				E241947622DA0B4900341DE5 /* learnwordsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E241947922DA0B4900341DE5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 32A0735A205BBFA500415A97 /* learnwords */;
+			targetProxy = E241947822DA0B4900341DE5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		32A07362205BBFA500415A97 /* Main.storyboard */ = {
@@ -1121,6 +1202,49 @@
 			};
 			name = Release;
 		};
+		E241947B22DA0B4900341DE5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W2457BUSA4;
+				INFOPLIST_FILE = learnwordsTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = kapala.learnwordsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/learnwords.app/learnwords";
+			};
+			name = Debug;
+		};
+		E241947C22DA0B4900341DE5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W2457BUSA4;
+				INFOPLIST_FILE = learnwordsTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = kapala.learnwordsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/learnwords.app/learnwords";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1138,6 +1262,15 @@
 			buildConfigurations = (
 				32A07371205BBFA500415A97 /* Debug */,
 				32A07372205BBFA500415A97 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E241947A22DA0B4900341DE5 /* Build configuration list for PBXNativeTarget "learnwordsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E241947B22DA0B4900341DE5 /* Debug */,
+				E241947C22DA0B4900341DE5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

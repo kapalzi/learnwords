@@ -27,15 +27,7 @@ class NewSetViewController: UITableViewController {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
-    }
-    
-    override func viewWillLayoutSubviews() {
-        self.tableView.visibleCells.forEach {
-            ($0 as! NewSetCell).shadowView.dropShadow()
-        }
-        
+    override func viewWillLayoutSubviews() {   
         if self.setName == nil {
             self.navigationController?.navigationBar.topItem?.title = "New Set"
         } else {

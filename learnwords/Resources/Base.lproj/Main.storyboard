@@ -206,7 +206,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FK6-JQ-cwP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2004" y="863"/>
+            <point key="canvasLocation" x="-2741" y="862"/>
         </scene>
         <!--Statistics-->
         <scene sceneID="gJo-gr-AW0">
@@ -275,7 +275,7 @@
                                 <connections>
                                     <outlet property="depictionLbl" destination="qMZ-XM-3Bi" id="aea-LO-LT2"/>
                                     <outlet property="editBtn" destination="UtT-w9-r86" id="ezg-hd-WLL"/>
-                                    <outlet property="nameLbl" destination="xWv-Kt-jA0" id="LAb-zs-UwN"/>
+                                    <outlet property="mainLabel" destination="xWv-Kt-jA0" id="7Sz-P3-Jfr"/>
                                     <outlet property="shadowView" destination="MXb-ly-F1T" id="hk3-oL-ejL"/>
                                 </connections>
                             </tableViewCell>
@@ -488,6 +488,7 @@
         <!--Navigation Controller-->
         <scene sceneID="62h-6M-nZg">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zqQ-xY-H9u" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="ehH-rx-5TI" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="sEk-2S-FCT">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
@@ -502,7 +503,6 @@
                         <segue destination="27t-eZ-a8E" kind="relationship" relationship="rootViewController" id="OeW-xW-N1c"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zqQ-xY-H9u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1733" y="27"/>
         </scene>
@@ -732,7 +732,7 @@
                                 <connections>
                                     <outlet property="depictionLbl" destination="q5p-nK-1rU" id="JDY-wj-eFK"/>
                                     <outlet property="editBtn" destination="fxJ-bj-bqe" id="cD4-CV-aJQ"/>
-                                    <outlet property="nameLbl" destination="Cll-lb-Bv7" id="BPw-NO-eYy"/>
+                                    <outlet property="mainLabel" destination="Cll-lb-Bv7" id="O94-e0-1a2"/>
                                     <outlet property="shadowView" destination="yar-7R-dsm" id="x5R-Is-TcQ"/>
                                 </connections>
                             </tableViewCell>
@@ -815,7 +815,7 @@
                                 <connections>
                                     <outlet property="depictionLbl" destination="zPv-oj-DY8" id="oq2-R5-RKa"/>
                                     <outlet property="editBtn" destination="HJl-v7-Bet" id="qxh-ps-3HN"/>
-                                    <outlet property="nameLbl" destination="HBW-A4-mP7" id="iuO-tk-oMp"/>
+                                    <outlet property="mainLabel" destination="HBW-A4-mP7" id="59p-6B-k3O"/>
                                     <outlet property="shadowView" destination="6sk-6O-H74" id="P79-jd-gUU"/>
                                 </connections>
                             </tableViewCell>

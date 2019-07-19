@@ -48,7 +48,7 @@ class KnownLanguageViewController: BaseSetViewController  {
         cell.selectedBackgroundView = backgroundView
         
         let set = self.tableData![indexPath.row]
-        cell.nameLbl.text = set.name
+        cell.mainLabel.text = set.name
         cell.depictionLbl.text = ""
     }
     

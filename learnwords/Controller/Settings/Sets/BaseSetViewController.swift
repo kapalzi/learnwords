@@ -10,10 +10,4 @@ import UIKit
 
 class BaseSetViewController: UITableViewController {
     
-    override func viewWillLayoutSubviews() {
-        self.tableView.visibleCells.forEach {
-            ($0 as! SetsCell).shadowView.dropShadow()
-        }
-    }
-    
 }

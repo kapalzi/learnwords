@@ -26,7 +26,6 @@ class RecordButton: UIButton {
     
     private func addAnimation() {
         
-        // create my track layer
         let trackLayer = CAShapeLayer()
         
         print(self.center)
@@ -51,8 +50,6 @@ class RecordButton: UIButton {
         shapeLayer.strokeEnd = 0
         
         self.layer.addSublayer(shapeLayer)
-        
-//        self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(animate)))
     }
     
       func startAnimation() {

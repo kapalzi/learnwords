@@ -10,48 +10,13 @@ import UIKit
 
 extension UIView{
     
-    func dropShadow(shadowColor: UIColor = UIColor.black,
-                    fillColor: UIColor = UIColor.white,
-                    opacity: Float = 0.5,
-                    offset: CGSize = CGSize(width: 0.0, height: 1.0),
-                    radius: CGFloat = 15,
-                    imgName: String = "") {
-        
-        let shadowLayer = CAShapeLayer()
-        shadowLayer.path = UIBezierPath(roundedRect: self.bounds, cornerRadius: radius).cgPath
-        shadowLayer.fillColor = fillColor.cgColor
-        shadowLayer.shadowColor = shadowColor.cgColor
-        shadowLayer.shadowPath = shadowLayer.path
-        shadowLayer.shadowOffset = offset
-        shadowLayer.shadowOpacity = opacity
-        shadowLayer.shadowRadius = radius
-        
-        if imgName != "" {
-            let imgLayer = CALayer()
-            let img = UIImage(named: imgName)?.cgImage
-            imgLayer.frame = self.bounds
-            imgLayer.contents = img
-            imgLayer.cornerRadius = radius
-            imgLayer.masksToBounds = true
-            shadowLayer.addSublayer(imgLayer)
-        }
-        shadowLayer.name = "shadow"
-        
-        if let layers = layer.sublayers {
-            if let firstLayer = layers.first {
-                if firstLayer.name == shadowLayer.name {
-                    layer.replaceSublayer(firstLayer, with: shadowLayer)
-                }
-                else {
-                    layer.insertSublayer(shadowLayer, at: 0)
-                }
-                
-            } else {
-                layer.insertSublayer(shadowLayer, at: 0)
-            }
-        } else {
-            layer.insertSublayer(shadowLayer, at: 0)
-        }
+    func dropShadow() {
+        self.backgroundColor = #colorLiteral(red: 0.9803171754, green: 0.9804343581, blue: 0.9802773595, alpha: 1)
+        self.layer.cornerRadius = 15
+        self.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        self.layer.shadowOpacity = 0.25
+        self.layer.shadowRadius = 5.0
+        self.layer.shadowOffset = CGSize(width: 0, height: 0)
     }
     
     func shake() {

@@ -55,7 +55,7 @@ class CategoryViewController: BaseSetViewController  {
         cell.selectedBackgroundView = backgroundView
         
         let category = self.tableData![indexPath.row]
-        cell.nameLbl.text = category
+        cell.mainLabel.text = category
         cell.depictionLbl.text = ""
     }
     
