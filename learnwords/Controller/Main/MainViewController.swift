@@ -88,6 +88,4 @@ class MainViewController: BaseViewController, UITextFieldDelegate {
             self.wordLabel.text = self.word.knownLanguage
         }
     }
-    
-
 }

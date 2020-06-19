@@ -7,10 +7,10 @@
 //
 
 import UIKit
-import Charts
+//import Charts
 
 class StatisticsViewController: UIViewController  {
-    
+    /*
     @IBOutlet weak var rememberedWordsLbl: UILabel!
     @IBOutlet weak var masteredWordsLbl: UILabel!
     @IBOutlet weak var lastMonthBtn: UIButton!
@@ -127,10 +127,11 @@ class StatisticsViewController: UIViewController  {
         chartView.data = data //finally - it adds the chart data to the chart and causes an update
         chartView.animate(xAxisDuration: 0, yAxisDuration: 2)
     }
+ */
 }
 
-private class CubicLineSampleFillFormatter: IFillFormatter {
-    func getFillLinePosition(dataSet: ILineChartDataSet, dataProvider: LineChartDataProvider) -> CGFloat {
-        return -10
-    }
-}
+//private class CubicLineSampleFillFormatter: IFillFormatter {
+//    func getFillLinePosition(dataSet: ILineChartDataSet, dataProvider: LineChartDataProvider) -> CGFloat {
+//        return -10
+//    }
+//}
