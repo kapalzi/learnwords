@@ -6,5 +6,5 @@ target 'learnwords' do
   use_frameworks!
 
   # Pods for learnwords
-  pod 'Charts'
+
 end

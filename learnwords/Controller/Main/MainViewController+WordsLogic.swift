@@ -12,6 +12,7 @@ import Speech
 extension MainViewController {
     
     func loadWords() {
+        
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         self.wordsTable = Word.getWordsForSelectedSet(inContext: context)
         

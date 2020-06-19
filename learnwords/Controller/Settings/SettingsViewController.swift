@@ -20,7 +20,7 @@ class SettingsViewController: UITableViewController  {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 2
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -43,8 +43,8 @@ class SettingsViewController: UITableViewController  {
             cell.mainLabel.text = "Select language set"
         case 1:
             cell.mainLabel.text = "Create set"
-        case 2:
-            cell.mainLabel.text = "Store"
+//        case 2:
+//            cell.mainLabel.text = "Store"
         default:
             cell.mainLabel.text = "Coming soon"
         }
@@ -61,9 +61,9 @@ class SettingsViewController: UITableViewController  {
         case 1:
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "newSet") as! NewSetViewController
             self.navigationController?.show(vc, sender: nil)
-        case 2:
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "store") as! StoreViewController
-            self.navigationController?.show(vc, sender: nil)
+//        case 2:
+//            let vc = self.storyboard?.instantiateViewController(withIdentifier: "store") as! StoreViewController
+//            self.navigationController?.show(vc, sender: nil)
         case 10:
             var ac = UIAlertController()
             ac = UIAlertController.init(title: nil, message: "Select number", preferredStyle: UIAlertControllerStyle.actionSheet)
